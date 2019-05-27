@@ -1,0 +1,68 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.271
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "TSTests", "TSTests\", "{85F462AB-7529-4136-B04F-5E1338A9C4F5}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_54878"
+		Debug.AspNetCompiler.PhysicalPath = "TSTests\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_54878\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_54878"
+		Release.AspNetCompiler.PhysicalPath = "TSTests\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_54878\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "54878"
+		SlnRelativePath = "TSTests\"
+	EndProjectSection
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Test1", "Controls\Test1\", "{25F42921-7AAB-4976-999B-0882B0C550B7}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_55334"
+		Debug.AspNetCompiler.PhysicalPath = "Controls\Test1\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_55334\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_55334"
+		Release.AspNetCompiler.PhysicalPath = "Controls\Test1\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_55334\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "55334"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{85F462AB-7529-4136-B04F-5E1338A9C4F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85F462AB-7529-4136-B04F-5E1338A9C4F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85F462AB-7529-4136-B04F-5E1338A9C4F5}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{85F462AB-7529-4136-B04F-5E1338A9C4F5}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{25F42921-7AAB-4976-999B-0882B0C550B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25F42921-7AAB-4976-999B-0882B0C550B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25F42921-7AAB-4976-999B-0882B0C550B7}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{25F42921-7AAB-4976-999B-0882B0C550B7}.Release|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {693250E8-F637-4E8F-9098-7F90147AE962}
+	EndGlobalSection
+EndGlobal

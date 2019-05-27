@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" />
+
+  <PropertyGroup>
+    <Name>ItAintBoring.Controls</Name>
+    <ProjectGuid>e225cdde-549b-4677-864f-cabfb655a8b9</ProjectGuid>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+  </PropertyGroup>
+
+  <!-- Solution Packager overrides, un-comment to use: SolutionPackagerType (Managed, Unmanaged, Both)
+  <PropertyGroup>
+    <SolutionPackageType>Managed</SolutionPackageType>
+  </PropertyGroup>
+  -->
+  
+  <ItemGroup>
+    <PackageReference Include="Microsoft.PowerApps.MSBuild.Solution" Version="0.*" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ExcludeDirectories Include="$(MSBuildThisFileDirectory)\bin\**" />
+    <ExcludeDirectories Include="$(MSBuildThisFileDirectory)\obj\**" />
+    <ExcludeDirectories Include="$(MSBuildThisFileDirectory)\*.cdsproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)\**" Exclude="@(ExcludeDirectories)">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\Test1\Test1.pcfproj">
+      <Project>e934a5c8-ddb5-4c45-9e84-79e2f09bec72</Project>
+      <Name>Test1</Name>
+      <Targets>Build</Targets>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <OutputItemType>Content</OutputItemType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="..\Test2\Test2.pcfproj">
+      <Project>ce34d5ae-e17a-40b0-bb80-4ed540a63159</Project>
+      <Name>Test2</Name>
+      <Targets>Build</Targets>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <OutputItemType>Content</OutputItemType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
+</Project>
