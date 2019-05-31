@@ -66,11 +66,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\git\\ITAintBoring.PCFControls\\Controls\\Test2\\Test2.pcfproj",
-      "projectName": "Test2",
-      "projectPath": "C:\\git\\ITAintBoring.PCFControls\\Controls\\Test2\\Test2.pcfproj",
+      "projectUniqueName": "C:\\git\\ITAintBoring.PCFControls\\Controls\\ValidatedInputControl\\ValidatedInputControl.pcfproj",
+      "projectName": "ValidatedInputControl",
+      "projectPath": "C:\\git\\ITAintBoring.PCFControls\\Controls\\ValidatedInputControl\\ValidatedInputControl.pcfproj",
       "packagesPath": "C:\\Users\\shlegaal\\.nuget\\packages\\",
-      "outputPath": "C:\\git\\ITAintBoring.PCFControls\\Controls\\Test2\\obj\\",
+      "outputPath": "C:\\git\\ITAintBoring.PCFControls\\Controls\\ValidatedInputControl\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [

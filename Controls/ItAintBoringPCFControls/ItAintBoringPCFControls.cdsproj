@@ -3,8 +3,8 @@
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" />
 
   <PropertyGroup>
-    <Name>ItAintBoring.Controls</Name>
-    <ProjectGuid>e225cdde-549b-4677-864f-cabfb655a8b9</ProjectGuid>
+    <Name>ItAintBoringPCFControls</Name>
+    <ProjectGuid>500aa1d8-c145-4c02-9b2e-a633c4ab1aff</ProjectGuid>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
@@ -32,17 +32,9 @@
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\Test1\Test1.pcfproj">
-      <Project>e934a5c8-ddb5-4c45-9e84-79e2f09bec72</Project>
-      <Name>Test1</Name>
-      <Targets>Build</Targets>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-      <OutputItemType>Content</OutputItemType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </ProjectReference>
-    <ProjectReference Include="..\Test2\Test2.pcfproj">
-      <Project>ce34d5ae-e17a-40b0-bb80-4ed540a63159</Project>
-      <Name>Test2</Name>
+    <ProjectReference Include="..\ValidatedInputControl\ValidatedInputControl.pcfproj">
+      <Project>a252ef79-ab5b-44cc-9eaa-55a7409e4eb6</Project>
+      <Name>ValidatedInputControl</Name>
       <Targets>Build</Targets>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <OutputItemType>Content</OutputItemType>

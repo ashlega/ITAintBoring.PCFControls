@@ -2,10 +2,10 @@
 <ImportExportXml version="9.1.0.643" SolutionPackageVersion="9.1" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <!-- Unique Name of Cds Solution-->
-    <UniqueName>ItAintBoring.Controls</UniqueName>
+    <UniqueName>ItAintBoringPCFControls</UniqueName>
     <LocalizedNames>
       <!-- Localized Solution Name in language code -->
-      <LocalizedName description="ItAintBoring.Controls" languagecode="1033" />
+      <LocalizedName description="ItAintBoringPCFControls" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
     <Version>1.0</Version>

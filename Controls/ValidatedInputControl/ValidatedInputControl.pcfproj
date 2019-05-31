@@ -3,8 +3,8 @@
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" />
 
   <PropertyGroup>
-    <Name>Test1</Name>
-    <ProjectGuid>e934a5c8-ddb5-4c45-9e84-79e2f09bec72</ProjectGuid>
+    <Name>ValidatedInputControl</Name>
+    <ProjectGuid>a252ef79-ab5b-44cc-9eaa-55a7409e4eb6</ProjectGuid>
     <OutputPath>$(MSBuildThisFileDirectory)out\controls</OutputPath>
   </PropertyGroup>
 

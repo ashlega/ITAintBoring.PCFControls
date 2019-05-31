@@ -1,5 +1,8 @@
+.\Settings.ps1 -SolutionOnly
+
+cd ..
 $msBuildExe = 'C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild\15.0\Bin\msbuild.exe'
-$solutionFolder = "ItAintBoring.Controls"
+$solutionFolder = $global:SolutionName
 
 if((Test-Path -Path $solutionFolder) -eq $False)
 {
@@ -9,10 +12,11 @@ if((Test-Path -Path $solutionFolder) -eq $False)
 cd .\"$solutionFolder"
 
 ..\..\packages\Microsoft.PowerApps.CLI.0.2.59\tools\pac.exe solution init --publisherName "ItAintBoring" --customizationPrefix "ita_"
-..\..\packages\Microsoft.PowerApps.CLI.0.2.59\tools\pac.exe solution add-reference --path ..\Test1
-..\..\packages\Microsoft.PowerApps.CLI.0.2.59\tools\pac.exe solution add-reference --path ..\Test2
+..\..\packages\Microsoft.PowerApps.CLI.0.2.59\tools\pac.exe solution add-reference --path ..\ValidatedInputControl
 
 & $msBuildExe /t:restore
 & $msBuildExe
 
-cd ..
+cd ..\Deployment
+
+Copy-Item "..\$($solutionFolder)\bin\Debug\$($solutionFolder).zip" .\Solutions

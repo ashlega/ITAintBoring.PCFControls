@@ -32,9 +32,9 @@
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="Test1\Test1.pcfproj">
-      <Project>e934a5c8-ddb5-4c45-9e84-79e2f09bec72</Project>
-      <Name>Test1</Name>
+    <ProjectReference Include="ValidatedInputControl\ValidatedInputControl.pcfproj">
+      <Project>a252ef79-ab5b-44cc-9eaa-55a7409e4eb6</Project>
+      <Name>ValidatedInputControl</Name>
       <Targets>Build</Targets>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <OutputItemType>Content</OutputItemType>
