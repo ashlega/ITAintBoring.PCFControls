@@ -1,0 +1,12 @@
+.ItAintBoring.PCFControls\ValidatedInputControl div{
+	width: 98%
+}
+
+.ItAintBoring.PCFControls\ValidatedInputControl input{
+	width: 98%;
+	float:none;
+}
+
+.ItAintBoring.PCFControls\ValidatedInputControl label{
+	float:none;
+}

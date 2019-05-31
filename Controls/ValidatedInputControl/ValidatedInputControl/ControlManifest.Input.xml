@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <manifest>
-  <control namespace="ItAintBoring.PCFControls" constructor="ValidatedInputControl" version="0.0.3" display-name-key="Validated Input Control" description-key="Validated Input Control" control-type="standard">
+  <control namespace="ItAintBoring.PCFControls" constructor="ValidatedInputControl" version="0.0.4" display-name-key="Validated Input Control" description-key="Validated Input Control" control-type="standard">
     <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
     <property name="value" display-name-key="Value" description-key="Value" of-type="SingleLine.Text" usage="bound" required="true" />
 	<property name="regEx" display-name-key="Regular Expression" description-key="Regular Expression" of-type="SingleLine.Text" usage="input" required="false" />
@@ -17,8 +17,8 @@
     -->
     <resources>
       <code path="index.ts" order="1"/>
-      <!-- UNCOMMENT TO ADD MORE RESOURCES
       <css path="css/ValidatedInputControl.css" order="1" />
+	  <!-- UNCOMMENT TO ADD MORE RESOURCES
       <resx path="strings/ValidatedInputControl.1033.resx" version="1.0.0" />
       -->
     </resources>
