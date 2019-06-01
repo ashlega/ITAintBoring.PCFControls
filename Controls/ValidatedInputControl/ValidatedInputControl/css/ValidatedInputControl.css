@@ -1,12 +1,15 @@
-.ItAintBoring.PCFControls\ValidatedInputControl div{
-	width: 98%
+.ItAintBoring\.PCFControls\.ValidatedInputControl  div {
+	width: 100%;
 }
 
-.ItAintBoring.PCFControls\ValidatedInputControl input{
+.ItAintBoring\.PCFControls\.ValidatedInputControl  input{
 	width: 98%;
 	float:none;
 }
 
-.ItAintBoring.PCFControls\ValidatedInputControl label{
+.ItAintBoring\.PCFControls\.ValidatedInputControl label{
 	float:none;
+	width: 98%;
+	color: rgb(191, 9, 0);
+	font-weight: bold;
 }
