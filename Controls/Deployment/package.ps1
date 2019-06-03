@@ -1,3 +1,4 @@
+
 .\Settings.ps1 -SolutionOnly
 
 cd ..
@@ -24,6 +25,22 @@ if((Test-Path -Path $solutionFolder) -eq $False)
 
 cd .\"$solutionFolder"
 
+#update version number
+
+$manifestFilePath = "..\ValidatedInputControl\ValidatedInputControl\ControlManifest.Input.xml"
+$pattern = 'version="(\d+\.)?(\d+\.)?(\*|\d+)" display-name-key'
+
+$V = Select-String -Path $manifestFilePath -Pattern $pattern
+$currentVersion = [int]$V.Matches[0].Groups[3].Value
+$nextVersion =  [int]$V.Matches[0].Groups[3].Value + 1
+
+$fileContent = Get-Content $manifestFilePath
+$fileContent = $fileContent.replace("$currentVersion`"",  "$nextVersion`"") 
+Set-Content -Path $manifestFilePath -value $fileContent
+
+#version number has been updated
+
+#build and package"
 ..\..\packages\Microsoft.PowerApps.CLI.0.2.59\tools\pac.exe solution init --publisherName "ItAintBoring" --customizationPrefix "ita_"
 ..\..\packages\Microsoft.PowerApps.CLI.0.2.59\tools\pac.exe solution add-reference --path ..\ValidatedInputControl
 
@@ -33,3 +50,5 @@ cd .\"$solutionFolder"
 cd ..\Deployment
 
 Copy-Item "..\$($solutionFolder)\bin\Debug\$($solutionFolder).zip" .\Solutions
+
+#ready
