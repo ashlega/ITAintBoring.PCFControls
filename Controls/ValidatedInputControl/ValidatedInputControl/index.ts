@@ -16,23 +16,26 @@ export class ValidatedInputControl implements ComponentFramework.StandardControl
   private _container: HTMLDivElement;
   // Reference to ComponentFramework Context object
   private _context: ComponentFramework.Context<IInputs>;
-  // Event Handler 'refreshData' reference
-  private _refreshData: EventListenerOrEventListenerObject;
+  
+  private _blurHandler: EventListenerOrEventListenerObject;
+  private _inputHandler: EventListenerOrEventListenerObject;
+  
+  private _isError: boolean;
 
   constructor() {
   }
  
-  public setErrorMessage(value: string)
+  public setErrorState(value: string)
   {
 	if (this._regEx == null || this._regEx.test(value)) {
 		this.labelElement.innerHTML = "";
-		return true;
+		this._isError = false;
 	}
     else {
 		this.labelElement.innerHTML = "Incorrect format!";
-		return false;
+		this._isError = true;
 	}
-	
+	return this._isError;
   }
 
   public init(context: ComponentFramework.Context<IInputs>, notifyOutputChanged: () => void, state: ComponentFramework.Dictionary, container: HTMLDivElement) {
@@ -41,11 +44,13 @@ export class ValidatedInputControl implements ComponentFramework.StandardControl
     this._container = document.createElement("div");
 	this._container
     this._notifyOutputChanged = notifyOutputChanged;
-    this._refreshData = this.refreshData.bind(this);
+    this._blurHandler = this.blurHandler.bind(this);
+	this._inputHandler = this.inputHandler.bind(this);
     // creating HTML elements for the input type range and binding it to the function which refreshes the control data
     this.inputElement = document.createElement("input");
     this.inputElement.setAttribute("type", "text");
-    this.inputElement.addEventListener("blur", this._refreshData);
+    this.inputElement.addEventListener("blur", this._blurHandler);
+	this.inputElement.addEventListener("input", this._inputHandler);
     this._value = context.parameters.value.raw;
 	
 	if(context.parameters.regEx != null)
@@ -55,7 +60,7 @@ export class ValidatedInputControl implements ComponentFramework.StandardControl
     this.inputElement.setAttribute("value", currentValue);
 	this.labelElement = document.createElement("label");
     
-	this.setErrorMessage(currentValue);
+	this.setErrorState(currentValue);
     // appending the HTML elements to the control's HTML container element.
     this._container.appendChild(this.inputElement);
     this._container.appendChild(this.labelElement);
@@ -67,16 +72,22 @@ export class ValidatedInputControl implements ComponentFramework.StandardControl
   * @param context : The "Input Properties" containing the parameters, control metadata and interface functions
   */
 
-  public refreshData(evt: Event): void {
-    
+  public blurHandler(evt: Event): void {
 	var tempValue = (this.inputElement.value as any) as string;
-	if(!this.setErrorMessage(tempValue))
+	if(!this.setErrorState(tempValue))
 	{
 		this._notifyOutputChanged();
 		this._value = tempValue;
 	}
-	
-	
+  }
+  
+  public inputHandler(evt: Event): void {
+	var tempValue = (this.inputElement.value as any) as string;
+	if(this._isError && !this.setErrorState(tempValue))
+	{
+		this._notifyOutputChanged();
+		this._value = tempValue;
+	}
   }
 
   public updateView(context: ComponentFramework.Context<IInputs>): void {
@@ -93,6 +104,7 @@ export class ValidatedInputControl implements ComponentFramework.StandardControl
   }
 
   public destroy() {
-    this.inputElement.removeEventListener("input", this._refreshData);
+    this.inputElement.removeEventListener("input", this._inputHandler);
+	this.inputElement.removeEventListener("blur", this._blurHandler);
   }
 }
