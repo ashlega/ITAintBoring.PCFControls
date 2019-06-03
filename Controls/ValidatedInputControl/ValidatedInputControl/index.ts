@@ -21,25 +21,41 @@ export class ValidatedInputControl implements ComponentFramework.StandardControl
 
   constructor() {
   }
+ 
+  public setErrorMessage(value: string)
+  {
+	if (this._regEx == null || this._regEx.test(value)) {
+		this.labelElement.innerHTML = "";
+		return true;
+	}
+    else {
+		this.labelElement.innerHTML = "Incorrect format!";
+		return false;
+	}
+	
+  }
 
   public init(context: ComponentFramework.Context<IInputs>, notifyOutputChanged: () => void, state: ComponentFramework.Dictionary, container: HTMLDivElement) {
 	  debugger;
     this._context = context;
     this._container = document.createElement("div");
+	this._container
     this._notifyOutputChanged = notifyOutputChanged;
     this._refreshData = this.refreshData.bind(this);
     // creating HTML elements for the input type range and binding it to the function which refreshes the control data
     this.inputElement = document.createElement("input");
     this.inputElement.setAttribute("type", "text");
-    this.inputElement.addEventListener("input", this._refreshData);
+    this.inputElement.addEventListener("blur", this._refreshData);
     this._value = context.parameters.value.raw;
 	
 	if(context.parameters.regEx != null)
 	   this._regEx = new RegExp(context.parameters.regEx.raw);
    
-    this.inputElement.setAttribute("value", context.parameters.value.formatted ? context.parameters.value.formatted : "0");
+    var currentValue = context.parameters.value.formatted ? context.parameters.value.formatted : "0";
+    this.inputElement.setAttribute("value", currentValue);
 	this.labelElement = document.createElement("label");
-    this.labelElement.innerHTML = "Test";//context.parameters.sliderValue.formatted ? context.parameters.sliderValue.formatted : "0";
+    
+	this.setErrorMessage(currentValue);
     // appending the HTML elements to the control's HTML container element.
     this._container.appendChild(this.inputElement);
     this._container.appendChild(this.labelElement);
@@ -54,15 +70,13 @@ export class ValidatedInputControl implements ComponentFramework.StandardControl
   public refreshData(evt: Event): void {
     
 	var tempValue = (this.inputElement.value as any) as string;
-	
-	if (this._regEx == null || this._regEx.test(tempValue)) {
-		this._value = tempValue;
+	if(!this.setErrorMessage(tempValue))
+	{
 		this._notifyOutputChanged();
-		this.labelElement.innerHTML = "";
+		this._value = tempValue;
 	}
-    else {
-		this.labelElement.innerHTML = "Incorrect format!";
-	}
+	
+	
   }
 
   public updateView(context: ComponentFramework.Context<IInputs>): void {
