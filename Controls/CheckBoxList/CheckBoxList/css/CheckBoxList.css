@@ -1,0 +1,81 @@
+.ItAintBoring\.PCFControls\.CheckBoxList table.SimpleTable_Table_Style{
+border-spacing:0;
+text-align:left;
+width:100%;
+margin:0 auto;
+overflow: auto;
+height: 94%;
+display: block;
+}
+.ItAintBoring\.PCFControls\.CheckBoxList div.SimpleTable_TableCellInnerDiv_Style{
+word-wrap:break-word;
+overflow: hidden;
+text-overflow: ellipsis;
+line-height:1.5rem; 
+max-height:1.5rem;
+}
+.ItAintBoring\.PCFControls\.CheckBoxList th.SimpleTable_TableHeader_Style{
+height:3rem;
+font-family:"Segoe UI Regular","Segoe UI", Arial, Sans-Serif;
+font-size:1rem;
+line-height:1.384;
+background-color:rgb(0, 0, 0);
+color: #fff;
+text-align:left;
+padding:0.5rem;
+border-left:.1rem solid rgba(255,255,255,.1);
+vertical-align: middle;
+width: 100vw;
+}
+.ItAintBoring\.PCFControls\.CheckBoxList tr.SimpleTable_TableRow_Style{
+height:3.5rem;
+background-color:#fff;
+color:#333
+}
+.ItAintBoring\.PCFControls\.CheckBoxList tr.SimpleTable_TableRow_Style:hover{
+cursor:pointer;
+border: solid thin rgb(59, 121, 183);
+background:rgba(160,160,160,.15);
+}
+.ItAintBoring\.PCFControls\.CheckBoxList td.SimpleTable_TableCell_Style {
+font-size:1rem;
+line-height:1.467;
+padding:0 .5rem;
+vertical-align: middle;
+width: 100vw;
+font-weight: bold;
+font-family: "Segoe UI Light";
+color: rgb(59, 121, 183);
+}
+.ItAintBoring\.PCFControls\.CheckBoxList td.No_Record_Style {
+text-align: center;
+padding: 20px;
+}
+.ItAintBoring\.PCFControls\.CheckBoxList table.SimpleIncrement_Button_Style {
+text-decoration: none;
+display: inline-block;
+font-size: 14px;
+margin: 4px 6px;
+cursor: pointer;
+color: white;
+border-radius: 10px;
+background-color: black;
+border: none;
+padding: 5px;
+text-align: center;
+}
+.ItAintBoring\.PCFControls\.CheckBoxList input.SimpleIncrement_Input_Error_Style{
+color: red;
+}
+.ItAintBoring\.PCFControls\.CheckBoxList button.LoadMoreButton_Hidden_Style{
+display: none;
+}
+.ItAintBoring\.PCFControls\.CheckBoxList button.LoadMoreButton_Style{
+background-color:#e5e5e5;
+font-size:1.3rem;
+font-weight:bold;
+height:6%;
+text-align:center;
+width:100%;
+border:none
+}

@@ -31,7 +31,7 @@ export class ValidatedInputControl implements ComponentFramework.StandardControl
     // creating HTML elements for the input type range and binding it to the function which refreshes the control data
     this.inputElement = document.createElement("input");
     this.inputElement.setAttribute("type", "text");
-    this.inputElement.addEventListener("input", this._refreshData);
+    this.inputElement.addEventListener("blur", this._refreshData);
     this._value = context.parameters.value.raw;
 	
 	if(context.parameters.regEx != null)
