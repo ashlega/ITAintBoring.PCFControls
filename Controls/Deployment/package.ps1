@@ -1,3 +1,16 @@
+function New-PCFControlVersion($manifestFilePath){
+    $pattern = 'version="(\d+\.)?(\d+\.)?(\*|\d+)" display-name-key'
+
+	$V = Select-String -Path $manifestFilePath -Pattern $pattern
+	$currentVersion = [int]$V.Matches[0].Groups[3].Value
+	$nextVersion =  [int]$V.Matches[0].Groups[3].Value + 1
+
+	$fileContent = Get-Content $manifestFilePath
+	$fileContent = $fileContent.replace("$currentVersion`"",  "$nextVersion`"") 
+	Set-Content -Path $manifestFilePath -value $fileContent
+}
+
+
 .\Settings.ps1 -SolutionOnly
 
 cd ..
@@ -24,6 +37,16 @@ if((Test-Path -Path $solutionFolder) -eq $False)
 
 cd .\"$solutionFolder"
 
+#update version number
+
+$manifestFilePath = "..\ValidatedInputControl\ValidatedInputControl\ControlManifest.Input.xml"
+New-PCFControlVersion $manifestFilePath
+$manifestFilePath = "..\CheckBoxList\CheckBoxList\ControlManifest.Input.xml"
+New-PCFControlVersion $manifestFilePath
+
+#version number has been updated
+
+#build and package"
 ..\..\packages\Microsoft.PowerApps.CLI.0.2.59\tools\pac.exe solution init --publisherName "ItAintBoring" --customizationPrefix "ita_"
 ..\..\packages\Microsoft.PowerApps.CLI.0.2.59\tools\pac.exe solution add-reference --path ..\ValidatedInputControl
 ..\..\packages\Microsoft.PowerApps.CLI.0.2.59\tools\pac.exe solution add-reference --path ..\CheckBoxList
@@ -34,3 +57,9 @@ cd .\"$solutionFolder"
 cd ..\Deployment
 
 Copy-Item "..\$($solutionFolder)\bin\Debug\$($solutionFolder).zip" .\Solutions
+
+#ready
+
+
+
+

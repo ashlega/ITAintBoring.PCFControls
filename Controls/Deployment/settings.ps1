@@ -3,9 +3,11 @@ param(
     [switch] $SolutionOnly = $false
 )
 
-if($SolutionOnly -ne $true)
+if(($SolutionOnly -ne $true) -and
+   ($global:SourceConnectionString -eq $null))
 {
 	if($env:ConnectionString -eq $null){
+
 	  $password = Read-Host -assecurestring "Please enter your password"
 	  $password = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($password))
 

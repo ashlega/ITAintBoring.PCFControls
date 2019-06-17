@@ -28,13 +28,13 @@ vertical-align: middle;
 width: 100vw;
 }
 .ItAintBoring\.PCFControls\.CheckBoxList tr.SimpleTable_TableRow_Style{
-height:3.5rem;
+height:2.9rem;
 background-color:#fff;
 color:#333
 }
 .ItAintBoring\.PCFControls\.CheckBoxList tr.SimpleTable_TableRow_Style:hover{
 cursor:pointer;
-border: solid thin rgb(59, 121, 183);
+border: none thin rgb(59, 121, 183);
 background:rgba(160,160,160,.15);
 }
 .ItAintBoring\.PCFControls\.CheckBoxList td.SimpleTable_TableCell_Style {
@@ -79,3 +79,56 @@ text-align:center;
 width:100%;
 border:none
 }
+
+
+
+
+.ItAintBoring\.PCFControls\.CheckBoxList .onoffswitch {
+    position: relative; width: 90px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.ItAintBoring\.PCFControls\.CheckBoxList .onoffswitch-checkbox {
+    display: none;
+}
+.ItAintBoring\.PCFControls\.CheckBoxList .onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #999999; border-radius: 0px;
+}
+.ItAintBoring\.PCFControls\.CheckBoxList .onoffswitch-inner {
+    display: block; width: 200%; margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+.ItAintBoring\.PCFControls\.CheckBoxList .onoffswitch-inner:before, .onoffswitch-inner:after {
+    display: block; float: left; width: 50%; height: 30px; padding: 0; line-height: 26px;
+    font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    box-sizing: border-box;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+.ItAintBoring\.PCFControls\.CheckBoxList .onoffswitch-inner:before {
+    content: "PASS";
+    padding-left: 10px;
+    background-color: #EEEEEE; color: #000000;
+}
+.ItAintBoring\.PCFControls\.CheckBoxList .onoffswitch-inner:after {
+    content: "FAIL";
+    padding-right: 10px;
+    background-color: #EEEEEE; color: #999999;
+    text-align: right;
+}
+.ItAintBoring\.PCFControls\.CheckBoxList .onoffswitch-switch {
+    display: block; width: 21px; margin: 0px;
+    background: #A1A1A1;
+    position: absolute; top: 0; bottom: 0;
+    right: 69px;
+    transition: all 0.3s ease-in 0s; 
+}
+.ItAintBoring\.PCFControls\.CheckBoxList .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+.ItAintBoring\.PCFControls\.CheckBoxList .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px; 
+    background-color: #27A1CA; 
+}
+
+

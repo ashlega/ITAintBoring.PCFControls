@@ -40,6 +40,14 @@
       <OutputItemType>Content</OutputItemType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </ProjectReference>
+    <ProjectReference Include="..\CheckBoxList\CheckBoxList.pcfproj">
+      <Project>6f6d103c-0bec-43dc-b362-d35078c7a319</Project>
+      <Name>CheckBoxList</Name>
+      <Targets>Build</Targets>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <OutputItemType>Content</OutputItemType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </ProjectReference>
   </ItemGroup>
 
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
