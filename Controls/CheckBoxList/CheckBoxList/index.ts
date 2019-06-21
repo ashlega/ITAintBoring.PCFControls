@@ -44,15 +44,17 @@ export class CheckBoxList implements ComponentFramework.StandardControl<IInputs,
         this.dataTable = document.createElement("table");
         this.dataTable.classList.add("SimpleTable_Table_Style");
         // Create data table container div. 
+		/*
         this.loadPageButton = document.createElement("button");
         this.loadPageButton.setAttribute("type", "button");
         this.loadPageButton.innerText = context.resources.getString("PCF_TSTableGrid_LoadMore_ButtonLabel");
         this.loadPageButton.classList.add(LoadMoreButton_Hidden_Style);
         this.loadPageButton.classList.add("LoadMoreButton_Style");
+		*/
         //this.loadPageButton.addEventListener("click", this.onLoadMoreButtonClick.bind(this));
         // Adding the main table and loadNextPage button created to the container DIV.
         this.mainContainer.appendChild(this.dataTable);
-        this.mainContainer.appendChild(this.loadPageButton);
+        //this.mainContainer.appendChild(this.loadPageButton);
         container.appendChild(this.mainContainer);
     }
     /**
@@ -61,7 +63,7 @@ export class CheckBoxList implements ComponentFramework.StandardControl<IInputs,
      */
     public updateView(context: ComponentFramework.Context<IInputs>): void {
         this.contextObj = context;
-        this.toggleLoadMoreButtonWhenNeeded(context.parameters.tableGrid);
+        //this.toggleLoadMoreButtonWhenNeeded(context.parameters.tableGrid);
         if (!context.parameters.tableGrid.loading) {
             // Get sorted columns on View
             let columnsOnView = this.getSortedColumnsOnView(context);
@@ -166,7 +168,7 @@ export class CheckBoxList implements ComponentFramework.StandardControl<IInputs,
                 let tableRecordRow: HTMLTableRowElement = document.createElement("tr");
                 tableRecordRow.classList.add("SimpleTable_TableRow_Style");
                 let component = this;
-                //tableRecordRow.addEventListener("click", this.onRowClick.bind(this));
+                tableRecordRow.addEventListener("dblclick", this.onRowClick.bind(this));
                 // Set the recordId on the row dom
                 tableRecordRow.setAttribute(RowRecordId, gridParam.records[currentRecordId].getRecordId());
                 columnsOnView.forEach(function (columnItem, index) {
@@ -264,7 +266,7 @@ export class CheckBoxList implements ComponentFramework.StandardControl<IInputs,
                 entityName: entityReference.entityType!,
                 entityId: entityReference.id,
             }
-            //this.contextObj.navigation.openForm(entityFormOptions);
+            this.contextObj.navigation.openForm(entityFormOptions);
         }
     }
     /**

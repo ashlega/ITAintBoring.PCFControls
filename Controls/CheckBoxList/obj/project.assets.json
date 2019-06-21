@@ -40,7 +40,7 @@
   },
   "libraries": {
     "Microsoft.PowerApps.MSBuild.Pcf/0.2.59": {
-      "sha512": "pJL9chifXHmOL2C+Ew+8FRVCCTeODYECqIe4f1wfsIxCQn4H/otgCB177VOQp8EFqPRN5ai0Xzm9ZT6sNSUIww==",
+      "sha512": "lR9n5cKLOHIW40uHCQSyQmXIplLHNis5IqJ6OE+r1EL/ZJNl3eUtleNvJmbVVDcejIp19vGDvpuxfBpj+oPXjg==",
       "type": "package",
       "path": "microsoft.powerapps.msbuild.pcf/0.2.59",
       "files": [
@@ -61,26 +61,21 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ashle\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {}
+    "C:\\Users\\ashlega\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Work\\Projects\\ITAintBoring.PCFControls\\Controls\\CheckBoxList\\CheckBoxList.pcfproj",
+      "projectUniqueName": "C:\\Work\\Git\\ashlega\\ItAintBoring.PCFControls\\Controls\\CheckBoxList\\CheckBoxList.pcfproj",
       "projectName": "CheckBoxList",
-      "projectPath": "C:\\Work\\Projects\\ITAintBoring.PCFControls\\Controls\\CheckBoxList\\CheckBoxList.pcfproj",
-      "packagesPath": "C:\\Users\\ashle\\.nuget\\packages\\",
-      "outputPath": "C:\\Work\\Projects\\ITAintBoring.PCFControls\\Controls\\CheckBoxList\\obj\\",
+      "projectPath": "C:\\Work\\Git\\ashlega\\ItAintBoring.PCFControls\\Controls\\CheckBoxList\\CheckBoxList.pcfproj",
+      "packagesPath": "C:\\Users\\ashlega\\.nuget\\packages\\",
+      "outputPath": "C:\\Work\\Git\\ashlega\\ItAintBoring.PCFControls\\Controls\\CheckBoxList\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\"
-      ],
       "configFilePaths": [
-        "C:\\Users\\ashle\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
+        "C:\\Users\\ashlega\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net40"
