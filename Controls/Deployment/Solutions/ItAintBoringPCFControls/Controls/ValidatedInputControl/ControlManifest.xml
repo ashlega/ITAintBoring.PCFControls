@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<manifest>
+  <control namespace="ItAintBoring.PCFControls" constructor="ValidatedInputControl" version="0.0.76" display-name-key="Validated Input Control" description-key="Validated Input Control" control-type="standard">
+    <property name="value" display-name-key="Value" description-key="Value" of-type="SingleLine.Text" usage="bound" required="true"/>
+    <property name="regEx" display-name-key="Regular Expression" description-key="Regular Expression" of-type="SingleLine.Text" usage="input" required="false"/>
+    <resources>
+      <code path="bundle.js" order="1"/>
+      <css path="ValidatedInputControl.css" order="2"/>
+    </resources>
+  </control>
+</manifest>

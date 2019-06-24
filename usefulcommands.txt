@@ -1,0 +1,6 @@
+nuget Install Microsoft.PowerApps.MSBuild.Solution -Version 0.2.71 -o %userprofile%\.nuget\packages
+
+//wrong version it seems
+pac solution init --publisherName ItAintBoring --customizationPrefix ita 
+
+C:\git\ITAintBoring.PCFControls\packages\Microsoft.PowerApps.CLI.0.2.71\tools\pac solution init --publisherName ItAintBoring --customizationPrefix ita

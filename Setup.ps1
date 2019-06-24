@@ -13,7 +13,7 @@ function Get-NuGetPackages{
 	##
 	##Remove NuGet.exe
 	##
-	Remove-Item nuget.exe 
+	#Remove-Item nuget.exe 
 }
 
 Get-NuGetPackages

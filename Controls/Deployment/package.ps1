@@ -43,6 +43,8 @@ $manifestFilePath = "..\ValidatedInputControl\ValidatedInputControl\ControlManif
 New-PCFControlVersion $manifestFilePath
 $manifestFilePath = "..\CheckBoxList\CheckBoxList\ControlManifest.Input.xml"
 New-PCFControlVersion $manifestFilePath
+$manifestFilePath = "..\TreeRelationships\TreeRelationships\ControlManifest.Input.xml"
+New-PCFControlVersion $manifestFilePath
 
 #version number has been updated
 
@@ -50,6 +52,7 @@ New-PCFControlVersion $manifestFilePath
 ..\..\packages\Microsoft.PowerApps.CLI.0.2.59\tools\pac.exe solution init --publisherName "ItAintBoring" --customizationPrefix "ita_"
 ..\..\packages\Microsoft.PowerApps.CLI.0.2.59\tools\pac.exe solution add-reference --path ..\ValidatedInputControl
 ..\..\packages\Microsoft.PowerApps.CLI.0.2.59\tools\pac.exe solution add-reference --path ..\CheckBoxList
+..\..\packages\Microsoft.PowerApps.CLI.0.2.59\tools\pac.exe solution add-reference --path ..\TreeRelationships
 
 & $msBuildExe /t:restore
 & $msBuildExe

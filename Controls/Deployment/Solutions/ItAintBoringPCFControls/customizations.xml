@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ImportExportXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Entities />
+  <Roles />
+  <Workflows />
+  <FieldSecurityProfiles />
+  <Templates />
+  <EntityMaps />
+  <EntityRelationships />
+  <OrganizationSettings />
+  <optionsets />
+  <CustomControls>
+    <CustomControl>
+      <Name>Manifest.xml</Name>
+      <FileName>/Controls/CheckBoxList/ControlManifest.xml</FileName>
+    </CustomControl>
+    <CustomControl>
+      <Name>Manifest.xml</Name>
+      <FileName>/Controls/TreeRelationships/ControlManifest.xml</FileName>
+    </CustomControl>
+    <CustomControl>
+      <Name>Manifest.xml</Name>
+      <FileName>/Controls/ValidatedInputControl/ControlManifest.xml</FileName>
+    </CustomControl>
+  </CustomControls>
+  <EntityDataProviders />
+  <Languages>
+    <Language>1033</Language>
+  </Languages>
+</ImportExportXml>

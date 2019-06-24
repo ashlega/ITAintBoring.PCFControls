@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     ".NETFramework,Version=v4.0": {
-      "Microsoft.PowerApps.MSBuild.Pcf/0.2.59": {
+      "Microsoft.PowerApps.MSBuild.Pcf/0.2.71": {
         "type": "package",
         "build": {
           "build/Microsoft.PowerApps.MSBuild.Pcf.props": {},
@@ -11,7 +11,7 @@
       }
     },
     ".NETFramework,Version=v4.0/win": {
-      "Microsoft.PowerApps.MSBuild.Pcf/0.2.59": {
+      "Microsoft.PowerApps.MSBuild.Pcf/0.2.71": {
         "type": "package",
         "build": {
           "build/Microsoft.PowerApps.MSBuild.Pcf.props": {},
@@ -20,7 +20,7 @@
       }
     },
     ".NETFramework,Version=v4.0/win-x64": {
-      "Microsoft.PowerApps.MSBuild.Pcf/0.2.59": {
+      "Microsoft.PowerApps.MSBuild.Pcf/0.2.71": {
         "type": "package",
         "build": {
           "build/Microsoft.PowerApps.MSBuild.Pcf.props": {},
@@ -29,7 +29,7 @@
       }
     },
     ".NETFramework,Version=v4.0/win-x86": {
-      "Microsoft.PowerApps.MSBuild.Pcf/0.2.59": {
+      "Microsoft.PowerApps.MSBuild.Pcf/0.2.71": {
         "type": "package",
         "build": {
           "build/Microsoft.PowerApps.MSBuild.Pcf.props": {},
@@ -39,10 +39,10 @@
     }
   },
   "libraries": {
-    "Microsoft.PowerApps.MSBuild.Pcf/0.2.59": {
-      "sha512": "lR9n5cKLOHIW40uHCQSyQmXIplLHNis5IqJ6OE+r1EL/ZJNl3eUtleNvJmbVVDcejIp19vGDvpuxfBpj+oPXjg==",
+    "Microsoft.PowerApps.MSBuild.Pcf/0.2.71": {
+      "sha512": "dW7tt6MUm/2A3Dhms+4s6YLPnOkcNzn1SjNrvTFoSWooRTABvFvwNv28c1RT/awStxT8nFhU7AwE0Sfnuv07Ag==",
       "type": "package",
-      "path": "microsoft.powerapps.msbuild.pcf/0.2.59",
+      "path": "microsoft.powerapps.msbuild.pcf/0.2.71",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -50,7 +50,7 @@
         "LICENSE.txt",
         "build/Microsoft.PowerApps.MSBuild.Pcf.props",
         "build/Microsoft.PowerApps.MSBuild.Pcf.targets",
-        "microsoft.powerapps.msbuild.pcf.0.2.59.nupkg.sha512",
+        "microsoft.powerapps.msbuild.pcf.0.2.71.nupkg.sha512",
         "microsoft.powerapps.msbuild.pcf.nuspec"
       ]
     }
@@ -61,20 +61,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ashlega\\.nuget\\packages\\": {}
+    "C:\\Users\\shlegaal\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Work\\Git\\ashlega\\ItAintBoring.PCFControls\\Controls\\CheckBoxList\\CheckBoxList.pcfproj",
+      "projectUniqueName": "C:\\git\\ITAintBoring.PCFControls\\Controls\\CheckBoxList\\CheckBoxList.pcfproj",
       "projectName": "CheckBoxList",
-      "projectPath": "C:\\Work\\Git\\ashlega\\ItAintBoring.PCFControls\\Controls\\CheckBoxList\\CheckBoxList.pcfproj",
-      "packagesPath": "C:\\Users\\ashlega\\.nuget\\packages\\",
-      "outputPath": "C:\\Work\\Git\\ashlega\\ItAintBoring.PCFControls\\Controls\\CheckBoxList\\obj\\",
+      "projectPath": "C:\\git\\ITAintBoring.PCFControls\\Controls\\CheckBoxList\\CheckBoxList.pcfproj",
+      "packagesPath": "C:\\Users\\shlegaal\\.nuget\\packages\\",
+      "outputPath": "C:\\git\\ITAintBoring.PCFControls\\Controls\\CheckBoxList\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [
-        "C:\\Users\\ashlega\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\shlegaal\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

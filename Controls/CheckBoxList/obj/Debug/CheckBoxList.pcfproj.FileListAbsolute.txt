@@ -1,0 +1,1 @@
+C:\git\ITAintBoring.PCFControls\Controls\CheckBoxList\obj\Debug\CheckBoxList.pcfproj.CoreCompileInputs.cache

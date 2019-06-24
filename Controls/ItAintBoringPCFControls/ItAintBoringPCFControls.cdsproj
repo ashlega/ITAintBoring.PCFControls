@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <Name>ItAintBoringPCFControls</Name>
-    <ProjectGuid>500aa1d8-c145-4c02-9b2e-a633c4ab1aff</ProjectGuid>
+    <ProjectGuid>7141c2bc-bcd2-4816-8f79-7077d914141a</ProjectGuid>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
@@ -43,6 +43,14 @@
     <ProjectReference Include="..\CheckBoxList\CheckBoxList.pcfproj">
       <Project>6f6d103c-0bec-43dc-b362-d35078c7a319</Project>
       <Name>CheckBoxList</Name>
+      <Targets>Build</Targets>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <OutputItemType>Content</OutputItemType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="..\TreeRelationships\TreeRelationships.pcfproj">
+      <Project>eb8b1ce3-c04f-45cd-84aa-3bf4c8ddabc3</Project>
+      <Name>TreeRelationships</Name>
       <Targets>Build</Targets>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <OutputItemType>Content</OutputItemType>

@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="utf-43" ?>
+<?xml version="1.0" encoding="utf-66" ?>
 <manifest>
-  <control namespace="ItAintBoring.PCFControls" constructor="CheckBoxList" version="0.0.43" display-name-key="CheckBox List" description-key="CheckBox List" control-type="standard">
+  <control namespace="ItAintBoring.PCFControls" constructor="CheckBoxList" version="0.0.66" display-name-key="CheckBox List" description-key="CheckBox List" control-type="standard">
     <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
-    <data-set name="tableGrid" display-name-key="Table Grid" cds-data-set-options="displayIndex:true;displayCommandBar:true;displayViewSelector:false;displayQuickFind:false">
+    <data-set name="tableGrid" display-name-key="Table Grid" >
+	<!--cds-data-set-options="displayIndex:true;displayCommandBar:true;displayViewSelector:false;displayQuickFind:false"-->
 	  </data-set>
 	<property name="optionsMapping" display-name-key="Options Mapping" description-key="Options Mapping" of-type="SingleLine.Text" usage="input" required="true" default-value="True:True;False:False" />
 	
@@ -19,11 +20,11 @@
       <property name="sampleProperty" display-name-key="Property_Display_Key" description-key="Property_Desc_Key" of-type-group="numbers" usage="bound" required="true" />
     -->
     <resources>
-      <code path="index.ts" order="43"/>
-	  <css path="css/CheckBoxList.css" order="43" />
+      <code path="index.ts" order="66"/>
+	  <css path="css/CheckBoxList.css" order="66" />
       <resx path="strings/CheckBoxList.1033.resx" version="1.0.0" />
       <!-- UNCOMMENT TO ADD MORE RESOURCES
-      <css path="css/CheckBoxList.css" order="43" />
+      <css path="css/CheckBoxList.css" order="66" />
       <resx path="strings/CheckBoxList.1033.resx" version="1.0.0" />
       -->
     </resources>

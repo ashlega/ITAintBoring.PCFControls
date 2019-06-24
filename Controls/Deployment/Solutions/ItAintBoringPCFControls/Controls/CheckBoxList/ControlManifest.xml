@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<manifest>
+  <control namespace="ItAintBoring.PCFControls" constructor="CheckBoxList" version="0.0.61" display-name-key="CheckBox List" description-key="CheckBox List" control-type="standard">
+    <data-set name="tableGrid" display-name-key="Table Grid"/>
+    <property name="optionsMapping" display-name-key="Options Mapping" description-key="Options Mapping" of-type="SingleLine.Text" usage="input" required="true" default-value="True:True;False:False"/>
+    <resources>
+      <code path="bundle.js" order="61"/>
+      <css path="CheckBoxList.css" order="61"/>
+      <resx path="CheckBoxList.1033.resx" version="1.0.0"/>
+    </resources>
+  </control>
+</manifest>

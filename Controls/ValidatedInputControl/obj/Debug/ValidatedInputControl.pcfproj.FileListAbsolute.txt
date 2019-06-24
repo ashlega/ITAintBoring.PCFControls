@@ -1,0 +1,2 @@
+C:\git\ITAintBoring.PCFControls\Controls\ValidatedInputControl\obj\Debug\ValidatedInputControl.pcfprojAssemblyReference.cache
+C:\git\ITAintBoring.PCFControls\Controls\ValidatedInputControl\obj\Debug\ValidatedInputControl.pcfproj.CoreCompileInputs.cache
