@@ -49,10 +49,10 @@ New-PCFControlVersion $manifestFilePath
 #version number has been updated
 
 #build and package"
-..\..\packages\Microsoft.PowerApps.CLI.0.2.59\tools\pac.exe solution init --publisherName "ItAintBoring" --customizationPrefix "ita_"
-..\..\packages\Microsoft.PowerApps.CLI.0.2.59\tools\pac.exe solution add-reference --path ..\ValidatedInputControl
-..\..\packages\Microsoft.PowerApps.CLI.0.2.59\tools\pac.exe solution add-reference --path ..\CheckBoxList
-..\..\packages\Microsoft.PowerApps.CLI.0.2.59\tools\pac.exe solution add-reference --path ..\TreeRelationships
+..\..\packages\Microsoft.PowerApps.CLI.0.2.71\tools\pac.exe solution init --publisherName "ItAintBoring" --customizationPrefix "ita_"
+..\..\packages\Microsoft.PowerApps.CLI.0.2.71\tools\pac.exe solution add-reference --path ..\ValidatedInputControl
+..\..\packages\Microsoft.PowerApps.CLI.0.2.71\tools\pac.exe solution add-reference --path ..\CheckBoxList
+..\..\packages\Microsoft.PowerApps.CLI.0.2.71\tools\pac.exe solution add-reference --path ..\TreeRelationships
 
 & $msBuildExe /t:restore
 & $msBuildExe

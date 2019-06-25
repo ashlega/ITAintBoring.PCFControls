@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-12" ?>
+<?xml version="1.0" encoding="utf-62" ?>
 <manifest>
-  <control namespace="ItAintBoring.PCFControls" constructor="TreeRelationships" version="0.0.12" display-name-key="Tree Relationships" description-key="Tree Relationships" control-type="standard">
+  <control namespace="ItAintBoring.PCFControls" constructor="TreeRelationships" version="0.0.62" display-name-key="Tree Relationships" description-key="Tree Relationships" control-type="standard">
     <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
 	<property name="value" display-name-key="Value" description-key="Value" of-type="SingleLine.Text" usage="bound" required="true" />
 	<!--
@@ -19,10 +19,13 @@
     -->
     <resources>
       <code path="index.ts" order="1"/>
+	  <css path="resources/jstree.style.min.css" order="2" />
+	  <img path="resources/40px.png" />
+	  <img path="resources/32px.png" />
+	  <img path="resources/throbber.gif" />
 	  
-	  
-      <css path="css/jstree.style.min.css" order="2" />
-	  <!-- UNCOMMENT TO ADD MORE RESOURCES
+      
+	  <!--
       <resx path="strings/TreeRelationships.1033.resx" version="1.0.0" />
       -->
     </resources>

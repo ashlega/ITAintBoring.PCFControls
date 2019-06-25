@@ -9,7 +9,7 @@
     </LocalizedNames>
     <Descriptions />
     <Version>1.0</Version>
-    <!-- Solution Package Type: Managed(1)/Unmanaged(1)/Both (2)-->
+    <!-- Solution Package Type: Unmanaged(0)/Managed(1)/Both(2)-->
     <Managed>2</Managed>
     <Publisher>
       <!-- Unique Publisher Name of Cds Solution -->
@@ -25,9 +25,9 @@
       <EMailAddress xsi:nil="true"></EMailAddress>
       <SupportingWebsiteUrl xsi:nil="true"></SupportingWebsiteUrl>
       <!-- Customization Prefix for the Cds Publisher-->
-      <CustomizationPrefix>ita_</CustomizationPrefix>
+      <CustomizationPrefix>ita</CustomizationPrefix>
       <!-- Derived Option Value Prefix for the Customization Prefix of Cds Publisher -->
-      <CustomizationOptionValuePrefix>85587</CustomizationOptionValuePrefix>
+      <CustomizationOptionValuePrefix>55678</CustomizationOptionValuePrefix>
       <Addresses>
         <!-- Address of the Publisher-->
         <Address>

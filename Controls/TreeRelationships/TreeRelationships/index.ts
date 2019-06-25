@@ -17,6 +17,8 @@ export class TreeRelationships implements ComponentFramework.StandardControl<IIn
     // Div element created as part of this control's main container
     private mainContainer: HTMLDivElement;
 	
+	
+	private _initTreeHandler : any;
 	/**
 	 * Empty constructor.
 	 */
@@ -36,14 +38,18 @@ export class TreeRelationships implements ComponentFramework.StandardControl<IIn
 	public init(context: ComponentFramework.Context<IInputs>, notifyOutputChanged: () => void, state: ComponentFramework.Dictionary, container:HTMLDivElement)
 	{
 		
+		
 		this.contextObj = context;
         // Need to track container resize so that control could get the available width. The available height won't be provided even this is true
         context.mode.trackContainerResize(true);
         // Create main table container div. 
         this.mainContainer = document.createElement("div");
 		
+		
+		var controlId = "foo";
+		
 		this.mainContainer.innerHTML = `
-		    <div id="foo">
+		    <div id="` + controlId + `" class="jstree-open">
 			  <ul>
 				<li>Root node 1
 				  <ul>
@@ -59,17 +65,77 @@ export class TreeRelationships implements ComponentFramework.StandardControl<IIn
         jsTreeCSS.setAttribute("rel","stylesheet");
         jsTreeCSS.setAttribute("href", "https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css");
 		*/
+		
+		//this._initTreeHandler = this.initTree.bind(this);
+		
+		
+		
+		var scriptElement  = document.createElement("script");
+	    scriptElement.src  = "https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js";
+	    scriptElement.type = "text/javascript";
+		
+		container.appendChild(scriptElement);
+		container.appendChild(this.mainContainer);
+		
+		var scriptElementOnLoad  = document.createElement("script");
+	    scriptElementOnLoad.type = "text/javascript";
+		scriptElementOnLoad.innerHTML = `
+		    debugger; 
+		    initTreeControl();
+			
+			function initTreeControl()
+			{
+				if(typeof($('#`+ controlId +`').jstree) == 'undefined')
+				{
+					setTimeout(initTreeControl, 500);
+				}
+				else
+				{
+					$('#`+ controlId +`').jstree();
+				}
+			}
+			 
+		`;
+		
+		container.appendChild(scriptElementOnLoad);
+
+		//this.mainContainer.innerHTML += "<script>setTimeout(function(){ $(" + controlId + ").jstree(); }, 1000);</script>"
+		
+		
+		/*
 		var jsTreeScript = document.createElement('script');
         jsTreeScript.setAttribute("type","text/javascript");
         jsTreeScript.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js");
 		
 		container.appendChild(jsTreeScript);
+		this.initTree('#foo');
+		*/
+        
 		
-        container.appendChild(this.mainContainer);
-		$('#foo').jstree();
 		
 	}
 
+	public initTree(controlId: string): void {
+		
+		
+		/*
+		
+		debugger;
+		var _self = this;
+		var current = window;
+		while(current != null && current != current.parent)
+		{
+			var control = (<any>current).$(controlId);
+			if(control.jstree != null){
+			  control.jstree();
+			  return;
+			}
+			current = current.parent;
+		}
+		setTimeout(function(){ _self._initTreeHandler(controlId); }, 500);
+		*/
+		
+    }
 
 	/**
 	 * Called when any value in the property bag has changed. This includes field values, data-sets, global values such as container height and width, offline status, control metadata values such as label, visible, etc.
