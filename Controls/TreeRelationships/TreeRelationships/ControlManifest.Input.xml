@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-62" ?>
 <manifest>
-  <control namespace="ItAintBoring.PCFControls" constructor="TreeRelationships" version="0.0.62" display-name-key="Tree Relationships" description-key="Tree Relationships" control-type="standard">
+  <control namespace="ItAintBoring.PCFControls" constructor="TreeRelationships" version="0.0.116" display-name-key="Tree Relationships" description-key="Tree Relationships" control-type="standard">
     <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
-	<property name="value" display-name-key="Value" description-key="Value" of-type="SingleLine.Text" usage="bound" required="true" />
+	<property name="value" display-name-key="Value" description-key="Value" of-type="Multiple" usage="bound" required="true" />
+	<property name="treeEntityName" display-name-key="Tree Entity Name" description-key="Tree Entity Name" of-type="SingleLine.Text" usage="input" required="false" />
+	<property name="treeEntityAttribute" display-name-key="Tree Entity Lookup Attribute" description-key="Tree Entity Lookup Attribute" of-type="SingleLine.Text" usage="input" required="false" />
+	<property name="nameAttribute" display-name-key="Tree Entity Name Attribute" description-key="Tree Entity Name Attribute" of-type="SingleLine.Text" usage="input" required="false" />
+	<property name="idAttribute" display-name-key="Tree Entity ID Attribute" description-key="Tree Entity ID Attribute" of-type="SingleLine.Text" usage="input" required="false" />
 	<!--
     <property name="sampleProperty" display-name-key="Tree Relationships" description-key="Tree Relationships" of-type="SingleLine.Text" usage="bound" required="true" />
 	-->

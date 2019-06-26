@@ -5,12 +5,17 @@ import * as $ from 'jquery';
 /// <reference types="@types/[jstree]" />
 */
 
+class jsTreeData {
+	  id: string | null;
+	  title: string;
+	  children: jsTreeData[];
+}
 
 //declare var $: any;
 
 export class TreeRelationships implements ComponentFramework.StandardControl<IInputs, IOutputs> {
 
-
+    private root: jsTreeData;
 
     // Cached context object for the latest updateView
     private contextObj: ComponentFramework.Context<IInputs>;
@@ -19,6 +24,15 @@ export class TreeRelationships implements ComponentFramework.StandardControl<IIn
 	
 	
 	private _initTreeHandler : any;
+	private _successCallback : any;
+	
+	private _treeEntityName: string;
+	private _treeEntityAttribute: string;
+	private _idAttribute: string;
+	private _nameAttribute: string;
+	private  controlId: string;
+	private  container: HTMLDivElement;
+		
 	/**
 	 * Empty constructor.
 	 */
@@ -38,7 +52,7 @@ export class TreeRelationships implements ComponentFramework.StandardControl<IIn
 	public init(context: ComponentFramework.Context<IInputs>, notifyOutputChanged: () => void, state: ComponentFramework.Dictionary, container:HTMLDivElement)
 	{
 		
-		
+		this.container = container;
 		this.contextObj = context;
         // Need to track container resize so that control could get the available width. The available height won't be provided even this is true
         context.mode.trackContainerResize(true);
@@ -46,10 +60,10 @@ export class TreeRelationships implements ComponentFramework.StandardControl<IIn
         this.mainContainer = document.createElement("div");
 		
 		
-		var controlId = "foo";
+		this.controlId = "foo";
 		
 		this.mainContainer.innerHTML = `
-		    <div id="` + controlId + `" class="jstree-open">
+		    <div id="` + this.controlId + `" class="jstree-open">
 			  <ul>
 				<li>Root node 1
 				  <ul>
@@ -77,27 +91,7 @@ export class TreeRelationships implements ComponentFramework.StandardControl<IIn
 		container.appendChild(scriptElement);
 		container.appendChild(this.mainContainer);
 		
-		var scriptElementOnLoad  = document.createElement("script");
-	    scriptElementOnLoad.type = "text/javascript";
-		scriptElementOnLoad.innerHTML = `
-		    debugger; 
-		    initTreeControl();
-			
-			function initTreeControl()
-			{
-				if(typeof($('#`+ controlId +`').jstree) == 'undefined')
-				{
-					setTimeout(initTreeControl, 500);
-				}
-				else
-				{
-					$('#`+ controlId +`').jstree();
-				}
-			}
-			 
-		`;
 		
-		container.appendChild(scriptElementOnLoad);
 
 		//this.mainContainer.innerHTML += "<script>setTimeout(function(){ $(" + controlId + ").jstree(); }, 1000);</script>"
 		
@@ -110,10 +104,87 @@ export class TreeRelationships implements ComponentFramework.StandardControl<IIn
 		container.appendChild(jsTreeScript);
 		this.initTree('#foo');
 		*/
+		
+		
         
+		if(context.parameters.treeEntityName != null)
+	      this._treeEntityName = context.parameters.treeEntityName.raw;
+	    if(context.parameters.treeEntityAttribute != null)
+	      this._treeEntityAttribute = context.parameters.treeEntityAttribute.raw;
+	    if(context.parameters.idAttribute != null)
+	      this._idAttribute = context.parameters.idAttribute.raw;
+	    if(context.parameters.nameAttribute != null)
+	      this._nameAttribute = context.parameters.nameAttribute.raw;
+   
+		this._successCallback = this.successCallback.bind(this);
 		
-		
+		this.root = new jsTreeData();
+		this.root.id = null;
+		this.root.children = [];
+		this.contextObj.webAPI.retrieveMultipleRecords(this._treeEntityName, "", 5000).then(this._successCallback, this.errorCallback);
+	
 	}
+	
+    public addChildElements(value: any, root: jsTreeData | null)
+	{
+		for(var i in value.entities)
+		{
+			var current : any = value.entities[i];
+			if(current != null && root != null){
+			    if(current[this._treeEntityAttribute] == root.id)
+			    {
+				   var newNode : jsTreeData = new jsTreeData();
+				   newNode.id = current[this._idAttribute];
+				   newNode.title = current[this._nameAttribute];
+				   newNode.children = [];
+				   root.children.push(newNode);
+				   this.addChildElements(value, newNode);
+			    }
+			}
+		}
+	}
+	
+	public successCallback(value: any) : void | PromiseLike<void>
+	{
+		debugger;
+  		this.addChildElements(value, this.root);
+		
+		
+		
+		var scriptElementOnLoad  = document.createElement("script");
+	    scriptElementOnLoad.type = "text/javascript";
+		scriptElementOnLoad.innerHTML = `
+		    debugger; 
+		    initTreeControl();
+			
+			function initTreeControl()
+			{
+				if(typeof($('#`+ this.controlId +`').jstree) == 'undefined')
+				{
+					setTimeout(initTreeControl, 500);
+				}
+				else
+				{
+					$('#`+ this.controlId +`').jstree();
+				}
+			}
+			 
+		`;
+		
+		this.container.appendChild(scriptElementOnLoad);
+		
+		$(this.controlId).jstree({
+			"core":{
+				"data" : this.root.children
+			}
+        });
+		
+	}		
+	
+	public errorCallback(value: any)
+	{
+		alert(value);
+	}		
 
 	public initTree(controlId: string): void {
 		
