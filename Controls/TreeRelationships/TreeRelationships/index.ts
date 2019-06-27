@@ -259,8 +259,19 @@ export class TreeRelationships implements ComponentFramework.StandardControl<IIn
 			setTimeout(this._initTreeHandler, 500);
 		}
 		else{
-			(<any>window).top[this.controlId].jstree({
+			(<any>window).top[this.controlId].on('select_node.jstree', function (e: any, data: any) {
+				if (data.event) {
+					data.instance.select_node(data.node.children_d);
+				}
+			})
+			.on('deselect_node.jstree', function (e: any, data: any) {
+				if (data.event) {
+					data.instance.deselect_node(data.node.children_d);
+				}
+			}).jstree({
+				
 				"plugins": ["checkbox"],
+				"checkbox": { cascade: "", three_state: false },
 				"core":{
 					"data" : this.root.children
 				}
