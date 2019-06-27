@@ -8,4 +8,4 @@ There are 3 controls so far:
 
 To download the solution file, follow this link:
 
-https://github.com/ashlega/ITAintBoring.PCFControls/blob/master/Controls/Deployment/Solutions/ItAintBoringPCFControls.zip
+https://github.com/ashlega/ITAintBoring.PCFControls/raw/master/Controls/Deployment/Solutions/ItAintBoringPCFControls.zip
