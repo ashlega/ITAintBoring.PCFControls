@@ -1,21 +1,33 @@
 import {IInputs, IOutputs} from "./generated/ManifestTypes";
+import DataSetInterfaces = ComponentFramework.PropertyHelper.DataSetApi;
+type DataSet = ComponentFramework.PropertyTypes.DataSet;
 
 import * as $ from 'jquery';
 /*
 /// <reference types="@types/[jstree]" />
 */
 
-class jsTreeData {
+
+class jsTreeNodeState{
+	opened    : boolean;  
+    disabled  : boolean;  
+	selected  : boolean;  
+}
+class jsTreeNode {
 	  id: string | null;
-	  title: string;
-	  children: jsTreeData[];
+	  text: string;
+	  children: jsTreeNode[];
+	  state: jsTreeNodeState;
 }
 
 //declare var $: any;
 
+declare var Xrm: any;
+
 export class TreeRelationships implements ComponentFramework.StandardControl<IInputs, IOutputs> {
 
-    private root: jsTreeData;
+    private root: jsTreeNode;
+	private selectedItems: string[] = [];
 
     // Cached context object for the latest updateView
     private contextObj: ComponentFramework.Context<IInputs>;
@@ -25,7 +37,16 @@ export class TreeRelationships implements ComponentFramework.StandardControl<IIn
 	
 	private _initTreeHandler : any;
 	private _successCallback : any;
+	private _relationshipSuccessCallback: any;
+	private _onNodeCheckClick: any;
+	private _treeMetadataSuccessCallback: any;
+	private _entityMetadataSuccessCallback: any;
 	
+	private _relationshipName: string;
+    private _treeEntityCollectionName: string;
+    private _mainEntityCollectionName: string;
+	
+	private _relationshipEntity: string;
 	private _treeEntityName: string;
 	private _treeEntityAttribute: string;
 	private _idAttribute: string;
@@ -65,22 +86,25 @@ export class TreeRelationships implements ComponentFramework.StandardControl<IIn
 		this.mainContainer.innerHTML = `
 		    <div id="` + this.controlId + `" class="jstree-open">
 			  <ul>
-				<li>Root node 1
+				
+			  </ul>
+			</div>
+		`;
+		/*
+		
+		<li>Root node 1
 				  <ul>
 					<li>Child node 1</li>
 					<li><a href="#">Child node 2</a></li>
 				  </ul>
 				</li>
-			  </ul>
-			</div>
-		`;
-		/*
+		
 		var jsTreeCSS = document.createElement('link ');
         jsTreeCSS.setAttribute("rel","stylesheet");
         jsTreeCSS.setAttribute("href", "https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css");
 		*/
 		
-		//this._initTreeHandler = this.initTree.bind(this);
+		this._initTreeHandler = this.initTree.bind(this);
 		
 		
 		
@@ -106,55 +130,11 @@ export class TreeRelationships implements ComponentFramework.StandardControl<IIn
 		*/
 		
 		
-        
-		if(context.parameters.treeEntityName != null)
-	      this._treeEntityName = context.parameters.treeEntityName.raw;
-	    if(context.parameters.treeEntityAttribute != null)
-	      this._treeEntityAttribute = context.parameters.treeEntityAttribute.raw;
-	    if(context.parameters.idAttribute != null)
-	      this._idAttribute = context.parameters.idAttribute.raw;
-	    if(context.parameters.nameAttribute != null)
-	      this._nameAttribute = context.parameters.nameAttribute.raw;
-   
-		this._successCallback = this.successCallback.bind(this);
-		
-		this.root = new jsTreeData();
-		this.root.id = null;
-		this.root.children = [];
-		this.contextObj.webAPI.retrieveMultipleRecords(this._treeEntityName, "", 5000).then(this._successCallback, this.errorCallback);
-	
-	}
-	
-    public addChildElements(value: any, root: jsTreeData | null)
-	{
-		for(var i in value.entities)
-		{
-			var current : any = value.entities[i];
-			if(current != null && root != null){
-			    if(current[this._treeEntityAttribute] == root.id)
-			    {
-				   var newNode : jsTreeData = new jsTreeData();
-				   newNode.id = current[this._idAttribute];
-				   newNode.title = current[this._nameAttribute];
-				   newNode.children = [];
-				   root.children.push(newNode);
-				   this.addChildElements(value, newNode);
-			    }
-			}
-		}
-	}
-	
-	public successCallback(value: any) : void | PromiseLike<void>
-	{
-		debugger;
-  		this.addChildElements(value, this.root);
-		
-		
-		
-		var scriptElementOnLoad  = document.createElement("script");
+        var scriptElementOnLoad  = document.createElement("script");
 	    scriptElementOnLoad.type = "text/javascript";
 		scriptElementOnLoad.innerHTML = `
-		    debugger; 
+		     
+			
 		    initTreeControl();
 			
 			function initTreeControl()
@@ -165,20 +145,106 @@ export class TreeRelationships implements ComponentFramework.StandardControl<IIn
 				}
 				else
 				{
-					$('#`+ this.controlId +`').jstree();
+					window.top.`+this.controlId+`= $('#`+ this.controlId +`');
+					
 				}
 			}
 			 
 		`;
-		
+		/*//$('#`+ this.controlId +`').jstree();*/
 		this.container.appendChild(scriptElementOnLoad);
 		
-		$(this.controlId).jstree({
-			"core":{
-				"data" : this.root.children
-			}
-        });
+		if(context.parameters.treeEntityName != null)
+	      this._treeEntityName = context.parameters.treeEntityName.raw;
+	    if(context.parameters.treeEntityAttribute != null)
+	      this._treeEntityAttribute = '_'+context.parameters.treeEntityAttribute.raw+'_value';
+	    if(context.parameters.idAttribute != null)
+	      this._idAttribute = context.parameters.idAttribute.raw;
+	    if(context.parameters.nameAttribute != null)
+	      this._nameAttribute = context.parameters.nameAttribute.raw;
+	    if(context.parameters.relationshipEntity != null)
+	      this._relationshipEntity = context.parameters.relationshipEntity.raw;
+        if(context.parameters.relationshipName != null)
+	      this._relationshipName = context.parameters.relationshipName.raw;
+   
+   
+        this._relationshipSuccessCallback = this.relationshipSuccessCallback.bind(this);
+		this._successCallback = this.successCallback.bind(this);
 		
+		this.root = new jsTreeNode();
+		this.root.id = null;
+		this.root.children = [];
+		
+		
+		this._onNodeCheckClick = this.nodeClick.bind(this);
+		
+		this._entityMetadataSuccessCallback = this.entityMetadataSuccessCallback.bind(this);
+		this._treeMetadataSuccessCallback = this.treeMetadataSuccessCallback.bind(this);
+		
+		(<any>Xrm).Utility.getEntityMetadata((<any>this.contextObj).page.entityTypeName,[]).then(this._entityMetadataSuccessCallback, this.errorCallback);
+		(<any>Xrm).Utility.getEntityMetadata(this._treeEntityName,[]).then(this._treeMetadataSuccessCallback, this.errorCallback);
+		
+		this.contextObj.webAPI.retrieveMultipleRecords(this._relationshipEntity, "?$filter="+ (<any>this.contextObj).page.entityTypeName+"id eq " + (<any>this.contextObj).page.entityId, 5000).then(this._relationshipSuccessCallback, this.errorCallback);
+		
+	
+	}
+	
+	public entityMetadataSuccessCallback(value: any) : void | PromiseLike<void>
+	{
+		this._mainEntityCollectionName = value.EntitySetName;
+	}
+	
+	public treeMetadataSuccessCallback(value: any) : void | PromiseLike<void>
+	{
+		this._treeEntityCollectionName = value.EntitySetName;
+	}
+	
+    public addChildElements(value: any, root: jsTreeNode | null)
+	{
+		for(var i in value.entities)
+		{
+			var current : any = value.entities[i];
+			if(current != null && root != null){
+			    if(current[this._treeEntityAttribute] == root.id)
+			    {
+					
+				   var newNode : jsTreeNode = new jsTreeNode();
+				   newNode.id = current[this._idAttribute];
+				   newNode.text = current[this._nameAttribute];
+				   newNode.children = [];
+				   
+				   var checked = this.selectedItems.indexOf(<string>newNode.id) > -1;
+				   newNode.state = new jsTreeNodeState();
+				   
+				   newNode.state.disabled = false;
+				   newNode.state.opened = false;
+				   newNode.state.selected = checked;
+				 
+				   root.children.push(newNode);
+				   this.addChildElements(value, newNode);
+			    }
+			}
+		}
+	}
+	
+	
+	
+	public successCallback(value: any) : void | PromiseLike<void>
+	{
+		
+  		this.addChildElements(value, this.root);
+		this.initTree();
+		
+		
+	}	
+
+    public relationshipSuccessCallback(value: any) : void | PromiseLike<void>
+	{
+		for(var i in value.entities)
+		{
+			this.selectedItems.push(value.entities[i][this._idAttribute]);
+		}
+  		this.contextObj.webAPI.retrieveMultipleRecords(this._treeEntityName, "", 5000).then(this._successCallback, this.errorCallback);
 	}		
 	
 	public errorCallback(value: any)
@@ -186,8 +252,27 @@ export class TreeRelationships implements ComponentFramework.StandardControl<IIn
 		alert(value);
 	}		
 
-	public initTree(controlId: string): void {
+	public initTree(): void {
 		
+		if((<any>window).top[this.controlId].jstree == null)
+		{
+			setTimeout(this._initTreeHandler, 500);
+		}
+		else{
+			(<any>window).top[this.controlId].jstree({
+				"plugins": ["checkbox"],
+				"core":{
+					"data" : this.root.children
+				}
+			});
+			var _self = this;
+			(<any>window).top[this.controlId].bind("changed.jstree",
+			    function(e: any, data: any){
+					
+					setTimeout(function(){ _self._onNodeCheckClick(data); }, 50);
+				}
+			);
+		}
 		
 		/*
 		
@@ -234,4 +319,68 @@ export class TreeRelationships implements ComponentFramework.StandardControl<IIn
 	{
 		// Add code to cleanup control if necessary
 	}
+	
+	public nodeClick(data: any)
+	{
+		/*
+		function (e: any, data: any) {
+					ProcessClick(
+					alert("Checked: " + data.node.id);
+					alert("Parent: " + data.node.parent); 
+					//alert(JSON.stringify(data));
+				}
+		*/
+		var url: string = (<any>Xrm).Utility.getGlobalContext().getClientUrl();
+		var recordUrl: string = url + "/api/data/v9.1/"+ this._mainEntityCollectionName + "(" + (<any>this.contextObj).page.entityId + ")";
+		
+		if(data.action == "select_node")
+		{
+			//See himbap samples here: http://himbap.com/blog/?p=2063
+			var associate = {
+				"@odata.id": recordUrl
+			};
+			
+			var req = new XMLHttpRequest();
+			req.open("POST", url + "/api/data/v9.1/"+ this._treeEntityCollectionName +"(" + data.node.id + ")/" + this._relationshipName + "/$ref", true);
+			req.setRequestHeader("Accept", "application/json");
+			req.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+			req.setRequestHeader("OData-MaxVersion", "4.0");
+			req.setRequestHeader("OData-Version", "4.0");
+			req.onreadystatechange = function() {
+				if (this.readyState == 4 /* complete */ ) {
+					req.onreadystatechange = null;
+					if (this.status == 204) {
+						//alert('Record Associated');
+					} else {
+						var error = JSON.parse(this.response).error;
+						alert(error.message);
+					}
+				}
+			};
+			req.send(JSON.stringify(associate));
+	
+		}
+		else if(data.action == "deselect_node")
+		{
+			var req = new XMLHttpRequest();
+			req.open("DELETE",url + "/api/data/v9.1/"+ this._treeEntityCollectionName +"(" + data.node.id + ")/" + this._relationshipName + "/$ref"+"?$id="+recordUrl, true);
+			req.setRequestHeader("Accept", "application/json");
+			req.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+			req.setRequestHeader("OData-MaxVersion", "4.0");
+			req.setRequestHeader("OData-Version", "4.0");
+			req.onreadystatechange = function() {
+				if (this.readyState == 4 /* complete */ ) {
+					req.onreadystatechange = null;
+					if (this.status == 204) {
+						//alert('Record Disassociated');
+					} else {
+						var error = JSON.parse(this.response).error;
+						alert(error.message);
+					}
+				}
+			};
+			req.send();
+		}
+		
+	}		
 }
