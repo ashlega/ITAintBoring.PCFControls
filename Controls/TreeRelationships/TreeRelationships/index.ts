@@ -244,7 +244,7 @@ export class TreeRelationships implements ComponentFramework.StandardControl<IIn
 		{
 			this.selectedItems.push(value.entities[i][this._idAttribute]);
 		}
-  		this.contextObj.webAPI.retrieveMultipleRecords(this._treeEntityName, "", 5000).then(this._successCallback, this.errorCallback);
+  		this.contextObj.webAPI.retrieveMultipleRecords(this._treeEntityName, "?$orderby=" + this._nameAttribute + " asc", 5000).then(this._successCallback, this.errorCallback);
 	}		
 	
 	public errorCallback(value: any)
