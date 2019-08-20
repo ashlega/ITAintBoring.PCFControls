@@ -4,3 +4,5 @@ C:\Work\Projects\ITAintBoring.PCFControls\Controls\ValidatedInputControl\obj\Deb
 C:\Work\Projects\ITAintBoring.PCFControls\Controls\ValidatedInputControl\obj\Debug\ValidatedInputControl.pcfproj.CoreCompileInputs.cache
 C:\Work\Git\ashlega\ItAintBoring.PCFControls\Controls\ValidatedInputControl\obj\Debug\ValidatedInputControl.pcfprojAssemblyReference.cache
 C:\Work\Git\ashlega\ItAintBoring.PCFControls\Controls\ValidatedInputControl\obj\Debug\ValidatedInputControl.pcfproj.CoreCompileInputs.cache
+C:\Work\github\ashlega\PCFControls\Controls\ValidatedInputControl\obj\Debug\ValidatedInputControl.pcfprojAssemblyReference.cache
+C:\Work\github\ashlega\PCFControls\Controls\ValidatedInputControl\obj\Debug\ValidatedInputControl.pcfproj.CoreCompileInputs.cache

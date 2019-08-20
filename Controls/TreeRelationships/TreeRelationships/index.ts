@@ -183,8 +183,8 @@ export class TreeRelationships implements ComponentFramework.StandardControl<IIn
 		
 		(<any>Xrm).Utility.getEntityMetadata((<any>this.contextObj).page.entityTypeName,[]).then(this._entityMetadataSuccessCallback, this.errorCallback);
 		(<any>Xrm).Utility.getEntityMetadata(this._treeEntityName,[]).then(this._treeMetadataSuccessCallback, this.errorCallback);
-		
-		this.contextObj.webAPI.retrieveMultipleRecords(this._relationshipEntity, "?$filter="+ (<any>this.contextObj).page.entityTypeName+"id eq " + (<any>this.contextObj).page.entityId, 5000).then(this._relationshipSuccessCallback, this.errorCallback);
+		(<any>Xrm).WebApi.retrieveMultipleRecords(this._relationshipEntity, "?$filter="+ (<any>this.contextObj).page.entityTypeName+"id eq " + (<any>this.contextObj).page.entityId, 5000).then(this._relationshipSuccessCallback, this.errorCallback);
+		//this.contextObj.webAPI.retrieveMultipleRecords(this._relationshipEntity, "?$filter="+ (<any>this.contextObj).page.entityTypeName+"id eq " + (<any>this.contextObj).page.entityId, 5000).then(this._relationshipSuccessCallback, this.errorCallback);
 		
 	
 	}
@@ -253,7 +253,7 @@ export class TreeRelationships implements ComponentFramework.StandardControl<IIn
 	}		
 
 	public initTree(): void {
-		
+		debugger;
 		if((<any>window).top[this.controlId].jstree == null)
 		{
 			setTimeout(this._initTreeHandler, 500);
