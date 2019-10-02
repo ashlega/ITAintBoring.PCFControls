@@ -270,7 +270,7 @@ export class CheckBoxList implements ComponentFramework.StandardControl<IInputs,
             if (attributeName) {
                 var data: any = {};
                 let checkBox: HTMLInputElement = <HTMLInputElement>document.getElementById("checkbox" + rowRecordId);
-                data[attributeName] = !checkBox.checked; //in the onclick it's still the old value which is being switched
+                data[attributeName] = (checkBox.checked == true) ? this.noOption : this.yesOption; //in the onclick it's still the old value which is being switched
                 this.contextObj.webAPI.updateRecord(this.gridEntityName, rowRecordId, data);
             }
         }
