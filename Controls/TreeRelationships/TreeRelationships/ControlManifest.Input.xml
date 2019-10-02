@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-62" ?>
 <manifest>
-  <control namespace="ItAintBoring.PCFControls" constructor="TreeRelationships" version="0.0.173" display-name-key="Tree Relationships" description-key="Tree Relationships" control-type="standard">
+  <control namespace="ItAintBoring.PCFControls" constructor="TreeRelationships" version="0.0.180" display-name-key="Tree Relationships" description-key="Tree Relationships" control-type="standard">
     <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
 	<data-set name="tableGrid" display-name-key="Table Grid" />
 	
@@ -39,5 +39,10 @@
       <resx path="strings/TreeRelationships.1033.resx" version="1.0.0" />
       -->
     </resources>
+	
+	<feature-usage>
+		<uses-feature name="WebAPI" required="true" />
+   </feature-usage>
+ 
   </control>
 </manifest>
