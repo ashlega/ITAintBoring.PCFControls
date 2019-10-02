@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-62" ?>
 <manifest>
-  <control namespace="ItAintBoring.PCFControls" constructor="TreeRelationships" version="0.0.185" display-name-key="Tree Relationships" description-key="Tree Relationships" control-type="standard">
+  <control namespace="ItAintBoring.PCFControls" constructor="TreeRelationships" version="0.0.186" display-name-key="Tree Relationships" description-key="Tree Relationships" control-type="standard">
     <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
 	<data-set name="tableGrid" display-name-key="Table Grid" />
 	

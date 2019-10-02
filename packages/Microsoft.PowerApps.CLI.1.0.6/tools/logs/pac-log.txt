@@ -196,3 +196,21 @@
 2019-10-02 11:34:02.0948|INFO|bolt.cli.Worker|EndExecutingVerb
 2019-10-02 11:34:02.0948|INFO|bolt.cli.Worker|Success: True
 2019-10-02 11:34:02.0948|INFO|bolt.cli.Worker|Execution Time(ms): 100
+2019-10-02 11:51:23.5533|INFO|bolt.cli.Worker|StartExecutingVerb
+2019-10-02 11:51:23.5873|INFO|bolt.cli.Worker|Verbs: ["solution","add-reference"]
+2019-10-02 11:51:23.5873|INFO|bolt.cli.Worker|ProductVersion: 1.0.6
+2019-10-02 11:51:23.6162|INFO|bolt.cli.Worker|EndExecutingVerb
+2019-10-02 11:51:23.6162|INFO|bolt.cli.Worker|Success: True
+2019-10-02 11:51:23.6162|INFO|bolt.cli.Worker|Execution Time(ms): 18
+2019-10-02 11:51:24.6576|INFO|bolt.cli.Worker|StartExecutingVerb
+2019-10-02 11:51:24.6975|INFO|bolt.cli.Worker|Verbs: ["solution","add-reference"]
+2019-10-02 11:51:24.6975|INFO|bolt.cli.Worker|ProductVersion: 1.0.6
+2019-10-02 11:51:24.7295|INFO|bolt.cli.Worker|EndExecutingVerb
+2019-10-02 11:51:24.7295|INFO|bolt.cli.Worker|Success: True
+2019-10-02 11:51:24.7295|INFO|bolt.cli.Worker|Execution Time(ms): 19
+2019-10-02 11:51:25.7019|INFO|bolt.cli.Worker|StartExecutingVerb
+2019-10-02 11:51:25.7349|INFO|bolt.cli.Worker|Verbs: ["solution","add-reference"]
+2019-10-02 11:51:25.7349|INFO|bolt.cli.Worker|ProductVersion: 1.0.6
+2019-10-02 11:51:25.7629|INFO|bolt.cli.Worker|EndExecutingVerb
+2019-10-02 11:51:25.7629|INFO|bolt.cli.Worker|Success: True
+2019-10-02 11:51:25.7629|INFO|bolt.cli.Worker|Execution Time(ms): 16
