@@ -63,6 +63,7 @@
       <OutputItemType>Content</OutputItemType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </ProjectReference>
+    <ProjectReference Include="..\NToNMultiSelect\NToNMultiSelect.pcfproj" />
   </ItemGroup>
 
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />

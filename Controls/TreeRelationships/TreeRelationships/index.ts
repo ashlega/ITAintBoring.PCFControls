@@ -183,10 +183,9 @@ export class TreeRelationships implements ComponentFramework.StandardControl<IIn
 		
 		(<any>Xrm).Utility.getEntityMetadata((<any>this.contextObj).page.entityTypeName,[]).then(this._entityMetadataSuccessCallback, this.errorCallback);
 		(<any>Xrm).Utility.getEntityMetadata(this._treeEntityName,[]).then(this._treeMetadataSuccessCallback, this.errorCallback);
-		(<any>Xrm).WebApi.retrieveMultipleRecords(this._relationshipEntity, "?$filter="+ (<any>this.contextObj).page.entityTypeName+"id eq " + (<any>this.contextObj).page.entityId, 5000).then(this._relationshipSuccessCallback, this.errorCallback);
-		//this.contextObj.webAPI.retrieveMultipleRecords(this._relationshipEntity, "?$filter="+ (<any>this.contextObj).page.entityTypeName+"id eq " + (<any>this.contextObj).page.entityId, 5000).then(this._relationshipSuccessCallback, this.errorCallback);
-		
-	
+		//(<any>Xrm).WebApi.retrieveMultipleRecords(this._relationshipEntity, "?$filter="+ (<any>this.contextObj).page.entityTypeName+"id eq " + (<any>this.contextObj).page.entityId, 5000).then(this._relationshipSuccessCallback, this.errorCallback);
+		this.contextObj.webAPI.retrieveMultipleRecords(this._relationshipEntity, "?$filter="+ (<any>this.contextObj).page.entityTypeName+"id eq " + (<any>this.contextObj).page.entityId, 5000).then(this._relationshipSuccessCallback, this.errorCallback);
+
 	}
 	
 	public entityMetadataSuccessCallback(value: any) : void | PromiseLike<void>
@@ -244,7 +243,7 @@ export class TreeRelationships implements ComponentFramework.StandardControl<IIn
 		{
 			this.selectedItems.push(value.entities[i][this._idAttribute]);
 		}
-  		(<any>Xrm).WebApi.retrieveMultipleRecords(this._treeEntityName, "?$orderby=" + this._nameAttribute + " asc", 5000).then(this._successCallback, this.errorCallback);
+  		this.contextObj.webAPI.retrieveMultipleRecords(this._treeEntityName, "?$orderby=" + this._nameAttribute + " asc", 5000).then(this._successCallback, this.errorCallback);
 	}		
 	
 	public errorCallback(value: any)

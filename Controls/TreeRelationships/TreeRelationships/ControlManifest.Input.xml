@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-62" ?>
 <manifest>
-  <control namespace="ItAintBoring.PCFControls" constructor="TreeRelationships" version="0.0.173" display-name-key="Tree Relationships" description-key="Tree Relationships" control-type="standard">
+  <control namespace="ItAintBoring.PCFControls" constructor="TreeRelationships" version="0.0.205" display-name-key="Tree Relationships" description-key="Tree Relationships" control-type="standard">
     <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
 	<data-set name="tableGrid" display-name-key="Table Grid" />
 	
@@ -11,6 +11,9 @@
 	<property name="relationshipName" display-name-key="Relationship Name" description-key="Relationship Name" of-type="SingleLine.Text" usage="input" required="false" />
 	<property name="relationshipEntity" display-name-key="Relationship Entity" description-key="Relationship Entity" of-type="SingleLine.Text" usage="input" required="false" />
 	
+	<feature-usage>
+       <uses-feature name="WebAPI" required="true" />
+    </feature-usage>
 	<!--
 	<property name="value" display-name-key="Value" description-key="Value" of-type="Multiple" usage="bound" required="true" />
 	

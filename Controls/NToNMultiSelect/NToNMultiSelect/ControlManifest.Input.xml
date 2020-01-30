@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-27" ?>
+<manifest>
+  <control namespace="ItAintBoring.PCFControls" constructor="NToNMultiSelect" version="0.0.27" display-name-key="NToNMultiSelect" description-key="NToNMultiSelect description" control-type="standard">
+    <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
+    <property name="value" display-name-key="Value" description-key="Value" of-type="SingleLine.Text" usage="bound" required="true" />
+    <property name="linkedEntityName" display-name-key="Linked Entity Name" description-key="Linked Entity Name" of-type="SingleLine.Text" usage="input" required="false" />
+    <property name="nameAttribute" display-name-key="Linked Entity Name Attribute" description-key="Linked Entity Name Attribute" of-type="SingleLine.Text" usage="input" required="false" />
+    <property name="idAttribute" display-name-key="Linked Entity ID Attribute" description-key="Linked Entity ID Attribute" of-type="SingleLine.Text" usage="input" required="false" />
+    <property name="relationshipName" display-name-key="Relationship Name" description-key="Relationship Name" of-type="SingleLine.Text" usage="input" required="false" />
+    <property name="relationshipEntity" display-name-key="Relationship Entity" description-key="Relationship Entity" of-type="SingleLine.Text" usage="input" required="false" />
+    
+    <feature-usage>
+       <uses-feature name="WebAPI" required="true" />
+    </feature-usage> 
+    <!-- 
+      Property node's of-type attribute can be of-type-group attribute. 
+      Example:
+      <type-group name="numbers">
+        <type>Whole.None</type>
+        <type>Currency</type>
+        <type>FP</type>
+        <type>Decimal</type>
+      </type-group>
+      <property name="sampleProperty" display-name-key="Property_Display_Key" description-key="Property_Desc_Key" of-type-group="numbers" usage="bound" required="true" />
+    -->
+    <resources>
+      <code path="index.ts" order="27"/>
+	  <css path="css/select2.min.css" order="27" />
+      <!-- UNCOMMENT TO ADD MORE RESOURCES
+      <css path="css/NToNMultiSelect.css" order="27" />
+      <resx path="strings/NToNMultiSelect.1033.resx" version="1.0.0" />
+      -->
+    </resources>
+    <!-- UNCOMMENT TO ENABLE THE SPECIFIED API
+    <feature-usage>
+      <uses-feature name="Device.captureAudio" required="true" />
+      <uses-feature name="Device.captureImage" required="true" />
+      <uses-feature name="Device.captureVideo" required="true" />
+      <uses-feature name="Device.getBarcodeValue" required="true" />
+      <uses-feature name="Device.getCurrentPosition" required="true" />
+      <uses-feature name="Device.pickFile" required="true" />
+      <uses-feature name="Utility" required="true" />
+      <uses-feature name="WebAPI" required="true" />
+    </feature-usage>
+    -->
+  </control>
+</manifest>
