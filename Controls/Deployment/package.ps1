@@ -51,11 +51,18 @@ New-PCFControlVersion $manifestFilePath
 #version number has been updated
 
 #build and package"
+<<<<<<< HEAD
 pac.exe solution init --publisherName "itaintboring" --customizationPrefix "ita_"
 pac.exe solution add-reference --path ..\ValidatedInputControl
 pac.exe solution add-reference --path ..\CheckBoxList
 pac.exe solution add-reference --path ..\TreeRelationships
 pac.exe solution add-reference --path ..\NToNMultiSelect
+=======
+#pac.exe solution init --publisher-name "ItAintBoring" --publisher-prefix "ita"
+pac.exe solution add-reference --path ..\ValidatedInputControl
+pac.exe solution add-reference --path ..\CheckBoxList
+pac.exe solution add-reference --path ..\TreeRelationships
+>>>>>>> 428cec4e8942da5da14b1b8d0cc2b7f61d9f1c99
 
 & $msBuildExe /t:restore
 & $msBuildExe

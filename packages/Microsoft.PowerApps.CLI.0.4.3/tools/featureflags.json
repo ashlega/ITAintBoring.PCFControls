@@ -1,0 +1,8 @@
+{
+  "verbAuth": "on",
+  "verbOrg": "on",
+  "verbSolutionImport": "off",
+  "pcfVirtualControl": "off",
+  "verbPlugin": "off",
+  "verbPcfPush": "on"
+}

@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     ".NETFramework,Version=v4.0": {
-      "Microsoft.PowerApps.MSBuild.Pcf/0.3.4": {
+      "Microsoft.PowerApps.MSBuild.Pcf/0.4.3": {
         "type": "package",
         "build": {
           "build/Microsoft.PowerApps.MSBuild.Pcf.props": {},
@@ -11,7 +11,7 @@
       }
     },
     ".NETFramework,Version=v4.0/win": {
-      "Microsoft.PowerApps.MSBuild.Pcf/0.3.4": {
+      "Microsoft.PowerApps.MSBuild.Pcf/0.4.3": {
         "type": "package",
         "build": {
           "build/Microsoft.PowerApps.MSBuild.Pcf.props": {},
@@ -20,7 +20,7 @@
       }
     },
     ".NETFramework,Version=v4.0/win-x64": {
-      "Microsoft.PowerApps.MSBuild.Pcf/0.3.4": {
+      "Microsoft.PowerApps.MSBuild.Pcf/0.4.3": {
         "type": "package",
         "build": {
           "build/Microsoft.PowerApps.MSBuild.Pcf.props": {},
@@ -29,7 +29,7 @@
       }
     },
     ".NETFramework,Version=v4.0/win-x86": {
-      "Microsoft.PowerApps.MSBuild.Pcf/0.3.4": {
+      "Microsoft.PowerApps.MSBuild.Pcf/0.4.3": {
         "type": "package",
         "build": {
           "build/Microsoft.PowerApps.MSBuild.Pcf.props": {},
@@ -39,17 +39,22 @@
     }
   },
   "libraries": {
+<<<<<<< HEAD
     "Microsoft.PowerApps.MSBuild.Pcf/0.3.4": {
       "sha512": "/v/QTsiz3E7Rrbc2tz+VY9GC5KsaEtZlTnSNdaRSb7EGR7/SiTCzFVlGHXReO9pX8dmKudxAId36/tu01Ea/Fg==",
+=======
+    "Microsoft.PowerApps.MSBuild.Pcf/0.4.3": {
+      "sha512": "cqd5aSeVxZXXCGhEazC5uBcuMddTc3pOi8ZStZs1+ph6k4P6vYZTMQptXxNS7+dTUH/JCac5fFDwaWSb+EsQdw==",
+>>>>>>> 428cec4e8942da5da14b1b8d0cc2b7f61d9f1c99
       "type": "package",
-      "path": "microsoft.powerapps.msbuild.pcf/0.3.4",
+      "path": "microsoft.powerapps.msbuild.pcf/0.4.3",
       "files": [
         ".signature.p7s",
         "3rdPartyNotice.txt",
         "LICENSE.txt",
         "build/Microsoft.PowerApps.MSBuild.Pcf.props",
         "build/Microsoft.PowerApps.MSBuild.Pcf.targets",
-        "microsoft.powerapps.msbuild.pcf.0.3.4.nupkg.sha512",
+        "microsoft.powerapps.msbuild.pcf.0.4.3.nupkg.sha512",
         "microsoft.powerapps.msbuild.pcf.nuspec"
       ]
     }
@@ -60,26 +65,43 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\ashle\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {}
+=======
+    "C:\\Users\\shlegaal\\.nuget\\packages\\": {}
+>>>>>>> 428cec4e8942da5da14b1b8d0cc2b7f61d9f1c99
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Work\\Projects\\ITAintBoring.PCFControls\\Controls\\CheckBoxList\\CheckBoxList.pcfproj",
       "projectName": "CheckBoxList",
       "projectPath": "C:\\Work\\Projects\\ITAintBoring.PCFControls\\Controls\\CheckBoxList\\CheckBoxList.pcfproj",
       "packagesPath": "C:\\Users\\ashle\\.nuget\\packages\\",
       "outputPath": "C:\\Work\\Projects\\ITAintBoring.PCFControls\\Controls\\CheckBoxList\\obj\\",
+=======
+      "projectUniqueName": "C:\\git\\ITAintBoring.PCFControls\\Controls\\CheckBoxList\\CheckBoxList.pcfproj",
+      "projectName": "CheckBoxList",
+      "projectPath": "C:\\git\\ITAintBoring.PCFControls\\Controls\\CheckBoxList\\CheckBoxList.pcfproj",
+      "packagesPath": "C:\\Users\\shlegaal\\.nuget\\packages\\",
+      "outputPath": "C:\\git\\ITAintBoring.PCFControls\\Controls\\CheckBoxList\\obj\\",
+>>>>>>> 428cec4e8942da5da14b1b8d0cc2b7f61d9f1c99
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\"
       ],
       "configFilePaths": [
+<<<<<<< HEAD
         "C:\\Users\\ashle\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
+=======
+        "C:\\Users\\shlegaal\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+>>>>>>> 428cec4e8942da5da14b1b8d0cc2b7f61d9f1c99
       ],
       "originalTargetFrameworks": [
         "net40"

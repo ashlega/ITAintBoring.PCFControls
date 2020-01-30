@@ -1,0 +1,178 @@
+2019-09-26 21:45:22.7651|INFO|bolt.cli.Worker|StartExecutingVerb
+2019-09-26 21:45:22.8232|INFO|bolt.cli.Worker|Verbs: ["init"]
+2019-09-26 21:45:22.8342|INFO|bolt.cli.Worker|ProductVersion: 1.0.6
+2019-09-26 21:45:22.8682|INFO|bolt.cli.Worker|EndExecutingVerb
+2019-09-26 21:45:22.8682|INFO|bolt.cli.Worker|Success: False
+2019-09-26 21:45:22.8832|INFO|bolt.cli.Worker|Execution Time(ms): 5
+2019-09-26 21:45:44.4642|INFO|bolt.cli.Worker|StartExecutingVerb
+2019-09-26 21:45:44.5053|INFO|bolt.cli.Worker|Verbs: ["pcf","init"]
+2019-09-26 21:45:44.5053|INFO|bolt.cli.Worker|ProductVersion: 1.0.6
+2019-09-26 21:45:44.7317|INFO|bolt.cli.Worker|EndExecutingVerb
+2019-09-26 21:45:44.7397|INFO|bolt.cli.Worker|Success: True
+2019-09-26 21:45:44.7397|INFO|bolt.cli.Worker|Execution Time(ms): 191
+2019-09-26 21:45:56.5644|INFO|bolt.cli.Worker|StartExecutingVerb
+2019-09-26 21:45:56.6104|INFO|bolt.cli.Worker|Verbs: ["pcf","init"]
+2019-09-26 21:45:56.6194|INFO|bolt.cli.Worker|ProductVersion: 1.0.6
+2019-09-26 21:45:56.6644|INFO|bolt.cli.Worker|EndExecutingVerb
+2019-09-26 21:45:56.6644|INFO|bolt.cli.Worker|Success: True
+2019-09-26 21:45:56.6794|INFO|bolt.cli.Worker|Execution Time(ms): 23
+2019-09-28 21:41:17.1941|INFO|bolt.cli.Worker|StartExecutingVerb
+2019-09-28 21:41:17.2372|INFO|bolt.cli.Worker|Verbs: ["pcf","init"]
+2019-09-28 21:41:17.2372|INFO|bolt.cli.Worker|ProductVersion: 1.0.6
+2019-09-28 21:41:17.2740|INFO|bolt.cli.Worker|EndExecutingVerb
+2019-09-28 21:41:17.2820|INFO|bolt.cli.Worker|Success: True
+2019-09-28 21:41:17.2820|INFO|bolt.cli.Worker|Execution Time(ms): 16
+2019-09-28 21:45:27.7644|INFO|bolt.cli.Worker|StartExecutingVerb
+2019-09-28 21:45:27.8063|INFO|bolt.cli.Worker|Verbs: ["pcf","init"]
+2019-09-28 21:45:27.8172|INFO|bolt.cli.Worker|ProductVersion: 1.0.6
+2019-09-28 21:45:27.8554|INFO|bolt.cli.Worker|EndExecutingVerb
+2019-09-28 21:45:27.8634|INFO|bolt.cli.Worker|Success: True
+2019-09-28 21:45:27.8634|INFO|bolt.cli.Worker|Execution Time(ms): 24
+2019-09-28 21:45:39.7444|INFO|bolt.cli.Worker|StartExecutingVerb
+2019-09-28 21:45:39.7853|INFO|bolt.cli.Worker|Verbs: ["pcf","init"]
+2019-09-28 21:45:39.7853|INFO|bolt.cli.Worker|ProductVersion: 1.0.6
+2019-09-28 21:45:39.9785|INFO|bolt.cli.Worker|EndExecutingVerb
+2019-09-28 21:45:39.9882|INFO|bolt.cli.Worker|Success: True
+2019-09-28 21:45:39.9882|INFO|bolt.cli.Worker|Execution Time(ms): 161
+2019-09-28 22:13:41.5441|INFO|bolt.cli.Worker|StartExecutingVerb
+2019-09-28 22:13:41.5925|INFO|bolt.cli.Worker|Verbs: ["solution","init"]
+2019-09-28 22:13:41.5925|INFO|bolt.cli.Worker|ProductVersion: 1.0.6
+2019-09-28 22:13:41.6455|INFO|bolt.cli.Worker|EndExecutingVerb
+2019-09-28 22:13:41.6618|INFO|bolt.cli.Worker|Success: True
+2019-09-28 22:13:41.6618|INFO|bolt.cli.Worker|Execution Time(ms): 27
+2019-09-28 22:16:44.6873|INFO|bolt.cli.Worker|StartExecutingVerb
+2019-09-28 22:16:44.7287|INFO|bolt.cli.Worker|Verbs: ["pcf","init"]
+2019-09-28 22:16:44.7367|INFO|bolt.cli.Worker|ProductVersion: 1.0.6
+2019-09-28 22:16:44.7835|INFO|bolt.cli.Worker|EndExecutingVerb
+2019-09-28 22:16:44.7835|INFO|bolt.cli.Worker|Success: True
+2019-09-28 22:16:44.7996|INFO|bolt.cli.Worker|Execution Time(ms): 27
+2019-09-28 22:17:29.1075|INFO|bolt.cli.Worker|StartExecutingVerb
+2019-09-28 22:17:29.1467|INFO|bolt.cli.Worker|Verbs: ["solution","init"]
+2019-09-28 22:17:29.1547|INFO|bolt.cli.Worker|ProductVersion: 1.0.6
+2019-09-28 22:17:29.1892|INFO|bolt.cli.Worker|EndExecutingVerb
+2019-09-28 22:17:29.1892|INFO|bolt.cli.Worker|Success: True
+2019-09-28 22:17:29.2052|INFO|bolt.cli.Worker|Execution Time(ms): 17
+2019-09-28 22:17:37.9859|INFO|bolt.cli.Worker|StartExecutingVerb
+2019-09-28 22:17:38.0232|INFO|bolt.cli.Worker|Verbs: ["solution","init"]
+2019-09-28 22:17:38.0312|INFO|bolt.cli.Worker|ProductVersion: 1.0.6
+2019-09-28 22:17:38.0822|INFO|bolt.cli.Worker|EndExecutingVerb
+2019-09-28 22:17:38.0822|INFO|bolt.cli.Worker|Success: True
+2019-09-28 22:17:38.0991|INFO|bolt.cli.Worker|Execution Time(ms): 30
+2019-09-28 22:17:43.2629|INFO|bolt.cli.Worker|StartExecutingVerb
+2019-09-28 22:17:43.3029|INFO|bolt.cli.Worker|Verbs: ["solution","init"]
+2019-09-28 22:17:43.3029|INFO|bolt.cli.Worker|ProductVersion: 1.0.6
+2019-09-28 22:17:43.4813|INFO|bolt.cli.Worker|EndExecutingVerb
+2019-09-28 22:17:43.4894|INFO|bolt.cli.Worker|Success: True
+2019-09-28 22:17:43.4894|INFO|bolt.cli.Worker|Execution Time(ms): 138
+2019-09-28 22:20:55.3221|INFO|bolt.cli.Worker|StartExecutingVerb
+2019-09-28 22:20:55.3674|INFO|bolt.cli.Worker|Verbs: ["solution","init"]
+2019-09-28 22:20:55.3767|INFO|bolt.cli.Worker|ProductVersion: 1.0.6
+2019-09-28 22:20:55.4698|INFO|bolt.cli.Worker|EndExecutingVerb
+2019-09-28 22:20:55.4698|INFO|bolt.cli.Worker|Success: True
+2019-09-28 22:20:55.4854|INFO|bolt.cli.Worker|Execution Time(ms): 72
+2019-09-28 22:43:46.4552|INFO|bolt.cli.Worker|StartExecutingVerb
+2019-09-28 22:43:46.4996|INFO|bolt.cli.Worker|Verbs: ["solution","add-reference"]
+2019-09-28 22:43:46.4996|INFO|bolt.cli.Worker|ProductVersion: 1.0.6
+2019-09-28 22:43:46.5829|INFO|bolt.cli.Worker|EndExecutingVerb
+2019-09-28 22:43:46.5829|INFO|bolt.cli.Worker|Success: True
+2019-09-28 22:43:46.5965|INFO|bolt.cli.Worker|Execution Time(ms): 59
+2019-10-05 11:11:42.4430|INFO|bolt.cli.Worker|StartExecutingVerb
+2019-10-05 11:11:42.4840|INFO|bolt.cli.Worker|Verbs: [""]
+2019-10-05 11:11:42.4840|INFO|bolt.cli.Worker|ProductVersion: 1.0.6
+2019-10-05 11:11:42.5020|INFO|bolt.cli.Worker|EndExecutingVerb
+2019-10-05 11:11:42.5020|INFO|bolt.cli.Worker|Success: True
+2019-10-05 11:11:42.5100|INFO|bolt.cli.Worker|Execution Time(ms): 1
+2019-10-05 11:12:10.8907|INFO|bolt.cli.Worker|StartExecutingVerb
+2019-10-05 11:12:10.9287|INFO|bolt.cli.Worker|Verbs: ["pcf"]
+2019-10-05 11:12:10.9336|INFO|bolt.cli.Worker|ProductVersion: 1.0.6
+2019-10-05 11:12:10.9557|INFO|bolt.cli.Worker|EndExecutingVerb
+2019-10-05 11:12:10.9557|INFO|bolt.cli.Worker|Success: True
+2019-10-05 11:12:10.9641|INFO|bolt.cli.Worker|Execution Time(ms): 10
+2019-10-05 11:12:16.0624|INFO|bolt.cli.Worker|StartExecutingVerb
+2019-10-05 11:12:16.0995|INFO|bolt.cli.Worker|Verbs: ["pcf","init"]
+2019-10-05 11:12:16.1044|INFO|bolt.cli.Worker|ProductVersion: 1.0.6
+2019-10-05 11:12:16.1284|INFO|bolt.cli.Worker|EndExecutingVerb
+2019-10-05 11:12:16.1284|INFO|bolt.cli.Worker|Success: True
+2019-10-05 11:12:16.1364|INFO|bolt.cli.Worker|Execution Time(ms): 12
+2019-10-05 11:12:25.5064|INFO|bolt.cli.Worker|StartExecutingVerb
+2019-10-05 11:12:25.5434|INFO|bolt.cli.Worker|Verbs: ["auth"]
+2019-10-05 11:12:25.5434|INFO|bolt.cli.Worker|ProductVersion: 1.0.6
+2019-10-05 11:12:25.5704|INFO|bolt.cli.Worker|EndExecutingVerb
+2019-10-05 11:12:25.5744|INFO|bolt.cli.Worker|Success: True
+2019-10-05 11:12:25.5744|INFO|bolt.cli.Worker|Execution Time(ms): 10
+2019-10-05 11:12:34.3757|INFO|bolt.cli.Worker|StartExecutingVerb
+2019-10-05 11:12:34.4147|INFO|bolt.cli.Worker|Verbs: ["auth","create"]
+2019-10-05 11:12:34.4187|INFO|bolt.cli.Worker|ProductVersion: 1.0.6
+2019-10-05 11:12:34.4427|INFO|bolt.cli.Worker|EndExecutingVerb
+2019-10-05 11:12:34.4477|INFO|bolt.cli.Worker|Success: True
+2019-10-05 11:12:34.4477|INFO|bolt.cli.Worker|Execution Time(ms): 12
+2019-10-05 11:12:52.6303|INFO|bolt.cli.Worker|StartExecutingVerb
+2019-10-05 11:12:52.6683|INFO|bolt.cli.Worker|Verbs: ["auth","list"]
+2019-10-05 11:12:52.6683|INFO|bolt.cli.Worker|ProductVersion: 1.0.6
+2019-10-05 11:12:52.6944|INFO|bolt.module.auth.profiles.AuthProfilesManager|ReadSettings(): No settings file found, creating a default one
+2019-10-05 11:12:52.7084|INFO|bolt.cli.Worker|EndExecutingVerb
+2019-10-05 11:12:52.7133|INFO|bolt.cli.Worker|Success: True
+2019-10-05 11:12:52.7133|INFO|bolt.cli.Worker|Execution Time(ms): 23
+2019-10-05 11:14:16.5518|INFO|bolt.cli.Worker|StartExecutingVerb
+2019-10-05 11:14:16.5898|INFO|bolt.cli.Worker|Verbs: ["pcf","push"]
+2019-10-05 11:14:16.5898|INFO|bolt.cli.Worker|ProductVersion: 1.0.6
+2019-10-05 11:14:16.6188|INFO|bolt.cli.Worker|EndExecutingVerb
+2019-10-05 11:14:16.6188|INFO|bolt.cli.Worker|Success: True
+2019-10-05 11:14:16.6188|INFO|bolt.cli.Worker|Execution Time(ms): 12
+2019-10-05 11:14:39.1031|INFO|bolt.cli.Worker|StartExecutingVerb
+2019-10-05 11:14:39.1421|INFO|bolt.cli.Worker|Verbs: ["pcf"]
+2019-10-05 11:14:39.1421|INFO|bolt.cli.Worker|ProductVersion: 1.0.6
+2019-10-05 11:14:39.1691|INFO|bolt.cli.Worker|EndExecutingVerb
+2019-10-05 11:14:39.1691|INFO|bolt.cli.Worker|Success: True
+2019-10-05 11:14:39.1691|INFO|bolt.cli.Worker|Execution Time(ms): 10
+2019-10-05 11:21:49.4519|INFO|bolt.cli.Worker|EndExecutingVerb
+2019-10-05 11:21:49.4969|INFO|bolt.cli.Worker|Success: False
+2019-10-05 11:21:49.4969|INFO|bolt.cli.Worker|Execution Time(ms): 0
+2019-10-05 11:21:51.5349|INFO|bolt.cli.Worker|StartExecutingVerb
+2019-10-05 11:21:51.5739|INFO|bolt.cli.Worker|Verbs: ["pcf","init"]
+2019-10-05 11:21:51.5739|INFO|bolt.cli.Worker|ProductVersion: 1.0.6
+2019-10-05 11:21:51.6029|INFO|bolt.cli.Worker|EndExecutingVerb
+2019-10-05 11:21:51.6029|INFO|bolt.cli.Worker|Success: True
+2019-10-05 11:21:51.6029|INFO|bolt.cli.Worker|Execution Time(ms): 12
+2019-10-05 11:22:46.6967|INFO|bolt.cli.Worker|StartExecutingVerb
+2019-10-05 11:22:46.7367|INFO|bolt.cli.Worker|Verbs: ["pcf","init"]
+2019-10-05 11:22:46.7367|INFO|bolt.cli.Worker|ProductVersion: 1.0.6
+2019-10-05 11:22:46.7657|INFO|bolt.cli.Worker|EndExecutingVerb
+2019-10-05 11:22:46.7657|INFO|bolt.cli.Worker|Success: True
+2019-10-05 11:22:46.7747|INFO|bolt.cli.Worker|Execution Time(ms): 13
+2019-10-05 11:23:06.8173|INFO|bolt.cli.Worker|StartExecutingVerb
+2019-10-05 11:23:06.8563|INFO|bolt.cli.Worker|Verbs: ["pcf","init"]
+2019-10-05 11:23:06.8563|INFO|bolt.cli.Worker|ProductVersion: 1.0.6
+2019-10-05 11:23:06.8853|INFO|bolt.cli.Worker|EndExecutingVerb
+2019-10-05 11:23:06.8853|INFO|bolt.cli.Worker|Success: True
+2019-10-05 11:23:06.8853|INFO|bolt.cli.Worker|Execution Time(ms): 12
+2019-10-05 11:23:12.3756|INFO|bolt.cli.Worker|StartExecutingVerb
+2019-10-05 11:23:12.4136|INFO|bolt.cli.Worker|Verbs: ["pcf","init"]
+2019-10-05 11:23:12.4186|INFO|bolt.cli.Worker|ProductVersion: 1.0.6
+2019-10-05 11:23:12.4426|INFO|bolt.cli.Worker|EndExecutingVerb
+2019-10-05 11:23:12.4476|INFO|bolt.cli.Worker|Success: True
+2019-10-05 11:23:12.4476|INFO|bolt.cli.Worker|Execution Time(ms): 12
+2019-10-05 11:23:20.5111|INFO|bolt.cli.Worker|StartExecutingVerb
+2019-10-05 11:23:20.5501|INFO|bolt.cli.Worker|Verbs: ["pcf","init"]
+2019-10-05 11:23:20.5501|INFO|bolt.cli.Worker|ProductVersion: 1.0.6
+2019-10-05 11:23:20.6571|INFO|bolt.cli.Worker|EndExecutingVerb
+2019-10-05 11:23:20.6571|INFO|bolt.cli.Worker|Success: True
+2019-10-05 11:23:20.6571|INFO|bolt.cli.Worker|Execution Time(ms): 88
+2019-10-05 11:25:23.7183|INFO|bolt.cli.Worker|StartExecutingVerb
+2019-10-05 11:25:23.7573|INFO|bolt.cli.Worker|Verbs: ["init","solution"]
+2019-10-05 11:25:23.7623|INFO|bolt.cli.Worker|ProductVersion: 1.0.6
+2019-10-05 11:25:23.7773|INFO|bolt.cli.Worker|EndExecutingVerb
+2019-10-05 11:25:23.7773|INFO|bolt.cli.Worker|Success: False
+2019-10-05 11:25:23.7773|INFO|bolt.cli.Worker|Execution Time(ms): 2
+2019-10-05 11:25:31.1982|INFO|bolt.cli.Worker|StartExecutingVerb
+2019-10-05 11:25:31.2352|INFO|bolt.cli.Worker|Verbs: ["solution","init"]
+2019-10-05 11:25:31.2352|INFO|bolt.cli.Worker|ProductVersion: 1.0.6
+2019-10-05 11:25:31.2642|INFO|bolt.cli.Worker|EndExecutingVerb
+2019-10-05 11:25:31.2642|INFO|bolt.cli.Worker|Success: True
+2019-10-05 11:25:31.2642|INFO|bolt.cli.Worker|Execution Time(ms): 12
+2019-10-05 11:25:49.5042|INFO|bolt.cli.Worker|StartExecutingVerb
+2019-10-05 11:25:49.5422|INFO|bolt.cli.Worker|Verbs: ["solution","init"]
+2019-10-05 11:25:49.5422|INFO|bolt.cli.Worker|ProductVersion: 1.0.6
+2019-10-05 11:25:49.6238|INFO|bolt.cli.Worker|EndExecutingVerb
+2019-10-05 11:25:49.6238|INFO|bolt.cli.Worker|Success: True
+2019-10-05 11:25:49.6238|INFO|bolt.cli.Worker|Execution Time(ms): 64

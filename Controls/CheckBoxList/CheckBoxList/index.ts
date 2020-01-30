@@ -18,7 +18,11 @@ export class CheckBoxList implements ComponentFramework.StandardControl<IInputs,
     private dataTable: HTMLTableElement;
     // Button element created as part of this control
     private loadPageButton: HTMLButtonElement;
-
+	
+	private optionsMapping: string;
+	private yesOption: string | null;
+	private noOption: string | null;
+	
     private gridEntityName: string;
     /**
      * Empty constructor.
@@ -34,6 +38,8 @@ export class CheckBoxList implements ComponentFramework.StandardControl<IInputs,
      * @param container If control is marked control-type='standard', it receives an empty div element within which it can render its content.
      */
     public init(context: ComponentFramework.Context<IInputs>, notifyOutputChanged: () => void, state: ComponentFramework.Dictionary, container: HTMLDivElement) {
+		
+		
         this.contextObj = context;
         // Need to track container resize so that control could get the available width. The available height won't be provided even this is true
         context.mode.trackContainerResize(true);
@@ -43,6 +49,7 @@ export class CheckBoxList implements ComponentFramework.StandardControl<IInputs,
         // Create data table container div. 
         this.dataTable = document.createElement("table");
         this.dataTable.classList.add("SimpleTable_Table_Style");
+		
         // Create data table container div. 
 		/*
         this.loadPageButton = document.createElement("button");
@@ -56,13 +63,27 @@ export class CheckBoxList implements ComponentFramework.StandardControl<IInputs,
         this.mainContainer.appendChild(this.dataTable);
         //this.mainContainer.appendChild(this.loadPageButton);
         container.appendChild(this.mainContainer);
+		
+		this.ResetOptionMappings(context);
     }
+	
+	private ResetOptionMappings(context: ComponentFramework.Context<IInputs>)
+	{
+		this.optionsMapping = context.parameters.optionsMapping.raw;
+		var regEx = new RegExp("True:(.+?);");
+		var match = regEx.exec(this.optionsMapping);
+		this.yesOption = (match != null && match.length > 1) ? match[1] : "True";
+		regEx = new RegExp("False:(.+?);");
+		match = regEx.exec(this.optionsMapping);
+		this.noOption = (match != null && match.length > 1) ? match[1] : "False";
+	}
     /**
      * Called when any value in the property bag has changed. This includes field values, data-sets, global values such as container height and width, offline status, control metadata values such as label, visible, etc.
      * @param context The entire property bag available to control via Context Object; It contains values as set up by the customizer mapped to names defined in the manifest, as well as utility functions
      */
     public updateView(context: ComponentFramework.Context<IInputs>): void {
         this.contextObj = context;
+		this.ResetOptionMappings(context);
         //this.toggleLoadMoreButtonWhenNeeded(context.parameters.tableGrid);
         if (!context.parameters.tableGrid.loading) {
             // Get sorted columns on View
@@ -159,6 +180,14 @@ export class CheckBoxList implements ComponentFramework.StandardControl<IInputs,
         tableHeader.appendChild(tableHeaderRow);
         return tableHeader;
     }
+	
+	private GetValue(optionValue: string | null)
+	{
+		  if(optionValue == "True") return true;
+		  if(optionValue == "False") return false;
+		  else return optionValue;
+	}
+	
     private createTableBody(columnsOnView: DataSetInterfaces.Column[], widthDistribution: string[], gridParam: DataSet): HTMLTableSectionElement {
         let tableBody: HTMLTableSectionElement = document.createElement("tbody");
         this.gridEntityName = gridParam.getTargetEntityType();
@@ -192,7 +221,7 @@ export class CheckBoxList implements ComponentFramework.StandardControl<IInputs,
                         innerCheckbox.setAttribute("type", "checkbox");
                         innerCheckbox.setAttribute("name", "checkbox" + currentRecordId);
                         innerCheckbox.classList.add("onoffswitch-checkbox");
-                        innerCheckbox.checked = gridParam.records[currentRecordId].getValue(columnItem.name) == "1";
+                        innerCheckbox.checked = gridParam.records[currentRecordId].getValue(columnItem.name) == component.GetValue(component.yesOption);
                         innerDiv.appendChild(innerCheckbox);
                         let innerLabel: HTMLLabelElement = document.createElement("label");
                         innerLabel.classList.add("onoffswitch-label");
@@ -249,7 +278,7 @@ export class CheckBoxList implements ComponentFramework.StandardControl<IInputs,
             if (attributeName) {
                 var data: any = {};
                 let checkBox: HTMLInputElement = <HTMLInputElement>document.getElementById("checkbox" + rowRecordId);
-                data[attributeName] = !checkBox.checked; //in the onclick it's still the old value which is being switched
+                data[attributeName] = (checkBox.checked == true) ? this.GetValue(this.noOption) : this.GetValue(this.yesOption); //in the onclick it's still the old value which is being switched
                 this.contextObj.webAPI.updateRecord(this.gridEntityName, rowRecordId, data);
             }
         }
