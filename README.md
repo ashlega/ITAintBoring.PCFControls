@@ -5,6 +5,7 @@ There are 3 controls so far:
 - Validated Input
 - CheckBox List
 - Tree Relationships
+- N:N Multiselect
 
 To download the solution file, follow this link:
 
