@@ -14,3 +14,8 @@ $controlName = "CheckBoxList"
 cd $controlName
 npm run build
 cd ..
+
+$controlName = "NtoNMultiSelect"
+cd $controlName
+npm run build
+cd ..

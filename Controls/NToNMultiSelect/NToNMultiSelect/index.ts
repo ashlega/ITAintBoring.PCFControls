@@ -5,6 +5,20 @@ import "./scripts/select2.min.js";
 
 declare var Xrm: any;
 
+class DataAction{
+	guid : string;
+	associate: boolean;
+}
+class NToNData{
+	len : string;
+    ida : string;
+    na  : string;
+    re : string;
+    rn : string;
+    actions : DataAction[];
+}
+
+
 export class NToNMultiSelect implements ComponentFramework.StandardControl<IInputs, IOutputs> {
 
 
@@ -12,6 +26,8 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
     // Div element created as part of this control's main container
 	private mainContainer: HTMLSelectElement;
 	private selectedItems: string[] = [];
+
+	private _relData : NToNData;
 	
 	private _linkedEntityName: string;
 	private _relationshipEntity: string;
@@ -28,6 +44,9 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
 	private _successCallback : any;
 
 	private _ctrlId : string;
+
+	private _notifyOutputChanged: () => void;
+
 
 	/**
 	 * Empty constructor.
@@ -61,18 +80,31 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
 	{
 		this.contextObj = context;
 		this._ctrlId = this.newGuid();
+		this._relData = new NToNData();
+		this._relData.actions = [];
+		
 		debugger;
 		
-		if(context.parameters.linkedEntityName.raw != null)
+		if(context.parameters.linkedEntityName.raw != null){
 		  this._linkedEntityName = context.parameters.linkedEntityName.raw;
-		if(context.parameters.idAttribute.raw != null)
+		  this._relData.len = this._linkedEntityName;
+		}
+		if(context.parameters.idAttribute.raw != null){
 		  this._idAttribute = context.parameters.idAttribute.raw;
-		if(context.parameters.nameAttribute.raw != null)
-	      this._nameAttribute = context.parameters.nameAttribute.raw;
-	    if(context.parameters.relationshipEntity.raw != null)
-	      this._relationshipEntity = context.parameters.relationshipEntity.raw;
-        if(context.parameters.relationshipName.raw != null)
-	      this._relationshipName = context.parameters.relationshipName.raw;
+		  this._relData.ida = this._idAttribute;
+		}
+		if(context.parameters.nameAttribute.raw != null){
+		  this._nameAttribute = context.parameters.nameAttribute.raw;
+		  this._relData.na = this._nameAttribute;
+		}
+	    if(context.parameters.relationshipEntity.raw != null){
+		  this._relationshipEntity = context.parameters.relationshipEntity.raw;
+		  this._relData.re = this._relationshipEntity;
+		}
+        if(context.parameters.relationshipName.raw != null){
+		  this._relationshipName = context.parameters.relationshipName.raw;
+		  this._relData.rn = this._relationshipName;
+		}
 		
 		// Need to track container resize so that control could get the available width. The available height won't be provided even this is true
         context.mode.trackContainerResize(true);
@@ -91,11 +123,19 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
 		this._relationshipSuccessCallback = this.relationshipSuccessCallback.bind(this);
 		this._successCallback = this.successCallback.bind(this);
 		
+		this._notifyOutputChanged = notifyOutputChanged;
 		
 		(<any>Xrm).Utility.getEntityMetadata((<any>this.contextObj).page.entityTypeName,[]).then(this._entityMetadataSuccessCallback, this.errorCallback);
 		(<any>Xrm).Utility.getEntityMetadata(this._linkedEntityName,[]).then(this._linkedEntityMetadataSuccessCallback, this.errorCallback);
 		//(<any>Xrm).WebApi.retrieveMultipleRecords(this._relationshipEntity, "?$filter="+ (<any>this.contextObj).page.entityTypeName+"id eq " + (<any>this.contextObj).page.entityId, 5000).then(this._relationshipSuccessCallback, this.errorCallback);
-		this.contextObj.webAPI.retrieveMultipleRecords(this._relationshipEntity, "?$filter="+ (<any>this.contextObj).page.entityTypeName+"id eq " + (<any>this.contextObj).page.entityId, 5000).then(this._relationshipSuccessCallback, this.errorCallback);
+		
+		if((<any>this.contextObj).page.entityId != null)
+		{
+  	  	    this.contextObj.webAPI.retrieveMultipleRecords(this._relationshipEntity, "?$filter="+ (<any>this.contextObj).page.entityTypeName+"id eq " + (<any>this.contextObj).page.entityId, 5000).then(this._relationshipSuccessCallback, this.errorCallback);
+		}
+		else{
+			this.relationshipSuccessCallback(null);
+		}
 
 		var thisVar : any;
 		thisVar = this;
@@ -158,9 +198,12 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
 
 	public relationshipSuccessCallback(value: any) : void | PromiseLike<void>
 	{
-		for(var i in value.entities)
+		if(value != null)
 		{
-			this.selectedItems.push(value.entities[i][this._idAttribute]);
+			for(var i in value.entities)
+			{
+				this.selectedItems.push(value.entities[i][this._idAttribute]);
+			}
 		}
   		this.contextObj.webAPI.retrieveMultipleRecords(this._linkedEntityName, "?$orderby=" + this._nameAttribute + " asc", 5000).then(this._successCallback, this.errorCallback);
 	}
@@ -185,7 +228,9 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
 	 */
 	public getOutputs(): IOutputs
 	{
-		return {};
+		return {
+			value: "NTONDATA:"+JSON.stringify(this._relData)
+		  };
 	}
 
 	/** 
@@ -207,56 +252,88 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
 					//alert(JSON.stringify(data));
 				}
 		*/
-		var url: string = (<any>Xrm).Utility.getGlobalContext().getClientUrl();
-		var recordUrl: string = url + "/api/data/v9.1/"+ this._mainEntityCollectionName + "(" + (<any>this.contextObj).page.entityId + ")";
-		
-		if(action == "select")
+
+		if((<any>this.contextObj).page.entityId == null)
 		{
-			//See himbap samples here: http://himbap.com/blog/?p=2063
-			var associate = {
-				"@odata.id": recordUrl
-			};
+			if(action == "select")
+			{
+				debugger;
+				var act = new DataAction();
+				act.associate = true;
+				act.guid = id;
+				this._relData.actions.push(act);
+			}
+			else{
+				for(var i=0; i < this._relData.actions.length; i++)
+				{
+					var act = this._relData.actions[i];
+					if(act.guid == id){
+						this._relData.actions.splice(i,1);
+						break;
+					}
+				}
 			
-			var req = new XMLHttpRequest();
-			req.open("POST", url + "/api/data/v9.1/"+ this._linkedEntityCollectionName +"(" + id + ")/" + this._relationshipName + "/$ref", true);
-			req.setRequestHeader("Accept", "application/json");
-			req.setRequestHeader("Content-Type", "application/json; charset=utf-8");
-			req.setRequestHeader("OData-MaxVersion", "4.0");
-			req.setRequestHeader("OData-Version", "4.0");
-			req.onreadystatechange = function() {
-				if (this.readyState == 4 /* complete */ ) {
-					req.onreadystatechange = null;
-					if (this.status == 204) {
-						//alert('Record Associated');
-					} else {
-						var error = JSON.parse(this.response).error;
-						alert(error.message);
-					}
-				}
-			};
-			req.send(JSON.stringify(associate));
-	
+			}
+			this._notifyOutputChanged();
+
 		}
-		else if(action == "unselect")
-		{
-			var req = new XMLHttpRequest();
-			req.open("DELETE",url + "/api/data/v9.1/"+ this._linkedEntityCollectionName +"(" + id + ")/" + this._relationshipName + "/$ref"+"?$id="+recordUrl, true);
-			req.setRequestHeader("Accept", "application/json");
-			req.setRequestHeader("Content-Type", "application/json; charset=utf-8");
-			req.setRequestHeader("OData-MaxVersion", "4.0");
-			req.setRequestHeader("OData-Version", "4.0");
-			req.onreadystatechange = function() {
-				if (this.readyState == 4 /* complete */ ) {
-					req.onreadystatechange = null;
-					if (this.status == 204) {
-						//alert('Record Disassociated');
-					} else {
-						var error = JSON.parse(this.response).error;
-						alert(error.message);
+		else{
+
+			var url: string = (<any>Xrm).Utility.getGlobalContext().getClientUrl();
+			var recordUrl: string = url + "/api/data/v9.1/"+ this._mainEntityCollectionName + "(" + (<any>this.contextObj).page.entityId + ")";
+			
+			if(action == "select")
+			{
+				
+
+				//See himbap samples here: http://himbap.com/blog/?p=2063
+				var associate = {
+					"@odata.id": recordUrl
+				};
+				
+				var req = new XMLHttpRequest();
+				req.open("POST", url + "/api/data/v9.1/"+ this._linkedEntityCollectionName +"(" + id + ")/" + this._relationshipName + "/$ref", true);
+				req.setRequestHeader("Accept", "application/json");
+				req.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+				req.setRequestHeader("OData-MaxVersion", "4.0");
+				req.setRequestHeader("OData-Version", "4.0");
+				req.onreadystatechange = function() {
+					if (this.readyState == 4 /* complete */ ) {
+						req.onreadystatechange = null;
+						if (this.status == 204) {
+							//alert('Record Associated');
+						} else {
+							var error = JSON.parse(this.response).error;
+							alert(error.message);
+						}
 					}
-				}
-			};
-			req.send();
+				};
+				req.send(JSON.stringify(associate));
+		
+			}
+			else if(action == "unselect")
+			{
+
+				
+				var req = new XMLHttpRequest();
+				req.open("DELETE",url + "/api/data/v9.1/"+ this._linkedEntityCollectionName +"(" + id + ")/" + this._relationshipName + "/$ref"+"?$id="+recordUrl, true);
+				req.setRequestHeader("Accept", "application/json");
+				req.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+				req.setRequestHeader("OData-MaxVersion", "4.0");
+				req.setRequestHeader("OData-Version", "4.0");
+				req.onreadystatechange = function() {
+					if (this.readyState == 4 /* complete */ ) {
+						req.onreadystatechange = null;
+						if (this.status == 204) {
+							//alert('Record Disassociated');
+						} else {
+							var error = JSON.parse(this.response).error;
+							alert(error.message);
+						}
+					}
+				};
+				req.send();
+			}
 		}
 		
 	}

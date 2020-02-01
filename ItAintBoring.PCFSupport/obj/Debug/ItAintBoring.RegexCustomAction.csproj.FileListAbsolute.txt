@@ -1,0 +1,11 @@
+C:\Work\Projects\ItAintBoring.PowerPlatformWithCode\ItAintBoring.RegexCustomAction\bin\Debug\ItAintBoring.RegexCustomAction.dll
+C:\Work\Projects\ItAintBoring.PowerPlatformWithCode\ItAintBoring.RegexCustomAction\bin\Debug\ItAintBoring.RegexCustomAction.pdb
+C:\Work\Projects\ItAintBoring.PowerPlatformWithCode\ItAintBoring.RegexCustomAction\bin\Debug\Microsoft.Crm.Sdk.Proxy.dll
+C:\Work\Projects\ItAintBoring.PowerPlatformWithCode\ItAintBoring.RegexCustomAction\bin\Debug\Microsoft.Xrm.Sdk.dll
+C:\Work\Projects\ItAintBoring.PowerPlatformWithCode\ItAintBoring.RegexCustomAction\bin\Debug\Microsoft.Crm.Sdk.Proxy.xml
+C:\Work\Projects\ItAintBoring.PowerPlatformWithCode\ItAintBoring.RegexCustomAction\bin\Debug\Microsoft.Xrm.Sdk.xml
+C:\Work\Projects\ItAintBoring.PowerPlatformWithCode\ItAintBoring.RegexCustomAction\obj\Debug\ItAintBoring.RegexCustomAction.csprojResolveAssemblyReference.cache
+C:\Work\Projects\ItAintBoring.PowerPlatformWithCode\ItAintBoring.RegexCustomAction\obj\Debug\ItAintBoring.RegexCustomAction.csproj.CoreCompileInputs.cache
+C:\Work\Projects\ItAintBoring.PowerPlatformWithCode\ItAintBoring.RegexCustomAction\obj\Debug\ItAintBoring.RegexCustomAction.csproj.CopyComplete
+C:\Work\Projects\ItAintBoring.PowerPlatformWithCode\ItAintBoring.RegexCustomAction\obj\Debug\ItAintBoring.RegexCustomAction.dll
+C:\Work\Projects\ItAintBoring.PowerPlatformWithCode\ItAintBoring.RegexCustomAction\obj\Debug\ItAintBoring.RegexCustomAction.pdb

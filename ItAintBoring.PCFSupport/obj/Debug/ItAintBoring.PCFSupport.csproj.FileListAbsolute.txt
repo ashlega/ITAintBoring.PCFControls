@@ -1,0 +1,9 @@
+C:\Work\Projects\ITAintBoring.PCFControls\ItAintBoring.PCFSupport\bin\Debug\ItAintBoring.PCFSupport.dll
+C:\Work\Projects\ITAintBoring.PCFControls\ItAintBoring.PCFSupport\bin\Debug\ItAintBoring.PCFSupport.pdb
+C:\Work\Projects\ITAintBoring.PCFControls\ItAintBoring.PCFSupport\bin\Debug\Microsoft.Crm.Sdk.Proxy.xml
+C:\Work\Projects\ITAintBoring.PCFControls\ItAintBoring.PCFSupport\bin\Debug\Microsoft.Xrm.Sdk.xml
+C:\Work\Projects\ITAintBoring.PCFControls\ItAintBoring.PCFSupport\obj\Debug\ItAintBoring.PCFSupport.csprojResolveAssemblyReference.cache
+C:\Work\Projects\ITAintBoring.PCFControls\ItAintBoring.PCFSupport\obj\Debug\ItAintBoring.PCFSupport.csproj.CoreCompileInputs.cache
+C:\Work\Projects\ITAintBoring.PCFControls\ItAintBoring.PCFSupport\obj\Debug\ItAintBoring.PCFSupport.csproj.CopyComplete
+C:\Work\Projects\ITAintBoring.PCFControls\ItAintBoring.PCFSupport\obj\Debug\ItAintBoring.PCFSupport.dll
+C:\Work\Projects\ITAintBoring.PCFControls\ItAintBoring.PCFSupport\obj\Debug\ItAintBoring.PCFSupport.pdb
