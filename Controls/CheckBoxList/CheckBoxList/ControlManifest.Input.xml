@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-116" ?>
 <manifest>
-  <control namespace="ItAintBoring.PCFControls" constructor="CheckBoxList" version="0.0.247" display-name-key="CheckBox List" description-key="CheckBox List" control-type="standard">
+  <control namespace="ItAintBoring.PCFControls" constructor="CheckBoxList" version="0.0.250" display-name-key="CheckBox List" description-key="CheckBox List" control-type="standard">
     <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
     <data-set name="tableGrid" display-name-key="Table Grid" >
 	<!--cds-data-set-options="displayIndex:true;displayCommandBar:true;displayViewSelector:false;displayQuickFind:false"-->
