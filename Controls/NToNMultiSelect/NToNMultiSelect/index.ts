@@ -129,7 +129,8 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
 		(<any>Xrm).Utility.getEntityMetadata(this._linkedEntityName,[]).then(this._linkedEntityMetadataSuccessCallback, this.errorCallback);
 		//(<any>Xrm).WebApi.retrieveMultipleRecords(this._relationshipEntity, "?$filter="+ (<any>this.contextObj).page.entityTypeName+"id eq " + (<any>this.contextObj).page.entityId, 5000).then(this._relationshipSuccessCallback, this.errorCallback);
 		
-		if((<any>this.contextObj).page.entityId != null)
+		if((<any>this.contextObj).page.entityId != null 
+		   && (<any>this.contextObj).page.entityId != "00000000-0000-0000-0000-000000000000")
 		{
   	  	    this.contextObj.webAPI.retrieveMultipleRecords(this._relationshipEntity, "?$filter="+ (<any>this.contextObj).page.entityTypeName+"id eq " + (<any>this.contextObj).page.entityId, 5000).then(this._relationshipSuccessCallback, this.errorCallback);
 		}
@@ -253,7 +254,8 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
 				}
 		*/
 
-		if((<any>this.contextObj).page.entityId == null)
+		if((<any>this.contextObj).page.entityId == null
+		   || (<any>this.contextObj).page.entityId == "00000000-0000-0000-0000-000000000000")
 		{
 			if(action == "select")
 			{
