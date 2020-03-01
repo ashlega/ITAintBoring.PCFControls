@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-39" ?>
+<?xml version="1.0" encoding="utf-46" ?>
 <manifest>
-  <control namespace="ItAintBoring.PCFControls" constructor="NToNMultiSelect" version="0.0.39" display-name-key="NToNMultiSelect" description-key="NToNMultiSelect description" control-type="standard">
+  <control namespace="ItAintBoring.PCFControls" constructor="NToNMultiSelect" version="0.0.46" display-name-key="NToNMultiSelect" description-key="NToNMultiSelect description" control-type="standard">
     <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
     <property name="value" display-name-key="Value" description-key="Value" of-type="SingleLine.Text" usage="bound" required="true" />
     <property name="linkedEntityName" display-name-key="Linked Entity Name" description-key="Linked Entity Name" of-type="SingleLine.Text" usage="input" required="false" />
@@ -8,6 +8,7 @@
     <property name="idAttribute" display-name-key="Linked Entity ID Attribute" description-key="Linked Entity ID Attribute" of-type="SingleLine.Text" usage="input" required="false" />
     <property name="relationshipName" display-name-key="Relationship Name" description-key="Relationship Name" of-type="SingleLine.Text" usage="input" required="false" />
     <property name="relationshipEntity" display-name-key="Relationship Entity" description-key="Relationship Entity" of-type="SingleLine.Text" usage="input" required="false" />
+    <property name="linkedEntityFetchXmlResource" display-name-key="FetchXml Web Resource" description-key="Optional FetchXml web resource to select linked entity records" of-type="SingleLine.Text" usage="input" required="false" />
     
     <feature-usage>
        <uses-feature name="WebAPI" required="true" />
@@ -24,10 +25,10 @@
       <property name="sampleProperty" display-name-key="Property_Display_Key" description-key="Property_Desc_Key" of-type-group="numbers" usage="bound" required="true" />
     -->
     <resources>
-      <code path="index.ts" order="39"/>
-	  <css path="css/select2.min.css" order="39" />
+      <code path="index.ts" order="46"/>
+	  <css path="css/select2.min.css" order="46" />
       <!-- UNCOMMENT TO ADD MORE RESOURCES
-      <css path="css/NToNMultiSelect.css" order="39" />
+      <css path="css/NToNMultiSelect.css" order="46" />
       <resx path="strings/NToNMultiSelect.1033.resx" version="1.0.0" />
       -->
     </resources>

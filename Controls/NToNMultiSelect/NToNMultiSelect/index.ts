@@ -34,6 +34,7 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
 	private _relationshipName: string; 
 	private _idAttribute: string;
 	private _nameAttribute: string;
+	private _linkedEntityFetchXmlResource: string;
 
 	private _linkedEntityCollectionName: string;
 	private _mainEntityCollectionName: string;
@@ -104,6 +105,9 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
         if(context.parameters.relationshipName.raw != null){
 		  this._relationshipName = context.parameters.relationshipName.raw;
 		  this._relData.rn = this._relationshipName;
+		}
+		if(context.parameters.linkedEntityFetchXmlResource.raw != null){
+		  this._linkedEntityFetchXmlResource = context.parameters.linkedEntityFetchXmlResource.raw;
 		}
 		
 		// Need to track container resize so that control could get the available width. The available height won't be provided even this is true
@@ -206,7 +210,23 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
 				this.selectedItems.push(value.entities[i][this._idAttribute]);
 			}
 		}
-  		this.contextObj.webAPI.retrieveMultipleRecords(this._linkedEntityName, "?$orderby=" + this._nameAttribute + " asc", 5000).then(this._successCallback, this.errorCallback);
+		if(this._linkedEntityFetchXmlResource != null)
+		{
+			var _self = this;
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+				   _self.contextObj.webAPI.retrieveMultipleRecords(_self._linkedEntityName, "?fetchXml=" + encodeURIComponent(this.responseText), 5000).then(_self._successCallback, _self.errorCallback);
+				}
+			};
+			xhttp.open("GET", this._linkedEntityFetchXmlResource, true);
+			xhttp.send();
+			
+		}
+		else
+		{
+  		    this.contextObj.webAPI.retrieveMultipleRecords(this._linkedEntityName, "?$orderby=" + this._nameAttribute + " asc", 5000).then(this._successCallback, this.errorCallback);
+		}
 	}
 
 	public errorCallback(value: any)
