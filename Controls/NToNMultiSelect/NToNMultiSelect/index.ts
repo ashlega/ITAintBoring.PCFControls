@@ -26,6 +26,8 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
     // Div element created as part of this control's main container
 	private mainContainer: HTMLSelectElement;
 	private selectedItems: string[] = [];
+	private overlayDiv: HTMLDivElement;
+	private container: HTMLDivElement;
 
 	private _relData : NToNData;
 	
@@ -79,6 +81,7 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
 	 */
 	public init(context: ComponentFramework.Context<IInputs>, notifyOutputChanged: () => void, state: ComponentFramework.Dictionary, container:HTMLDivElement)
 	{
+		this.container = container;
 		this.contextObj = context;
 		this._ctrlId = this.newGuid();
 		this._relData = new NToNData();
@@ -110,12 +113,17 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
 		  this._linkedEntityFetchXmlResource = context.parameters.linkedEntityFetchXmlResource.raw;
 		}
 		
-		// Need to track container resize so that control could get the available width. The available height won't be provided even this is true
-        context.mode.trackContainerResize(true);
-        // Create main table container div. 
+		context.mode.trackContainerResize(true);
+        container.classList.add("pcf_container_element");
+		
+		this.overlayDiv = document.createElement("div");
+		this.overlayDiv.classList.add("pcf_overlay_element");
+		container.appendChild(this.overlayDiv);
+		
 		this.mainContainer = document.createElement("select");
 		this.mainContainer.id = this._ctrlId;
         this.mainContainer.classList.add("js-example-basic-multiple");
+		this.mainContainer.classList.add("pcf_main_element");
 		this.mainContainer.multiple = true;
 		this.mainContainer.name = "states[]";
 		container.appendChild(this.mainContainer);
@@ -145,6 +153,7 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
 		var thisVar : any;
 		thisVar = this;
 		$(document).ready(function() {
+			thisVar.setReadonly();
 			$('#'+ thisVar._ctrlId).select2().on('select2:select', function (e) {
 				var data = e.params.data;
 				thisVar.selectAction("select", data.id);
@@ -234,6 +243,11 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
 		alert(value);
 	}	
 
+	public setReadonly(): void
+	{
+		(<HTMLElement>this.container.firstElementChild).style.display = this.contextObj.mode.isControlDisabled == false ? "none" : "block";
+	}
+	
 	/**
 	 * Called when any value in the property bag has changed. This includes field values, data-sets, global values such as container height and width, offline status, control metadata values such as label, visible, etc.
 	 * @param context The entire property bag available to control via Context Object; It contains values as set up by the customizer mapped to names defined in the manifest, as well as utility functions
@@ -241,6 +255,8 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
 	public updateView(context: ComponentFramework.Context<IInputs>): void
 	{
 		// Add code to update control view
+		this.contextObj = context;
+		this.setReadonly();
 	}
 
 	/** 

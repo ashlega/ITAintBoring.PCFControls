@@ -79,12 +79,13 @@ export class TreeRelationships implements ComponentFramework.StandardControl<IIn
         context.mode.trackContainerResize(true);
         // Create main table container div. 
         this.mainContainer = document.createElement("div");
+		this.mainContainer.classList.add("pcf_container_element");
 		
-		
-		this.controlId = "foo";
+		this.controlId = "tree_"+Math.random().toString(36).substr(2, 9);
 		
 		this.mainContainer.innerHTML = `
-		    <div id="` + this.controlId + `" class="jstree-open">
+		    <div class="pcf_overlay_element" id="` + this.controlId + `_overlay"></div>
+		    <div id="` + this.controlId + `" class="pcf_main_element jstree-open">
 			  <ul>
 				
 			  </ul>
@@ -185,7 +186,7 @@ export class TreeRelationships implements ComponentFramework.StandardControl<IIn
 		(<any>Xrm).Utility.getEntityMetadata(this._treeEntityName,[]).then(this._treeMetadataSuccessCallback, this.errorCallback);
 		//(<any>Xrm).WebApi.retrieveMultipleRecords(this._relationshipEntity, "?$filter="+ (<any>this.contextObj).page.entityTypeName+"id eq " + (<any>this.contextObj).page.entityId, 5000).then(this._relationshipSuccessCallback, this.errorCallback);
 		this.contextObj.webAPI.retrieveMultipleRecords(this._relationshipEntity, "?$filter="+ (<any>this.contextObj).page.entityTypeName+"id eq " + (<any>this.contextObj).page.entityId, 5000).then(this._relationshipSuccessCallback, this.errorCallback);
-
+        
 	}
 	
 	public entityMetadataSuccessCallback(value: any) : void | PromiseLike<void>
@@ -234,7 +235,7 @@ export class TreeRelationships implements ComponentFramework.StandardControl<IIn
   		this.addChildElements(value, this.root);
 		this.initTree();
 		
-		
+		this.setReadonly();
 	}	
 
     public relationshipSuccessCallback(value: any) : void | PromiseLike<void>
@@ -302,6 +303,11 @@ export class TreeRelationships implements ComponentFramework.StandardControl<IIn
 		*/
 		
     }
+	
+	public setReadonly(): void
+	{
+		(<HTMLElement>this.mainContainer.firstElementChild).style.display = this.contextObj.mode.isControlDisabled == false ? "none" : "block";
+	}
 
 	/**
 	 * Called when any value in the property bag has changed. This includes field values, data-sets, global values such as container height and width, offline status, control metadata values such as label, visible, etc.
@@ -309,7 +315,8 @@ export class TreeRelationships implements ComponentFramework.StandardControl<IIn
 	 */
 	public updateView(context: ComponentFramework.Context<IInputs>): void
 	{
-		// Add code to update control view
+		this.contextObj = context;
+		this.setReadonly();
 	}
 
 	/** 
