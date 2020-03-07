@@ -64,6 +64,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </ProjectReference>
     <ProjectReference Include="..\NToNMultiSelect\NToNMultiSelect.pcfproj" />
+    <ProjectReference Include="..\IFrameControl\IFrameControl.pcfproj" />
+    <ProjectReference Include="..\ExternalValidator\ExternalValidator.pcfproj" />
   </ItemGroup>
 
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />

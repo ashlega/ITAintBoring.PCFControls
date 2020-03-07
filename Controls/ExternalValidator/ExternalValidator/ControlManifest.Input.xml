@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-20" ?>
 <manifest>
 
-  <control namespace="ItAintBoring.PCFControls" constructor="ValidatedInputControl" version="0.0.315" display-name-key="Validated Input Control" description-key="Validated Input Control" control-type="standard">
-
+  <control namespace="ItAintBoring.PCFControls" constructor="ExternalValidatorControl" version="0.0.20" display-name-key="External Validation Control" description-key="External Validation Control" control-type="standard">
     <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
     <property name="value" display-name-key="Value" description-key="Value" of-type="SingleLine.Text" usage="bound" required="true" />
-	<property name="regEx" display-name-key="Regular Expression" description-key="Regular Expression" of-type="SingleLine.Text" usage="input" required="false" />
+	<property name="errorMessage" display-name-key="Error Message" description-key="Error Message" of-type="SingleLine.Text" usage="input" required="false" />
+    <property name="regEx" display-name-key="Regular Expression" description-key="Regular Expression" of-type="SingleLine.Text" usage="input" required="false" />
     <!-- 
       Property node's of-type attribute can be of-type-group attribute. 
       Example:
@@ -18,9 +18,8 @@
       <property name="sampleProperty" display-name-key="Property_Display_Key" description-key="Property_Desc_Key" of-type-group="numbers" usage="bound" required="true" />
     -->
     <resources>
-      <code path="index.ts" order="1"/>
-      <css path="css/ValidatedInputControl.css" order="2" />
-	  <!-- UNCOMMENT TO ADD MORE RESOURCES
+      <code path="index.ts" order="20"/>
+      <!-- UNCOMMENT TO ADD MORE RESOURCES
       <resx path="strings/ValidatedInputControl.1033.resx" version="1.0.0" />
       -->
     </resources>

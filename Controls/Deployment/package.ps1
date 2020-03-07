@@ -47,6 +47,10 @@ $manifestFilePath = "..\TreeRelationships\TreeRelationships\ControlManifest.Inpu
 New-PCFControlVersion $manifestFilePath
 $manifestFilePath = "..\NToNMultiSelect\NToNMultiSelect\ControlManifest.Input.xml"
 New-PCFControlVersion $manifestFilePath
+$manifestFilePath = "..\IFrameControl\IFrameControl\ControlManifest.Input.xml"
+New-PCFControlVersion $manifestFilePath
+$manifestFilePath = "..\ExternalValidator\ExternalValidator\ControlManifest.Input.xml"
+New-PCFControlVersion $manifestFilePath
 
 #version number has been updated
 
@@ -55,6 +59,8 @@ pac.exe solution add-reference --path ..\ValidatedInputControl
 pac.exe solution add-reference --path ..\CheckBoxList
 pac.exe solution add-reference --path ..\TreeRelationships
 pac.exe solution add-reference --path ..\NToNMultiSelect
+pac.exe solution add-reference --path ..\IFrameControl
+pac.exe solution add-reference --path ..\ExternalValidator
 
 
 

@@ -19,3 +19,13 @@ $controlName = "NtoNMultiSelect"
 cd $controlName
 npm run build
 cd ..
+
+$controlName = "IFrameControl"
+cd $controlName
+npm run build
+cd ..
+
+$controlName = "ExternalValidator"
+cd $controlName
+npm run build
+cd ..
