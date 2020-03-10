@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-31" ?>
+<?xml version="1.0" encoding="utf-37" ?>
 <manifest>
-  <control namespace="ItAintBoring.PCFControls" constructor="IFrameControl" version="0.0.31" display-name-key="IFrameControl" description-key="IFrameControl description" control-type="standard">
+  <control namespace="ItAintBoring.PCFControls" constructor="IFrameControl" version="0.0.37" display-name-key="IFrameControl" description-key="IFrameControl description" control-type="standard">
     <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
     <property name="value" display-name-key="Anchor Property" description-key="Anchor Property to use for IFrame renderign"  of-type-group="AnyType" usage="bound" required="true" />
     <property name="src" display-name-key="IFrame Src" description-key="IFrame Src" of-type="SingleLine.Text" usage="input" required="true" />
@@ -19,7 +19,7 @@
       <code path="index.ts" order="1"/>
 	  <css path="css/iframecontrol.css" order="2" />
       <!-- UNCOMMENT TO ADD MORE RESOURCES
-      <css path="css/IFrameControl.css" order="31" />
+      <css path="css/IFrameControl.css" order="37" />
       <resx path="strings/IFrameControl.1033.resx" version="1.0.0" />
       -->
     </resources>

@@ -25,9 +25,11 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
 	private contextObj: ComponentFramework.Context<IInputs>;
     // Div element created as part of this control's main container
 	private mainContainer: HTMLSelectElement;
+	private errorElement: HTMLDivElement;
 	private selectedItems: string[] = [];
 	private overlayDiv: HTMLDivElement;
 	private container: HTMLDivElement;
+	private _isValidState : boolean = true;
 
 	private _relData : NToNData;
 	
@@ -81,87 +83,96 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
 	 */
 	public init(context: ComponentFramework.Context<IInputs>, notifyOutputChanged: () => void, state: ComponentFramework.Dictionary, container:HTMLDivElement)
 	{
+		debugger;
 		this.container = container;
 		this.contextObj = context;
-		this._ctrlId = this.newGuid();
-		this._relData = new NToNData();
-		this._relData.actions = [];
-		
-		debugger;
-		
-		if(context.parameters.linkedEntityName.raw != null){
-		  this._linkedEntityName = context.parameters.linkedEntityName.raw;
-		  this._relData.len = this._linkedEntityName;
-		}
-		if(context.parameters.idAttribute.raw != null){
-		  this._idAttribute = context.parameters.idAttribute.raw;
-		  this._relData.ida = this._idAttribute;
-		}
-		if(context.parameters.nameAttribute.raw != null){
-		  this._nameAttribute = context.parameters.nameAttribute.raw;
-		  this._relData.na = this._nameAttribute;
-		}
-	    if(context.parameters.relationshipEntity.raw != null){
-		  this._relationshipEntity = context.parameters.relationshipEntity.raw;
-		  this._relData.re = this._relationshipEntity;
-		}
-        if(context.parameters.relationshipName.raw != null){
-		  this._relationshipName = context.parameters.relationshipName.raw;
-		  this._relData.rn = this._relationshipName;
-		}
-		if(context.parameters.linkedEntityFetchXmlResource.raw != null){
-		  this._linkedEntityFetchXmlResource = context.parameters.linkedEntityFetchXmlResource.raw;
-		}
-		
-		context.mode.trackContainerResize(true);
-        container.classList.add("pcf_container_element");
-		
-		this.overlayDiv = document.createElement("div");
-		this.overlayDiv.classList.add("pcf_overlay_element");
-		container.appendChild(this.overlayDiv);
-		
-		this.mainContainer = document.createElement("select");
-		this.mainContainer.id = this._ctrlId;
-        this.mainContainer.classList.add("js-example-basic-multiple");
-		this.mainContainer.classList.add("pcf_main_element");
-		this.mainContainer.multiple = true;
-		this.mainContainer.name = "states[]";
-		container.appendChild(this.mainContainer);
-
-		
-
-		this._entityMetadataSuccessCallback = this.entityMetadataSuccessCallback.bind(this);
-		this._linkedEntityMetadataSuccessCallback = this.linkedEntityMetadataSuccessCallback.bind(this);
-		this._relationshipSuccessCallback = this.relationshipSuccessCallback.bind(this);
-		this._successCallback = this.successCallback.bind(this);
-		
-		this._notifyOutputChanged = notifyOutputChanged;
-		
-		(<any>Xrm).Utility.getEntityMetadata((<any>this.contextObj).page.entityTypeName,[]).then(this._entityMetadataSuccessCallback, this.errorCallback);
-		(<any>Xrm).Utility.getEntityMetadata(this._linkedEntityName,[]).then(this._linkedEntityMetadataSuccessCallback, this.errorCallback);
-		//(<any>Xrm).WebApi.retrieveMultipleRecords(this._relationshipEntity, "?$filter="+ (<any>this.contextObj).page.entityTypeName+"id eq " + (<any>this.contextObj).page.entityId, 5000).then(this._relationshipSuccessCallback, this.errorCallback);
-		
-		if((<any>this.contextObj).page.entityId != null 
-		   && (<any>this.contextObj).page.entityId != "00000000-0000-0000-0000-000000000000")
+		if(typeof Xrm == 'undefined')
 		{
-  	  	    this.contextObj.webAPI.retrieveMultipleRecords(this._relationshipEntity, "?$filter="+ (<any>this.contextObj).page.entityTypeName+"id eq " + (<any>this.contextObj).page.entityId, 5000).then(this._relationshipSuccessCallback, this.errorCallback);
+			this.errorElement = document.createElement("div");
+			this.errorElement.innerHTML = "<H2>This control only works on model-driven forms!</H2>";
+			container.appendChild(this.errorElement);
+			this._isValidState = false;
 		}
 		else{
-			this.relationshipSuccessCallback(null);
-		}
+			
+			this._ctrlId = this.newGuid();
+			this._relData = new NToNData();
+			this._relData.actions = [];
+			
+			if(context.parameters.linkedEntityName.raw != null){
+			  this._linkedEntityName = context.parameters.linkedEntityName.raw;
+			  this._relData.len = this._linkedEntityName;
+			}
+			if(context.parameters.idAttribute.raw != null){
+			  this._idAttribute = context.parameters.idAttribute.raw;
+			  this._relData.ida = this._idAttribute;
+			}
+			if(context.parameters.nameAttribute.raw != null){
+			  this._nameAttribute = context.parameters.nameAttribute.raw;
+			  this._relData.na = this._nameAttribute;
+			}
+			if(context.parameters.relationshipEntity.raw != null){
+			  this._relationshipEntity = context.parameters.relationshipEntity.raw;
+			  this._relData.re = this._relationshipEntity;
+			}
+			if(context.parameters.relationshipName.raw != null){
+			  this._relationshipName = context.parameters.relationshipName.raw;
+			  this._relData.rn = this._relationshipName;
+			}
+			if(context.parameters.linkedEntityFetchXmlResource.raw != null){
+			  this._linkedEntityFetchXmlResource = context.parameters.linkedEntityFetchXmlResource.raw;
+			}
+			
+			context.mode.trackContainerResize(true);
+			container.classList.add("pcf_container_element");
+			
+			this.overlayDiv = document.createElement("div");
+			this.overlayDiv.classList.add("pcf_overlay_element");
+			container.appendChild(this.overlayDiv);
+			
+			this.mainContainer = document.createElement("select");
+			this.mainContainer.id = this._ctrlId;
+			this.mainContainer.classList.add("js-example-basic-multiple");
+			this.mainContainer.classList.add("pcf_main_element");
+			this.mainContainer.multiple = true;
+			this.mainContainer.name = "states[]";
+			container.appendChild(this.mainContainer);
 
-		var thisVar : any;
-		thisVar = this;
-		$(document).ready(function() {
-			thisVar.setReadonly();
-			$('#'+ thisVar._ctrlId).select2().on('select2:select', function (e) {
-				var data = e.params.data;
-				thisVar.selectAction("select", data.id);
-			  }).on('select2:unselect', function (e) {
-				var data = e.params.data;
-				thisVar.selectAction("unselect", data.id);
+			
+
+			this._entityMetadataSuccessCallback = this.entityMetadataSuccessCallback.bind(this);
+			this._linkedEntityMetadataSuccessCallback = this.linkedEntityMetadataSuccessCallback.bind(this);
+			this._relationshipSuccessCallback = this.relationshipSuccessCallback.bind(this);
+			this._successCallback = this.successCallback.bind(this);
+			
+			this._notifyOutputChanged = notifyOutputChanged;
+			
+			(<any>Xrm).Utility.getEntityMetadata((<any>this.contextObj).page.entityTypeName,[]).then(this._entityMetadataSuccessCallback, this.errorCallback);
+			(<any>Xrm).Utility.getEntityMetadata(this._linkedEntityName,[]).then(this._linkedEntityMetadataSuccessCallback, this.errorCallback);
+			//(<any>Xrm).WebApi.retrieveMultipleRecords(this._relationshipEntity, "?$filter="+ (<any>this.contextObj).page.entityTypeName+"id eq " + (<any>this.contextObj).page.entityId, 5000).then(this._relationshipSuccessCallback, this.errorCallback);
+			
+			if((<any>this.contextObj).page.entityId != null 
+			   && (<any>this.contextObj).page.entityId != "00000000-0000-0000-0000-000000000000")
+			{
+				this.contextObj.webAPI.retrieveMultipleRecords(this._relationshipEntity, "?$filter="+ (<any>this.contextObj).page.entityTypeName+"id eq " + (<any>this.contextObj).page.entityId, 5000).then(this._relationshipSuccessCallback, this.errorCallback);
+			}
+			else{
+				this.relationshipSuccessCallback(null);
+			}
+
+			var thisVar : any;
+			thisVar = this;
+			$(document).ready(function() {
+				thisVar.setReadonly();
+				$('#'+ thisVar._ctrlId).select2().on('select2:select', function (e) {
+					var data = e.params.data;
+					thisVar.selectAction("select", data.id);
+				  }).on('select2:unselect', function (e) {
+					var data = e.params.data;
+					thisVar.selectAction("unselect", data.id);
+				});
 			});
-		});
+		}
 	}
 
 	public entityMetadataSuccessCallback(value: any) : void | PromiseLike<void>
@@ -254,6 +265,7 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
 	 */
 	public updateView(context: ComponentFramework.Context<IInputs>): void
 	{
+		if(this._isValidState == false) return;
 		// Add code to update control view
 		this.contextObj = context;
 		this.setReadonly();
@@ -265,9 +277,17 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
 	 */
 	public getOutputs(): IOutputs
 	{
-		return {
+		if(this._isValidState == false)
+		{
+		  return {
+			value: ""
+		  };
+		}
+		else{
+		  return {
 			value: "NTONDATA:"+JSON.stringify(this._relData)
 		  };
+		}
 	}
 
 	/** 
