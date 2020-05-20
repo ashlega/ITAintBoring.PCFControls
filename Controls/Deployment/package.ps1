@@ -1,13 +1,18 @@
 function New-PCFControlVersion($manifestFilePath){
-    $pattern = 'version="(\d+\.)?(\d+\.)?(\*|\d+)" display-name-key'
+    # Read in XML file
+    $xml = [xml](Get-Content $manifestFilePath)
+    
+    # Get current control version
+    $controlVersion = [version]$xml.SelectSingleNode("/manifest/control").version
+    
+    # Build the new control version (increment build number only)
+    $newControlVersion = "{0}.{1}.{2}" -f $controlVersion.Major, $controlVersion.Minor, ($controlVersion.Build + 1)
+    
+    # Set the new control version
+    $xml.SelectSingleNode("/manifest/control").version = $newControlVersion
 
-	$V = Select-String -Path $manifestFilePath -Pattern $pattern
-	$currentVersion = [int]$V.Matches[0].Groups[3].Value
-	$nextVersion =  [int]$V.Matches[0].Groups[3].Value + 1
-
-	$fileContent = Get-Content $manifestFilePath
-	$fileContent = $fileContent.replace("$currentVersion`"",  "$nextVersion`"") 
-	Set-Content -Path $manifestFilePath -value $fileContent
+    # Save the updated XML
+    $xml.Save($manifestFilePath)
 }
 
 
