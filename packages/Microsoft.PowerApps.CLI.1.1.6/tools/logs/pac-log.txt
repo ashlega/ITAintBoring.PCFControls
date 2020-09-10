@@ -1,0 +1,168 @@
+2020-03-13 11:14:57.0073|INFO|bolt.cli.Worker|StartExecutingVerb
+2020-03-13 11:14:57.1040|INFO|bolt.cli.Worker|Verbs: [""]
+2020-03-13 11:14:57.1070|INFO|bolt.cli.Worker|ProductVersion: 1.1.6
+2020-03-13 11:14:57.1070|INFO|bolt.cli.Worker|ProductName: pac
+2020-03-13 11:14:57.1330|INFO|bolt.cli.Worker|EndExecutingVerb
+2020-03-13 11:14:57.1330|INFO|bolt.cli.Worker|Success: True
+2020-03-13 11:14:57.1330|INFO|bolt.cli.Worker|Execution Time(ms): 2
+2020-03-13 11:15:49.7154|INFO|bolt.cli.Worker|StartExecutingVerb
+2020-03-13 11:15:49.7643|INFO|bolt.cli.Worker|Verbs: ["auth","create"]
+2020-03-13 11:15:49.7643|INFO|bolt.cli.Worker|ProductVersion: 1.1.6
+2020-03-13 11:15:49.7643|INFO|bolt.cli.Worker|ProductName: pac
+2020-03-13 11:15:52.6511|INFO|bolt.module.auth.store.AuthTokenStore|AcquireTokenAsync(): Authority for https://dss-hub-merge.crm3.dynamics.com is https://login.microsoftonline.com/dfcc033d-df87-4c6e-a1b8-8eaa73f1b72e/
+2020-03-13 11:15:52.6581|INFO|bolt.module.auth.store.AuthTokenStore|AcquireTokenAsync(): Acquiring token for https://dss-hub-merge.crm3.dynamics.com
+2020-03-13 11:16:13.9346|INFO|bolt.module.auth.store.AuthTokenStore|AcquireTokenAsync(): Successfully acquired a token
+2020-03-13 11:16:14.0742|INFO|bolt.module.cds.client.CdsClient|[CSC] Microsoft.Xrm.Tooling.Connector.CrmServiceClient Verbose: 16 : 
+2020-03-13 11:16:14.0792|INFO|bolt.module.cds.client.CdsClient|[CSC] Initialize CRM connection Started - AuthType: ExternalTokenManagement
+2020-03-13 11:16:14.0792|INFO|bolt.module.cds.client.CdsClient|[CSC] Microsoft.Xrm.Tooling.Connector.CrmServiceClient Verbose: 16 : 
+2020-03-13 11:16:14.0792|INFO|bolt.module.cds.client.CdsClient|[CSC] Direct Login Process Started
+2020-03-13 11:16:14.0792|INFO|bolt.module.cds.client.CdsClient|[CSC] Microsoft.Xrm.Tooling.Connector.CrmServiceClient Information: 8 : 
+2020-03-13 11:16:14.0792|INFO|bolt.module.cds.client.CdsClient|[CSC] Attempting to Connect to Uri https://dss-hub-merge.crm3.dynamics.com/XRMServices/2011/Organization.svc
+2020-03-13 11:16:14.1101|INFO|bolt.module.cds.client.CdsClient|[CSC] Microsoft.Xrm.Tooling.Connector.CrmServiceClient Start: 256 : 
+2020-03-13 11:16:14.1101|INFO|bolt.module.cds.client.CdsClient|[CSC] BuildOrgConnectUri CoreClass ()
+2020-03-13 11:16:14.1101|INFO|bolt.module.cds.client.CdsClient|[CSC] Microsoft.Xrm.Tooling.Connector.CrmServiceClient Verbose: 16 : 
+2020-03-13 11:16:14.1101|INFO|bolt.module.cds.client.CdsClient|[CSC] DiscoveryServer indicated organization service location = https://dss-hub-merge.crm3.dynamics.com/XRMServices/2011/Organization.svc
+2020-03-13 11:16:14.1101|INFO|bolt.module.cds.client.CdsClient|[CSC] Microsoft.Xrm.Tooling.Connector.CrmServiceClient Stop: 512 : 
+2020-03-13 11:16:14.1101|INFO|bolt.module.cds.client.CdsClient|[CSC] BuildOrgConnectUri CoreClass ()
+2020-03-13 11:16:14.1101|INFO|bolt.module.cds.client.CdsClient|[CSC] Microsoft.Xrm.Tooling.Connector.CrmServiceClient Information: 8 : 
+2020-03-13 11:16:14.1101|INFO|bolt.module.cds.client.CdsClient|[CSC] Organization Service URI is = https://dss-hub-merge.crm3.dynamics.com/XRMServices/2011/Organization.svc
+2020-03-13 11:16:14.1101|INFO|bolt.module.cds.client.CdsClient|[CSC] Microsoft.Xrm.Tooling.Connector.CrmServiceClient Verbose: 16 : 
+2020-03-13 11:16:14.1101|INFO|bolt.module.cds.client.CdsClient|[CSC] ConnectAndInitCrmOrgService - Initializing Organization Service Object
+2020-03-13 11:16:14.1101|INFO|bolt.module.cds.client.CdsClient|[CSC] Microsoft.Xrm.Tooling.Connector.CrmServiceClient Information: 8 : 
+2020-03-13 11:16:14.1101|INFO|bolt.module.cds.client.CdsClient|[CSC] ConnectAndInitCrmOrgService - Requesting connection to Organization with CRM Version: No organization data available
+2020-03-13 11:16:14.1531|INFO|bolt.module.auth.store.AuthTokenStore|AcquireTokenSilentAsync(): Acquiring token for https://dss-hub-merge.crm3.dynamics.com
+2020-03-13 11:16:14.1720|INFO|bolt.module.auth.store.AuthTokenStore|AcquireTokenSilentAsync(): Successfully acquired a token
+2020-03-13 11:16:14.4912|INFO|bolt.module.cds.client.CdsClient|[CSC] Microsoft.Xrm.Tooling.Connector.CrmServiceClient Verbose: 16 : 
+2020-03-13 11:16:14.4992|INFO|bolt.module.cds.client.CdsClient|[CSC] Added WebClient Header Hooks to the Request object.
+2020-03-13 11:16:14.7804|INFO|bolt.module.cds.client.CdsClient|[CSC] Microsoft.Xrm.Tooling.Connector.CrmServiceClient Information: 8 : 
+2020-03-13 11:16:14.7804|INFO|bolt.module.cds.client.CdsClient|[CSC] ConnectAndInitCrmOrgService - Proxy created, total elapsed time: 00:00:00.6621260
+2020-03-13 11:16:14.7954|INFO|bolt.module.cds.client.CdsClient|[CSC] Microsoft.Xrm.Tooling.Connector.CrmServiceClient Information: 8 : 
+2020-03-13 11:16:14.7954|INFO|bolt.module.cds.client.CdsClient|[CSC] Querying Organization Instance Details. Request ID: de33f02f-7f93-47a8-910a-b00d532ed29e
+2020-03-13 11:16:17.3751|INFO|bolt.module.cds.client.CdsClient|[CSC] Microsoft.Xrm.Tooling.Connector.CrmServiceClient Information: 8 : 
+2020-03-13 11:16:17.3751|INFO|bolt.module.cds.client.CdsClient|[CSC] Completed Querying Organization Instance Details, total duration: 00:00:02.5728640
+2020-03-13 11:16:17.3900|INFO|bolt.module.cds.client.CdsClient|[CSC] Microsoft.Xrm.Tooling.Connector.CrmServiceClient Verbose: 16 : 
+2020-03-13 11:16:17.3900|INFO|bolt.module.cds.client.CdsClient|[CSC] Completed Parsing Organization Instance Details
+2020-03-13 11:16:17.3900|INFO|bolt.module.cds.client.CdsClient|[CSC] Microsoft.Xrm.Tooling.Connector.CrmServiceClient Information: 8 : 
+2020-03-13 11:16:17.3900|INFO|bolt.module.cds.client.CdsClient|[CSC] Connected to User Organization (org0d5783cf version: 9.1.0.14735)
+2020-03-13 11:16:17.3900|INFO|bolt.module.cds.client.CdsClient|[CSC] Microsoft.Xrm.Tooling.Connector.CrmServiceClient Verbose: 16 : 
+2020-03-13 11:16:17.3900|INFO|bolt.module.cds.client.CdsClient|[CSC] Direct Login Process Succeeded - duration 00:00:03.3079099
+2020-03-13 11:16:17.3900|INFO|bolt.module.cds.client.CdsClient|[CSC] Microsoft.Xrm.Tooling.Connector.CrmServiceClient Information: 8 : 
+2020-03-13 11:16:17.3900|INFO|bolt.module.cds.client.CdsClient|[CSC] Beginning Validation of CRM Connection. RequestID: 22b48c87-7287-4242-93cb-edc412c951a9
+2020-03-13 11:16:17.6581|INFO|bolt.module.cds.client.CdsClient|[CSC] Microsoft.Xrm.Tooling.Connector.CrmServiceClient Information: 8 : 
+2020-03-13 11:16:17.6581|INFO|bolt.module.cds.client.CdsClient|[CSC] Executed Command - WhoAmIRequest : RequestId=22b48c87-7287-4242-93cb-edc412c951a9 : total duration: 00:00:00.2535987
+2020-03-13 11:16:17.6581|INFO|bolt.module.cds.client.CdsClient|[CSC] Microsoft.Xrm.Tooling.Connector.CrmServiceClient Information: 8 : 
+2020-03-13 11:16:17.6581|INFO|bolt.module.cds.client.CdsClient|[CSC] Validation of CRM Connection Complete, total duration: 00:00:00.2584985
+2020-03-13 11:16:17.6581|INFO|bolt.module.cds.client.CdsClient|[CSC] Microsoft.Xrm.Tooling.Connector.CrmServiceClient Verbose: 16 : 
+2020-03-13 11:16:17.6581|INFO|bolt.module.cds.client.CdsClient|[CSC] New Batch Manager Created, Max #of Batches:50000, Max #of RequestsPerBatch:5000
+2020-03-13 11:16:17.6581|INFO|bolt.module.cds.client.CdsClient|Connected to CDS Org
+2020-03-13 11:16:17.6720|INFO|bolt.module.cds.client.actions.WhoAmIAction|WhoAmIAction(): Execute Starting
+2020-03-13 11:16:17.6720|INFO|bolt.module.cds.client.primitives.ClientPrimitives|WhoAmI(): Starting
+2020-03-13 11:16:17.6970|INFO|bolt.module.cds.client.CdsClient|[CSC] Microsoft.Xrm.Tooling.Connector.CrmServiceClient Verbose: 16 : 
+2020-03-13 11:16:17.6970|INFO|bolt.module.cds.client.CdsClient|[CSC] Execute Command - WhoAmI : Execute (WhoAmI) request to CRM from IOrganizationService : RequestID=1fd5b5f9-b763-42ae-a2bb-56a075768edd 
+2020-03-13 11:16:17.7972|INFO|bolt.module.cds.client.CdsClient|[CSC] Microsoft.Xrm.Tooling.Connector.CrmServiceClient Verbose: 16 : 
+2020-03-13 11:16:17.7972|INFO|bolt.module.cds.client.CdsClient|[CSC] Executed Command - WhoAmI : Execute (WhoAmI) request to CRM from IOrganizationService : RequestID=1fd5b5f9-b763-42ae-a2bb-56a075768edd : duration=00:00:00.0984332
+2020-03-13 11:16:17.7972|INFO|bolt.module.cds.client.primitives.ClientPrimitives|WhoAmI(): Succeeded
+2020-03-13 11:16:17.8142|INFO|bolt.module.auth.profiles.AuthProfilesManager|Add(): Adding profile of Kind CDS
+2020-03-13 11:16:17.8142|INFO|bolt.module.auth.profiles.AuthProfilesManager|ReadSettings(): No settings file found, creating a default one
+2020-03-13 11:16:17.8142|INFO|bolt.module.auth.profiles.AuthProfilesManager|SetCurrent(): Setting profile of Kind CDS
+2020-03-13 11:16:18.1343|INFO|bolt.cli.Worker|EndExecutingVerb
+2020-03-13 11:16:18.1343|INFO|bolt.cli.Worker|Success: True
+2020-03-13 11:16:18.1343|INFO|bolt.cli.Worker|Execution Time(ms): 341
+2020-03-13 11:16:35.1559|INFO|bolt.cli.Worker|StartExecutingVerb
+2020-03-13 11:16:35.2058|INFO|bolt.cli.Worker|Verbs: ["telemetry","status"]
+2020-03-13 11:16:35.2058|INFO|bolt.cli.Worker|ProductVersion: 1.1.6
+2020-03-13 11:16:35.2058|INFO|bolt.cli.Worker|ProductName: pac
+2020-03-13 11:16:35.2497|INFO|bolt.cli.Worker|EndExecutingVerb
+2020-03-13 11:16:35.2497|INFO|bolt.cli.Worker|Success: True
+2020-03-13 11:16:35.2497|INFO|bolt.cli.Worker|Execution Time(ms): 16
+2020-03-13 11:16:43.7227|INFO|bolt.cli.Worker|StartExecutingVerb
+2020-03-13 11:16:43.7726|INFO|bolt.cli.Worker|Verbs: ["telemetry","disable"]
+2020-03-13 11:16:43.7726|INFO|bolt.cli.Worker|ProductVersion: 1.1.6
+2020-03-13 11:16:43.7845|INFO|bolt.cli.Worker|ProductName: pac
+2020-03-13 11:16:43.8314|INFO|bolt.cli.Worker|EndExecutingVerb
+2020-03-13 11:16:43.8314|INFO|bolt.cli.Worker|Success: True
+2020-03-13 11:16:43.8314|INFO|bolt.cli.Worker|Execution Time(ms): 25
+2020-03-13 11:16:47.0345|INFO|bolt.cli.Worker|StartExecutingVerb
+2020-03-13 11:16:47.0913|INFO|bolt.cli.Worker|Verbs: ["telemetry","status"]
+2020-03-13 11:16:47.1133|INFO|bolt.cli.Worker|ProductVersion: 1.1.6
+2020-03-13 11:16:47.1133|INFO|bolt.cli.Worker|ProductName: pac
+2020-03-13 11:16:47.1891|INFO|bolt.cli.Worker|EndExecutingVerb
+2020-03-13 11:16:47.1891|INFO|bolt.cli.Worker|Success: True
+2020-03-13 11:16:47.1891|INFO|bolt.cli.Worker|Execution Time(ms): 43
+2020-03-13 12:38:31.0708|INFO|bolt.cli.Worker|StartExecutingVerb
+2020-03-13 12:38:31.2173|INFO|bolt.cli.Worker|Verbs: ["telemetry","enable"]
+2020-03-13 12:38:31.2253|INFO|bolt.cli.Worker|ProductVersion: 1.1.6
+2020-03-13 12:38:31.2253|INFO|bolt.cli.Worker|ProductName: pac
+2020-03-13 12:38:31.3080|INFO|bolt.cli.Worker|EndExecutingVerb
+2020-03-13 12:38:31.3080|INFO|bolt.cli.Worker|Success: True
+2020-03-13 12:38:31.3080|INFO|bolt.cli.Worker|Execution Time(ms): 68
+2020-03-27 13:16:16.5004|INFO|bolt.cli.Worker|StartExecutingVerb
+2020-03-27 13:16:16.5752|INFO|bolt.cli.Worker|Verbs: ["solution","init"]
+2020-03-27 13:16:16.5752|INFO|bolt.cli.Worker|ProductVersion: 1.1.6
+2020-03-27 13:16:16.5752|INFO|bolt.cli.Worker|ProductName: pac
+2020-03-27 13:16:16.6391|INFO|bolt.cli.Worker|EndExecutingVerb
+2020-03-27 13:16:16.6391|INFO|bolt.cli.Worker|Success: True
+2020-03-27 13:16:16.6441|INFO|bolt.cli.Worker|Execution Time(ms): 36
+2020-03-27 13:16:18.5898|INFO|bolt.cli.Worker|StartExecutingVerb
+2020-03-27 13:16:18.6457|INFO|bolt.cli.Worker|Verbs: ["solution","add-reference"]
+2020-03-27 13:16:18.6457|INFO|bolt.cli.Worker|ProductVersion: 1.1.6
+2020-03-27 13:16:18.6457|INFO|bolt.cli.Worker|ProductName: pac
+2020-03-27 13:16:18.7075|INFO|bolt.cli.Worker|EndExecutingVerb
+2020-03-27 13:16:18.7075|INFO|bolt.cli.Worker|Success: True
+2020-03-27 13:16:18.7075|INFO|bolt.cli.Worker|Execution Time(ms): 41
+2020-03-27 13:16:20.4569|INFO|bolt.cli.Worker|StartExecutingVerb
+2020-03-27 13:16:20.5157|INFO|bolt.cli.Worker|Verbs: ["solution","add-reference"]
+2020-03-27 13:16:20.5257|INFO|bolt.cli.Worker|ProductVersion: 1.1.6
+2020-03-27 13:16:20.5337|INFO|bolt.cli.Worker|ProductName: pac
+2020-03-27 13:16:20.5935|INFO|bolt.cli.Worker|EndExecutingVerb
+2020-03-27 13:16:20.5965|INFO|bolt.cli.Worker|Success: True
+2020-03-27 13:16:20.5965|INFO|bolt.cli.Worker|Execution Time(ms): 40
+2020-03-27 13:16:22.6580|INFO|bolt.cli.Worker|StartExecutingVerb
+2020-03-27 13:16:22.7318|INFO|bolt.cli.Worker|Verbs: ["solution","add-reference"]
+2020-03-27 13:16:22.7388|INFO|bolt.cli.Worker|ProductVersion: 1.1.6
+2020-03-27 13:16:22.7388|INFO|bolt.cli.Worker|ProductName: pac
+2020-03-27 13:16:22.8026|INFO|bolt.cli.Worker|EndExecutingVerb
+2020-03-27 13:16:22.8026|INFO|bolt.cli.Worker|Success: True
+2020-03-27 13:16:22.8026|INFO|bolt.cli.Worker|Execution Time(ms): 39
+2020-03-27 13:16:24.4593|INFO|bolt.cli.Worker|StartExecutingVerb
+2020-03-27 13:16:24.5181|INFO|bolt.cli.Worker|Verbs: ["solution","add-reference"]
+2020-03-27 13:16:24.5181|INFO|bolt.cli.Worker|ProductVersion: 1.1.6
+2020-03-27 13:16:24.5360|INFO|bolt.cli.Worker|ProductName: pac
+2020-03-27 13:16:24.5979|INFO|bolt.cli.Worker|EndExecutingVerb
+2020-03-27 13:16:24.5979|INFO|bolt.cli.Worker|Success: True
+2020-03-27 13:16:24.5979|INFO|bolt.cli.Worker|Execution Time(ms): 44
+2020-03-27 13:19:57.4388|INFO|bolt.cli.Worker|StartExecutingVerb
+2020-03-27 13:19:57.4997|INFO|bolt.cli.Worker|Verbs: ["solution","init"]
+2020-03-27 13:19:57.4997|INFO|bolt.cli.Worker|ProductVersion: 1.1.6
+2020-03-27 13:19:57.4997|INFO|bolt.cli.Worker|ProductName: pac
+2020-03-27 13:19:57.5545|INFO|bolt.cli.Worker|EndExecutingVerb
+2020-03-27 13:19:57.5545|INFO|bolt.cli.Worker|Success: True
+2020-03-27 13:19:57.5545|INFO|bolt.cli.Worker|Execution Time(ms): 30
+2020-03-27 13:19:59.3947|INFO|bolt.cli.Worker|StartExecutingVerb
+2020-03-27 13:19:59.4575|INFO|bolt.cli.Worker|Verbs: ["solution","add-reference"]
+2020-03-27 13:19:59.4645|INFO|bolt.cli.Worker|ProductVersion: 1.1.6
+2020-03-27 13:19:59.4645|INFO|bolt.cli.Worker|ProductName: pac
+2020-03-27 13:19:59.5313|INFO|bolt.cli.Worker|EndExecutingVerb
+2020-03-27 13:19:59.5313|INFO|bolt.cli.Worker|Success: True
+2020-03-27 13:19:59.5313|INFO|bolt.cli.Worker|Execution Time(ms): 46
+2020-03-27 13:20:01.3854|INFO|bolt.cli.Worker|StartExecutingVerb
+2020-03-27 13:20:01.4422|INFO|bolt.cli.Worker|Verbs: ["solution","add-reference"]
+2020-03-27 13:20:01.4482|INFO|bolt.cli.Worker|ProductVersion: 1.1.6
+2020-03-27 13:20:01.4482|INFO|bolt.cli.Worker|ProductName: pac
+2020-03-27 13:20:01.4991|INFO|bolt.cli.Worker|EndExecutingVerb
+2020-03-27 13:20:01.4991|INFO|bolt.cli.Worker|Success: True
+2020-03-27 13:20:01.4991|INFO|bolt.cli.Worker|Execution Time(ms): 31
+2020-03-27 13:20:03.1776|INFO|bolt.cli.Worker|StartExecutingVerb
+2020-03-27 13:20:03.2594|INFO|bolt.cli.Worker|Verbs: ["solution","add-reference"]
+2020-03-27 13:20:03.2594|INFO|bolt.cli.Worker|ProductVersion: 1.1.6
+2020-03-27 13:20:03.2724|INFO|bolt.cli.Worker|ProductName: pac
+2020-03-27 13:20:03.3192|INFO|bolt.cli.Worker|EndExecutingVerb
+2020-03-27 13:20:03.3192|INFO|bolt.cli.Worker|Success: True
+2020-03-27 13:20:03.3192|INFO|bolt.cli.Worker|Execution Time(ms): 29
+2020-03-27 13:20:05.0108|INFO|bolt.cli.Worker|StartExecutingVerb
+2020-03-27 13:20:05.0787|INFO|bolt.cli.Worker|Verbs: ["solution","add-reference"]
+2020-03-27 13:20:05.0787|INFO|bolt.cli.Worker|ProductVersion: 1.1.6
+2020-03-27 13:20:05.0787|INFO|bolt.cli.Worker|ProductName: pac
+2020-03-27 13:20:05.1305|INFO|bolt.cli.Worker|EndExecutingVerb
+2020-03-27 13:20:05.1315|INFO|bolt.cli.Worker|Success: True
+2020-03-27 13:20:05.1315|INFO|bolt.cli.Worker|Execution Time(ms): 33

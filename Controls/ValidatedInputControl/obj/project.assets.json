@@ -40,7 +40,7 @@
   },
   "libraries": {
     "Microsoft.PowerApps.MSBuild.Pcf/0.4.3": {
-      "sha512": "cqd5aSeVxZXXCGhEazC5uBcuMddTc3pOi8ZStZs1+ph6k4P6vYZTMQptXxNS7+dTUH/JCac5fFDwaWSb+EsQdw==",
+      "sha512": "w/nu1AVrY7ZsYrxaqFEVKXnNCUPJiTZ+p3DqBKx0jy10YtNTYuzdc2Nz1iiF70bgXuWGn7xo0LTcVA99gWXYsQ==",
       "type": "package",
       "path": "microsoft.powerapps.msbuild.pcf/0.4.3",
       "files": [
@@ -61,26 +61,21 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ashle\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {}
+    "C:\\Users\\shlegaal\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Work\\Projects\\ITAintBoring.PCFControls\\Controls\\ValidatedInputControl\\ValidatedInputControl.pcfproj",
+      "projectUniqueName": "C:\\Git\\ITAintBoring.PCFControls\\Controls\\ValidatedInputControl\\ValidatedInputControl.pcfproj",
       "projectName": "ValidatedInputControl",
-      "projectPath": "C:\\Work\\Projects\\ITAintBoring.PCFControls\\Controls\\ValidatedInputControl\\ValidatedInputControl.pcfproj",
-      "packagesPath": "C:\\Users\\ashle\\.nuget\\packages\\",
-      "outputPath": "C:\\Work\\Projects\\ITAintBoring.PCFControls\\Controls\\ValidatedInputControl\\obj\\",
+      "projectPath": "C:\\Git\\ITAintBoring.PCFControls\\Controls\\ValidatedInputControl\\ValidatedInputControl.pcfproj",
+      "packagesPath": "C:\\Users\\shlegaal\\.nuget\\packages\\",
+      "outputPath": "C:\\Git\\ITAintBoring.PCFControls\\Controls\\ValidatedInputControl\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\"
-      ],
       "configFilePaths": [
-        "C:\\Users\\ashle\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
+        "C:\\Users\\shlegaal\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net40"

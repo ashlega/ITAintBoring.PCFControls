@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-94" ?>
+<?xml version="1.0" encoding="utf-109" ?>
 <manifest>
-  <control namespace="ItAintBoring.PCFControls" constructor="NToNMultiSelect" version="0.0.94" display-name-key="NToNMultiSelect" description-key="NToNMultiSelect description" control-type="standard">
+  <control namespace="ItAintBoring.PCFControls" constructor="NToNMultiSelect" version="0.0.109" display-name-key="NToNMultiSelect" description-key="NToNMultiSelect description" control-type="standard">
     <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
     <property name="value" display-name-key="Value" description-key="Value" of-type="SingleLine.Text" usage="bound" required="true" />
     <property name="linkedEntityName" display-name-key="Linked Entity Name" description-key="Linked Entity Name" of-type="SingleLine.Text" usage="input" required="false" />
@@ -29,7 +29,7 @@
 	  <css path="css/select2.min.css" order="2" />
 	  <css path="css/pcfsupport.css" order="3" />
       <!-- UNCOMMENT TO ADD MORE RESOURCES
-      <css path="css/NToNMultiSelect.css" order="94" />
+      <css path="css/NToNMultiSelect.css" order="109" />
       <resx path="strings/NToNMultiSelect.1033.resx" version="1.0.0" />
       -->
     </resources>

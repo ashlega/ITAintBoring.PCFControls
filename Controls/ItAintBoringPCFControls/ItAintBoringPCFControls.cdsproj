@@ -39,33 +39,13 @@
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\ValidatedInputControl\ValidatedInputControl.pcfproj">
-      <Project>a252ef79-ab5b-44cc-9eaa-55a7409e4eb6</Project>
-      <Name>ValidatedInputControl</Name>
-      <Targets>Build</Targets>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-      <OutputItemType>Content</OutputItemType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </ProjectReference>
-    <ProjectReference Include="..\CheckBoxList\CheckBoxList.pcfproj">
-      <Project>6f6d103c-0bec-43dc-b362-d35078c7a319</Project>
-      <Name>CheckBoxList</Name>
-      <Targets>Build</Targets>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-      <OutputItemType>Content</OutputItemType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </ProjectReference>
-    <ProjectReference Include="..\TreeRelationships\TreeRelationships.pcfproj">
-      <Project>eb8b1ce3-c04f-45cd-84aa-3bf4c8ddabc3</Project>
-      <Name>TreeRelationships</Name>
-      <Targets>Build</Targets>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-      <OutputItemType>Content</OutputItemType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </ProjectReference>
+    <ProjectReference Include="..\ValidatedInputControl\ValidatedInputControl.pcfproj" />
+    <ProjectReference Include="..\CheckBoxList\CheckBoxList.pcfproj" />
+    <ProjectReference Include="..\TreeRelationships\TreeRelationships.pcfproj" />
     <ProjectReference Include="..\NToNMultiSelect\NToNMultiSelect.pcfproj" />
     <ProjectReference Include="..\IFrameControl\IFrameControl.pcfproj" />
     <ProjectReference Include="..\ExternalValidator\ExternalValidator.pcfproj" />
+    <ProjectReference Include="..\ITAWordTemplate\ITAWordTemplate.pcfproj" />
   </ItemGroup>
 
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />

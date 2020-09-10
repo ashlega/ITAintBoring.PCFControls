@@ -51,6 +51,8 @@ $manifestFilePath = "..\IFrameControl\IFrameControl\ControlManifest.Input.xml"
 New-PCFControlVersion $manifestFilePath
 $manifestFilePath = "..\ExternalValidator\ExternalValidator\ControlManifest.Input.xml"
 New-PCFControlVersion $manifestFilePath
+$manifestFilePath = "..\ITAWordTemplate\ITAWordTemplate\ControlManifest.Input.xml"
+New-PCFControlVersion $manifestFilePath
 
 #version number has been updated
 
@@ -61,7 +63,7 @@ pac.exe solution add-reference --path ..\TreeRelationships
 pac.exe solution add-reference --path ..\NToNMultiSelect
 pac.exe solution add-reference --path ..\IFrameControl
 pac.exe solution add-reference --path ..\ExternalValidator
-
+pac.exe solution add-reference --path ..\ITAWordTemplate
 
 
 & $msBuildExe /t:restore
