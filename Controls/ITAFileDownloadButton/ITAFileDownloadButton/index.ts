@@ -12,6 +12,7 @@ export class ITAFileDownloadButton implements ComponentFramework.StandardControl
 	private _downloadUrl: string;
 	private _httpMethodName: string;
 	private _fileNameTemplate: string;
+	private _openInNewTab: string;
 	private _getFile : any;
 	private _notifyOutputChanged: () => void;
 
@@ -34,6 +35,11 @@ export class ITAFileDownloadButton implements ComponentFramework.StandardControl
 	public init(context: ComponentFramework.Context<IInputs>, notifyOutputChanged: () => void, state: ComponentFramework.Dictionary, container:HTMLDivElement)
 	{
 		// Add control initialization code
+
+		if(context.parameters.OpenInNewTab.raw != null){
+			this._openInNewTab = context.parameters.OpenInNewTab.raw.toUpperCase();
+		}
+		else this._openInNewTab = "FALSE";
 
 		if(context.parameters.ButtonTitle.raw != null){
 			this._buttonTitle = context.parameters.ButtonTitle.raw;
@@ -119,19 +125,36 @@ export class ITAFileDownloadButton implements ComponentFramework.StandardControl
 
 	public downloadFile(blob: any) {
 		var _fileName = this.replaceParameters(this._fileNameTemplate);
-		if (navigator.msSaveBlob) { // IE 10+
-			navigator.msSaveBlob(blob, _fileName);
-		} else {
-			var link = document.createElement("a");
-			if (link.download !== undefined) { 
-				var url = URL.createObjectURL(blob);
-				link.setAttribute("href", url);
-				link.setAttribute("download", _fileName);
-				link.style.visibility = 'hidden';
+
+		if(this._openInNewTab === "FALSE"){
+			if (navigator.msSaveBlob) { // IE 10+
+				navigator.msSaveBlob(blob, _fileName);
+			} else {
+				var link = document.createElement("a");
+				if (link.download !== undefined) { 
+					var url = URL.createObjectURL(blob);
+					link.setAttribute("href", url);
+					link.setAttribute("download", _fileName);
+					link.style.visibility = 'hidden';
+					document.body.appendChild(link);
+					link.click();
+					document.body.removeChild(link);
+				}
+			}
+		}
+		else{
+			if (window.navigator.msSaveOrOpenBlob) {
+				window.navigator.msSaveOrOpenBlob(blob, _fileName); //IE is the worst!!!
+		    }
+		    else {
+				var fileURL = URL.createObjectURL(blob);
+				var link: HTMLAnchorElement = document.createElement('a');
+				link.href = fileURL;
+				link.target = '_blank';
 				document.body.appendChild(link);
 				link.click();
 				document.body.removeChild(link);
-			}
+		    }
 		}
 	}
 

@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-10" ?>
+<?xml version="1.0" encoding="utf-12" ?>
 <manifest>
-  <control namespace="ItAintBoring.PCFControls" constructor="ITAFileDownloadButton" version="0.0.10" display-name-key="ITAFileDownloadButton" description-key="ITAFileDownloadButton description" control-type="standard">
+  <control namespace="ItAintBoring.PCFControls" constructor="ITAFileDownloadButton" version="0.0.12" display-name-key="ITAFileDownloadButton" description-key="ITAFileDownloadButton description" control-type="standard">
     <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
     <property name="value" display-name-key="Anchor Property" description-key="Anchor Property to use for download button renderign"  of-type-group="AnyType" usage="bound" required="true" />
     <property name="ButtonTitle" display-name-key="Button Title" description-key="Title" of-type="SingleLine.Text" usage="input" required="true" />
@@ -9,7 +9,8 @@
     <property name="DownloadUrlP3" display-name-key="Download Url Part 3" description-key="Download Url Part 3" of-type="SingleLine.Text" usage="input" required="false" />
     <property name="HttpMethodName" display-name-key="Http Method Name" description-key="Http Method Name" of-type="SingleLine.Text" usage="input" required="true" />
     <property name="FileNameTemplate" display-name-key="File Name Template" description-key="File Name Template" of-type="SingleLine.Text" usage="input" required="true" />
-    
+    <property name="OpenInNewTab" display-name-key="Open In New Tab" description-key="Open In New Tab" of-type="SingleLine.Text" usage="input" required="false" />
+
       <type-group name="AnyType">
         <type>Whole.None</type>
         <type>Currency</type>
@@ -20,7 +21,7 @@
       </type-group>
       
     <resources>
-      <code path="index.ts" order="10"/>
+      <code path="index.ts" order="12"/>
 	    <css path="css/bootstrap.min.css" order="50" />
       <!-- UNCOMMENT TO ADD MORE RESOURCES
       
