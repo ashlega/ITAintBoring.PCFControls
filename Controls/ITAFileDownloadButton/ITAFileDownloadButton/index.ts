@@ -103,7 +103,7 @@ export class ITAFileDownloadButton implements ComponentFramework.StandardControl
 			result =  result.replace(re, this.getUrlParameter("id"));
 		}
 		else {
-			result =  result.replace(re, this.getAttributeValue(paramName.replace('#', '')));
+			result =  result.replace(re, this.getAttributeValue(paramName.replace('#', '').replace('#','')));//remove surrounding # characters
 		}
 		return result;
 	}
