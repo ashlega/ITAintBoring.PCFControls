@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-9" ?>
+<manifest>
+  <control namespace="ItAintBoring.PCFControls" constructor="ITAFileDownloadButton" version="0.0.9" display-name-key="ITAFileDownloadButton" description-key="ITAFileDownloadButton description" control-type="standard">
+    <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
+    <property name="value" display-name-key="Anchor Property" description-key="Anchor Property to use for download button renderign"  of-type-group="AnyType" usage="bound" required="true" />
+    <property name="ButtonTitle" display-name-key="Button Title" description-key="Title" of-type="SingleLine.Text" usage="input" required="true" />
+    <property name="DownloadUrlP1" display-name-key="Download Url Part 1" description-key="Download Url Part 1" of-type="SingleLine.Text" usage="input" required="true" />
+    <property name="DownloadUrlP2" display-name-key="Download Url Part 2" description-key="Download Url Part 2" of-type="SingleLine.Text" usage="input" required="false" />
+    <property name="DownloadUrlP3" display-name-key="Download Url Part 3" description-key="Download Url Part 3" of-type="SingleLine.Text" usage="input" required="false" />
+    <property name="HttpMethodName" display-name-key="Http Method Name" description-key="Http Method Name" of-type="SingleLine.Text" usage="input" required="true" />
+    <property name="FileNameTemplate" display-name-key="File Name Template" description-key="File Name Template" of-type="SingleLine.Text" usage="input" required="true" />
+    
+      <type-group name="AnyType">
+        <type>Whole.None</type>
+        <type>Currency</type>
+        <type>FP</type>
+        <type>Decimal</type>
+        <type>SingleLine.Text</type>
+        <type>Multiple</type>
+      </type-group>
+      
+    <resources>
+      <code path="index.ts" order="9"/>
+	    <css path="css/bootstrap.min.css" order="50" />
+      <!-- UNCOMMENT TO ADD MORE RESOURCES
+      
+      <resx path="strings/IFrameControl.1033.resx" version="1.0.0" />
+      -->
+    </resources>
+    <!-- UNCOMMENT TO ENABLE THE SPECIFIED API
+    <feature-usage>
+      <uses-feature name="Device.captureAudio" required="true" />
+      <uses-feature name="Device.captureImage" required="true" />
+      <uses-feature name="Device.captureVideo" required="true" />
+      <uses-feature name="Device.getBarcodeValue" required="true" />
+      <uses-feature name="Device.getCurrentPosition" required="true" />
+      <uses-feature name="Device.pickFile" required="true" />
+      <uses-feature name="Utility" required="true" />
+      <uses-feature name="WebAPI" required="true" />
+    </feature-usage>
+    -->
+  </control>
+</manifest>
