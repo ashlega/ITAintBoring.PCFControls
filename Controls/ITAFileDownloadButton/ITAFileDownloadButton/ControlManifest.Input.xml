@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-12" ?>
+<?xml version="1.0" encoding="utf-15" ?>
 <manifest>
-  <control namespace="ItAintBoring.PCFControls" constructor="ITAFileDownloadButton" version="0.0.12" display-name-key="ITAFileDownloadButton" description-key="ITAFileDownloadButton description" control-type="standard">
+  <control namespace="ItAintBoring.PCFControls" constructor="ITAFileDownloadButton" version="0.0.15" display-name-key="ITAFileDownloadButton" description-key="ITAFileDownloadButton description" control-type="standard">
     <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
     <property name="value" display-name-key="Anchor Property" description-key="Anchor Property to use for download button renderign"  of-type-group="AnyType" usage="bound" required="true" />
     <property name="ButtonTitle" display-name-key="Button Title" description-key="Title" of-type="SingleLine.Text" usage="input" required="true" />
@@ -21,7 +21,7 @@
       </type-group>
       
     <resources>
-      <code path="index.ts" order="12"/>
+      <code path="index.ts" order="15"/>
 	    <css path="css/bootstrap.min.css" order="50" />
       <!-- UNCOMMENT TO ADD MORE RESOURCES
       

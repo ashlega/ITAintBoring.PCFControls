@@ -181,8 +181,14 @@ export class ITAFileDownloadButton implements ComponentFramework.StandardControl
 
 
 	public getUrlParameter(sParam : string) {
-		var sPageURL = window.top.location.search.substring(1),
-			sURLVariables = sPageURL.split('&'),
+		var sPageURL = "id=0";
+		try{
+			sPageURL = window.top.location.search.substring(1);
+		}
+		catch
+		{
+		}
+		var sURLVariables = sPageURL.split('&'),
 			sParameterName,
 			i;
 	
