@@ -27,9 +27,11 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
 	private mainContainer: HTMLSelectElement;
 	private errorElement: HTMLDivElement;
 	private selectedItems: string[] = [];
+	private _possibleValues: any[] = [];
 	private overlayDiv: HTMLDivElement;
 	private container: HTMLDivElement;
 	private _isValidState : boolean = true;
+	private _outputSelection: boolean = false;
 
 	private _relData : NToNData;
 	
@@ -83,7 +85,6 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
 	 */
 	public init(context: ComponentFramework.Context<IInputs>, notifyOutputChanged: () => void, state: ComponentFramework.Dictionary, container:HTMLDivElement)
 	{
-		debugger;
 		this.container = container;
 		this.contextObj = context;
 		if(typeof Xrm == 'undefined')
@@ -122,6 +123,10 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
 			if(context.parameters.linkedEntityFetchXmlResource.raw != null){
 			  this._linkedEntityFetchXmlResource = context.parameters.linkedEntityFetchXmlResource.raw;
 			}
+
+			if(context.parameters.outputSelection!.raw == "Yes"){
+				this._outputSelection = true;
+			}
 			
 			context.mode.trackContainerResize(true);
 			container.classList.add("pcf_container_element");
@@ -151,8 +156,7 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
 			(<any>Xrm).Utility.getEntityMetadata(this._linkedEntityName,[]).then(this._linkedEntityMetadataSuccessCallback, this.errorCallback);
 			//(<any>Xrm).WebApi.retrieveMultipleRecords(this._relationshipEntity, "?$filter="+ (<any>this.contextObj).page.entityTypeName+"id eq " + (<any>this.contextObj).page.entityId, 5000).then(this._relationshipSuccessCallback, this.errorCallback);
 			
-			if((<any>this.contextObj).page.entityId != null 
-			   && (<any>this.contextObj).page.entityId != "00000000-0000-0000-0000-000000000000")
+			if(!this.isCreateForm())
 			{
 				this.contextObj.webAPI.retrieveMultipleRecords(this._relationshipEntity, "?$filter="+ (<any>this.contextObj).page.entityTypeName+"id eq " + (<any>this.contextObj).page.entityId, 5000).then(this._relationshipSuccessCallback, this.errorCallback);
 			}
@@ -190,6 +194,8 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
 		for(var i in value.entities)
 		{
 			var current : any = value.entities[i];
+
+			this._possibleValues.push(current);
 
 			var checked = this.selectedItems.indexOf(<string>current[this._idAttribute]) > -1;
 			var newOption = new Option(current[this._nameAttribute], current[this._idAttribute], checked, checked);
@@ -283,11 +289,25 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
 			value: ""
 		  };
 		}
-		else{
-		  return {
-			value: "NTONDATA:"+JSON.stringify(this._relData)
-		  };
+		else if(this.isCreateForm()){
+			return {
+				value: "NTONDATA:"+JSON.stringify(this._relData)
+				};
 		}
+		else if(this._outputSelection){
+			var tmpArray = this.selectedItems.map(item => {
+				var possibleValuesItem = this._possibleValues.find( i => i[this._idAttribute] == item);
+
+				return possibleValuesItem[this._nameAttribute];
+			});
+			return {
+				value: tmpArray.join(', ')
+				};
+		}
+
+		return {
+			value: ""
+		  };
 	}
 
 	/** 
@@ -309,13 +329,10 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
 					//alert(JSON.stringify(data));
 				}
 		*/
-
-		if((<any>this.contextObj).page.entityId == null
-		   || (<any>this.contextObj).page.entityId == "00000000-0000-0000-0000-000000000000")
+		if(this.isCreateForm())
 		{
 			if(action == "select")
 			{
-				debugger;
 				var act = new DataAction();
 				act.associate = true;
 				act.guid = id;
@@ -330,10 +347,8 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
 						break;
 					}
 				}
-			
 			}
 			this._notifyOutputChanged();
-
 		}
 		else{
 
@@ -342,13 +357,11 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
 			
 			if(action == "select")
 			{
-				
-
 				//See himbap samples here: http://himbap.com/blog/?p=2063
 				var associate = {
 					"@odata.id": recordUrl
 				};
-				
+				var thisref = this;
 				var req = new XMLHttpRequest();
 				req.open("POST", url + "/api/data/v9.1/"+ this._linkedEntityCollectionName +"(" + id + ")/" + this._relationshipName + "/$ref", true);
 				req.setRequestHeader("Accept", "application/json");
@@ -360,6 +373,8 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
 						req.onreadystatechange = null;
 						if (this.status == 204) {
 							//alert('Record Associated');
+							thisref.selectedItems.push(id);
+							thisref._notifyOutputChanged();
 						} else {
 							var error = JSON.parse(this.response).error;
 							alert(error.message);
@@ -367,12 +382,12 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
 					}
 				};
 				req.send(JSON.stringify(associate));
-		
+				
 			}
 			else if(action == "unselect")
 			{
+				var thisref = this;
 
-				
 				var req = new XMLHttpRequest();
 				req.open("DELETE",url + "/api/data/v9.1/"+ this._linkedEntityCollectionName +"(" + id + ")/" + this._relationshipName + "/$ref"+"?$id="+recordUrl, true);
 				req.setRequestHeader("Accept", "application/json");
@@ -384,6 +399,8 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
 						req.onreadystatechange = null;
 						if (this.status == 204) {
 							//alert('Record Disassociated');
+							thisref.selectedItems.splice(thisref.selectedItems.indexOf(id), 1);
+							thisref._notifyOutputChanged();
 						} else {
 							var error = JSON.parse(this.response).error;
 							alert(error.message);
@@ -393,7 +410,11 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
 				req.send();
 			}
 		}
-		
 	}
+
+	private isCreateForm(): boolean{
+		return (<any>this.contextObj).page.entityId == null
+		|| (<any>this.contextObj).page.entityId == "00000000-0000-0000-0000-000000000000";
+	} 
 
 }
