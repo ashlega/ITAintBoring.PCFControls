@@ -41,6 +41,9 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
 	private _idAttribute: string;
 	private _nameAttribute: string;
 	private _linkedEntityFetchXmlResource: string;
+	private _handleInactiveRecords: boolean;
+	private _statusAttribute: string;
+	private _inactiveValue: number;
 
 	private _linkedEntityCollectionName: string;
 	private _mainEntityCollectionName: string;
@@ -127,6 +130,21 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
 			if(context.parameters.outputSelection!.raw == "Yes"){
 				this._outputSelection = true;
 			}
+
+			this._handleInactiveRecords = false;
+			if(context.parameters.handleInactiveRecords!.raw == "Yes"){
+				this._handleInactiveRecords = true;
+			}
+
+			this._statusAttribute = "statecode";
+			if(context.parameters.statusAttribute!.raw !== null){
+				this._statusAttribute = context.parameters.statusAttribute!.raw;
+			}
+
+			this._inactiveValue = 0;
+			if(context.parameters.inaktiveValue!.raw !== null){
+				this._inactiveValue = context.parameters.inaktiveValue!.raw;
+			}
 			
 			context.mode.trackContainerResize(true);
 			container.classList.add("pcf_container_element");
@@ -143,8 +161,6 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
 			this.mainContainer.name = "states[]";
 			container.appendChild(this.mainContainer);
 
-			
-
 			this._entityMetadataSuccessCallback = this.entityMetadataSuccessCallback.bind(this);
 			this._linkedEntityMetadataSuccessCallback = this.linkedEntityMetadataSuccessCallback.bind(this);
 			this._relationshipSuccessCallback = this.relationshipSuccessCallback.bind(this);
@@ -158,7 +174,11 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
 			
 			if(!this.isCreateForm())
 			{
-				this.contextObj.webAPI.retrieveMultipleRecords(this._relationshipEntity, "?$filter="+ (<any>this.contextObj).page.entityTypeName+"id eq " + (<any>this.contextObj).page.entityId, 5000).then(this._relationshipSuccessCallback, this.errorCallback);
+				var additionalInactiveFilter = "";
+				/*if(this._hideInactive){
+					additionalInactiveFilter = "&$expand="+ (<any>this.contextObj).page.entityTypeName+"id($filter=" + this._statusFieldName + " ne " + this._inactiveValue + ")";
+				}*/
+				this.contextObj.webAPI.retrieveMultipleRecords(this._relationshipEntity, "?$filter="+ (<any>this.contextObj).page.entityTypeName+"id eq " + (<any>this.contextObj).page.entityId + additionalInactiveFilter, 5000).then(this._relationshipSuccessCallback, this.errorCallback);
 			}
 			else{
 				this.relationshipSuccessCallback(null);
@@ -176,6 +196,16 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
 					thisVar.selectAction("unselect", data.id);
 				});
 			});
+
+			if(context.parameters.inactiveRecordsMode!.raw === "Hidden"){
+				let style = document.createElement("style");
+				style.innerHTML = `
+				.select2-container--default .select2-results__option[aria-disabled=true] {
+					display: none;
+				}`;
+
+				container.appendChild(style);
+			}
 		}
 	}
 
@@ -199,7 +229,8 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
 
 			var checked = this.selectedItems.indexOf(<string>current[this._idAttribute]) > -1;
 			var newOption = new Option(current[this._nameAttribute], current[this._idAttribute], checked, checked);
-	        $('#'+ this._ctrlId).append(newOption);
+			newOption.disabled = this._handleInactiveRecords && current[this._statusAttribute] != this._inactiveValue;
+			$('#'+ this._ctrlId).append(newOption);
 	/*
 			var option = document.createElement("option");
 			option.value = current[this._idAttribute];
@@ -251,7 +282,16 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
 		}
 		else
 		{
-  		    this.contextObj.webAPI.retrieveMultipleRecords(this._linkedEntityName, "?$orderby=" + this._nameAttribute + " asc", 5000).then(this._successCallback, this.errorCallback);
+			/*var additionalInactiveFilter = "";
+			if(this._hideInactive){
+				additionalInactiveFilter = "$filter=" + this._statusAttribute + " ne " + this._inactiveValue + "&";
+			}*/
+			var select = "$select=" + this._nameAttribute + "," + this._idAttribute;
+			if(this._handleInactiveRecords){
+				select += "," + this._statusAttribute;
+			}
+			select += "&"
+  		    this.contextObj.webAPI.retrieveMultipleRecords(this._linkedEntityName, "?" + select + "$orderby=" + this._nameAttribute + " asc", 5000).then(this._successCallback, this.errorCallback);
 		}
 	}
 
@@ -329,6 +369,7 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
 					//alert(JSON.stringify(data));
 				}
 		*/
+
 		if(this.isCreateForm())
 		{
 			if(action == "select")
@@ -347,8 +388,10 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
 						break;
 					}
 				}
+			
 			}
 			this._notifyOutputChanged();
+
 		}
 		else{
 
@@ -361,7 +404,9 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
 				var associate = {
 					"@odata.id": recordUrl
 				};
+
 				var thisref = this;
+				
 				var req = new XMLHttpRequest();
 				req.open("POST", url + "/api/data/v9.1/"+ this._linkedEntityCollectionName +"(" + id + ")/" + this._relationshipName + "/$ref", true);
 				req.setRequestHeader("Accept", "application/json");
@@ -382,7 +427,7 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
 					}
 				};
 				req.send(JSON.stringify(associate));
-				
+		
 			}
 			else if(action == "unselect")
 			{
@@ -410,6 +455,7 @@ export class NToNMultiSelect implements ComponentFramework.StandardControl<IInpu
 				req.send();
 			}
 		}
+		
 	}
 
 	private isCreateForm(): boolean{

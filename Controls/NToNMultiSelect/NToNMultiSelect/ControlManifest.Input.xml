@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-109" ?>
 <manifest>
-  <control namespace="ItAintBoring.PCFControls" constructor="NToNMultiSelect" version="0.0.110" display-name-key="NToNMultiSelect" description-key="NToNMultiSelect description" control-type="standard">
+  <control namespace="ItAintBoring.PCFControls" constructor="NToNMultiSelect" version="0.0.113" display-name-key="NToNMultiSelect" description-key="NToNMultiSelect description" control-type="standard">
     <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
     <property name="value" display-name-key="Value" description-key="Value" of-type="SingleLine.Text" usage="bound" required="true" />
     <property name="linkedEntityName" display-name-key="Linked Entity Name" description-key="Linked Entity Name" of-type="SingleLine.Text" usage="input" required="false" />
@@ -9,6 +9,17 @@
     <property name="relationshipName" display-name-key="Relationship Name" description-key="Relationship Name" of-type="SingleLine.Text" usage="input" required="false" />
     <property name="relationshipEntity" display-name-key="Relationship Entity" description-key="Relationship Entity" of-type="SingleLine.Text" usage="input" required="false" />
     <property name="linkedEntityFetchXmlResource" display-name-key="FetchXml Web Resource" description-key="Optional FetchXml web resource to select linked entity records" of-type="SingleLine.Text" usage="input" required="false" />
+
+    <property name="handleInactiveRecords" display-name-key="Handle Inactive records" description-key="Whether to handle inactive records" of-type="Enum" usage="input" required="true" default-value="No">
+      <value name="Yes" display-name-key="Yes" description-key="Yes">Yes</value> 
+      <value name="No" display-name-key="No" description-key="No">No</value>  
+    </property>
+    <property name="inactiveRecordsMode" display-name-key="Mode to handle Inactive records" description-key="How to handle inactive records" of-type="Enum" usage="input" required="true" default-value="Hidden">
+      <value name="Disabled" display-name-key="Disable" description-key="Disable">Disabled</value> 
+      <value name="Hidden" display-name-key="Hidden" description-key="Hidden">Hidden</value>  
+    </property>
+    <property name="statusAttribute" display-name-key="Status Attribute name" description-key="Name of the attribute which holds the record status. Default = statecode" of-type="SingleLine.Text" usage="input" required="false" />
+    <property name="inaktiveValue" display-name-key="Inaktive Value" description-key="Integer of inactive value. Default = 0" of-type="Whole.None" usage="input" required="false" />
     
     <property name="outputSelection" display-name-key="Output Selection" description-key="Decides whether to output the selection as a comma separated list" of-type="Enum" usage="input" required="true" default-value="No">
       <value name="Yes" display-name-key="Yes" description-key="Yes">Yes</value> 
