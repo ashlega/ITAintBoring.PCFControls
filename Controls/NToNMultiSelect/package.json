@@ -12,9 +12,11 @@
     "@types/node": "^10.12.18",
     "@types/powerapps-component-framework": "^1.2.0",
     "@types/select2": "^4.0.48",
-    "jquery": "^3.4.1"
+    "jquery": "^3.4.1",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@types/react-dom": "^18.0.9",
     "pcf-scripts": "^1",
     "pcf-start": "^1"
   }
